@@ -1,1 +1,10 @@
 Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM\Helios_ATM\bin\Debug\Helios_ATM.exe.config
+Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM\Helios_ATM\bin\Debug\Helios_ATM.exe
+Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM\Helios_ATM\bin\Debug\Helios_ATM.pdb
+Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM\Helios_ATM\bin\Debug\MetroFramework.dll
+Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM\Helios_ATM\obj\Debug\Helios_ATM.csprojResolveAssemblyReference.cache
+Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM\Helios_ATM\obj\Debug\Helios_ATM.ATM1.resources
+Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM\Helios_ATM\obj\Debug\Helios_ATM.Properties.Resources.resources
+Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM\Helios_ATM\obj\Debug\Helios_ATM.csproj.GenerateResource.Cache
+Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM\Helios_ATM\obj\Debug\Helios_ATM.exe
+Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM\Helios_ATM\obj\Debug\Helios_ATM.pdb
