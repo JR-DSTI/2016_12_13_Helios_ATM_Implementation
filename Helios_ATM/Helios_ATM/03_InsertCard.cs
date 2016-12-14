@@ -22,6 +22,16 @@ namespace Helios_ATM
 
         }
 
+        private async void CardInserted_Click(object sender, EventArgs e)
+        {
+            await Task.Delay(500);
+
+            Form ATM4 = new ATM4(); // Instantiate a Form object.
+            ATM4.Show(); //show the new Form
+
+            this.Visible = false;  //Hide the old form
+        }
+
         //private void timer1_Tick(object sender, EventArgs e)
         //{
         //    this.WelcomeProgressBar.Increment(10);

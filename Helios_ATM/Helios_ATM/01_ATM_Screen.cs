@@ -27,8 +27,7 @@ namespace Helios_ATM
         {
             this.WelcomeTimer.Start();
             this.WelcomeProgressBar.Visible = true;
-            await Task.Delay(3000);
-            //System.Threading.Thread.Sleep(2000);
+            await Task.Delay(2500);
             
             Form ATM3 = new ATM3(); // Instantiate a Form object.
             ATM3.Show(); //show the new Form

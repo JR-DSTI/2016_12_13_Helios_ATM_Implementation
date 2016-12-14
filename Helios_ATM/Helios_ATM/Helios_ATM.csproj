@@ -49,17 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="02_ATM_Screen.cs">
+    <Compile Include="05_EnterPIN.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="02_ATM_Screen.Designer.cs">
-      <DependentUpon>02_ATM_Screen.cs</DependentUpon>
+    <Compile Include="05_EnterPIN.Designer.cs">
+      <DependentUpon>05_EnterPIN.cs</DependentUpon>
     </Compile>
-    <Compile Include="02_InsertCard.cs">
+    <Compile Include="04_Language.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="02_InsertCard.Designer.cs">
-      <DependentUpon>02_InsertCard.cs</DependentUpon>
+    <Compile Include="04_Language.Designer.cs">
+      <DependentUpon>04_Language.cs</DependentUpon>
+    </Compile>
+    <Compile Include="03_InsertCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03_InsertCard.Designer.cs">
+      <DependentUpon>03_InsertCard.cs</DependentUpon>
     </Compile>
     <Compile Include="01_ATM_Screen.cs">
       <SubType>Form</SubType>
@@ -69,11 +75,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="02_ATM_Screen.resx">
-      <DependentUpon>02_ATM_Screen.cs</DependentUpon>
+    <EmbeddedResource Include="05_EnterPIN.resx">
+      <DependentUpon>05_EnterPIN.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="02_InsertCard.resx">
-      <DependentUpon>02_InsertCard.cs</DependentUpon>
+    <EmbeddedResource Include="04_Language.resx">
+      <DependentUpon>04_Language.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="03_InsertCard.resx">
+      <DependentUpon>03_InsertCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="01_ATM_Screen.resx">
       <DependentUpon>01_ATM_Screen.cs</DependentUpon>
