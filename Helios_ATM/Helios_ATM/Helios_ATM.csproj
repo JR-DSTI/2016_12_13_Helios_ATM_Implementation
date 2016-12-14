@@ -49,16 +49,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ATM_Screen.cs">
+    <Compile Include="02_ATM_Screen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ATM_Screen.Designer.cs">
-      <DependentUpon>ATM_Screen.cs</DependentUpon>
+    <Compile Include="02_ATM_Screen.Designer.cs">
+      <DependentUpon>02_ATM_Screen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02_InsertCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="02_InsertCard.Designer.cs">
+      <DependentUpon>02_InsertCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="01_ATM_Screen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="01_ATM_Screen.Designer.cs">
+      <DependentUpon>01_ATM_Screen.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ATM_Screen.resx">
-      <DependentUpon>ATM_Screen.cs</DependentUpon>
+    <EmbeddedResource Include="02_ATM_Screen.resx">
+      <DependentUpon>02_ATM_Screen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="02_InsertCard.resx">
+      <DependentUpon>02_InsertCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="01_ATM_Screen.resx">
+      <DependentUpon>01_ATM_Screen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

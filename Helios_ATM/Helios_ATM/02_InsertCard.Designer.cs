@@ -1,6 +1,16 @@
-﻿namespace Helios_ATM
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Helios_ATM
 {
-    partial class ATM1
+    public partial class ATM2 : Form
     {
         /// <summary>
         /// Required designer variable.
@@ -29,25 +39,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM1));
-            this.button1 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM2));
             this.WelcomeTimer = new System.Windows.Forms.Timer(this.components);
             this.metroProgressSpinner1 = new MetroFramework.Controls.MetroProgressSpinner();
             this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
-            this.WelcomeProgressBar = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(164, 509);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "ENTER HERE";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // WelcomeTimer
             // 
@@ -68,51 +66,42 @@
             this.metroProgressBar1.Name = "metroProgressBar1";
             this.metroProgressBar1.TabIndex = 0;
             // 
-            // WelcomeProgressBar
-            // 
-            this.WelcomeProgressBar.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.WelcomeProgressBar.Location = new System.Drawing.Point(139, 273);
-            this.WelcomeProgressBar.Name = "WelcomeProgressBar";
-            this.WelcomeProgressBar.Size = new System.Drawing.Size(219, 61);
-            this.WelcomeProgressBar.TabIndex = 3;
-            this.WelcomeProgressBar.Visible = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(126, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(34, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(242, 77);
+            this.label1.Size = new System.Drawing.Size(455, 50);
             this.label1.TabIndex = 4;
-            this.label1.Text = "HELIOS";
+            this.label1.Text = "Insert your card please.";
             // 
-            // label2
+            // button1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(82, 429);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(336, 77);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "WELCOME";
+            this.button1.Location = new System.Drawing.Point(190, 471);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(137, 40);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "CardInserted";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // ATM1
+            // ATM2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(501, 544);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(516, 544);
             this.ControlBox = false;
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.WelcomeProgressBar);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "ATM1";
+            this.Name = "ATM2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -120,13 +109,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer WelcomeTimer;
         private MetroFramework.Controls.MetroProgressSpinner metroProgressSpinner1;
         private MetroFramework.Controls.MetroProgressBar metroProgressBar1;
-        private System.Windows.Forms.ProgressBar WelcomeProgressBar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

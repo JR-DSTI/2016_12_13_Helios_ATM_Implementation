@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Helios_ATM
 {
-    public partial class ATM1 : Form
+    public partial class ATM2 : Form
     {
-        public ATM1()
+        public ATM2()
         {
             InitializeComponent();
         }
@@ -35,6 +35,18 @@ namespace Helios_ATM
            // else
            // goto not100yet
            //         end if
+
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // ATM2
+            // 
+            this.ClientSize = new System.Drawing.Size(444, 364);
+            this.Name = "ATM2";
+            this.ResumeLayout(false);
 
         }
     }
