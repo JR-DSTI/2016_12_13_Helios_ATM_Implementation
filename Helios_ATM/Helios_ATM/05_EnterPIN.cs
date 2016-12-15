@@ -71,9 +71,12 @@ namespace Helios_ATM
                 if (PINentries<=3 & PIN == "1111")
                 {
                     MessageBox.Show("PIN entry successful!");
-                    
-                    //next screen
 
+                    //next screen
+                    Form ATM6 = new ATM6(); // Instantiate a Form object.
+                    ATM6.Show(); //show the new Form
+
+                    this.Visible = false;  //Hide the old form
                 }
                 else if (PINentries < 3 & PIN != "1111")
                 {
@@ -82,10 +85,10 @@ namespace Helios_ATM
                 }
                 else if (PINentries > 3)
                 {
-                    MessageBox.Show("Last PIN entry not successful, no attempts left, no money for you");
-                    return;
+                    MessageBox.Show("Last PIN entry not successful, no attempts left, no money for you, your card is being captured.");
+                    this.Close(); //return;
                 };
-
+                 
 
             }
             else
