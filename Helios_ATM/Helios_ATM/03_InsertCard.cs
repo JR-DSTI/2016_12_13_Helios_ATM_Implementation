@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Helios_ATM
 {
-    public partial class ATM3 : Form
+    public partial class ATM3 : MetroFramework.Forms.MetroForm
     {
         public ATM3()
         {
@@ -24,37 +24,25 @@ namespace Helios_ATM
 
         private async void CardInserted_Click(object sender, EventArgs e)
         {
+            //again "sleep" for the form
             await Task.Delay(500);
 
+            //continue to next form:
             Form ATM4 = new ATM4(); // Instantiate a Form object.
             ATM4.Show(); //show the new Form
 
             this.Visible = false;  //Hide the old form
         }
 
-        //private void timer1_Tick(object sender, EventArgs e)
-        //{
-        //    this.WelcomeProgressBar.Increment(10);
-        //}
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            //cancel to initial form, maybe not too necessary here
+            Form ATM1 = new ATM1(); // Instantiate a Form object.
+            ATM1.Show(); //show the new Form
 
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    this.WelcomeTimer.Start();
-        //    this.WelcomeProgressBar.Visible = true;
+            this.Visible = false;  //Hide the old form
+        }
 
-        //    Form InsertCard = new ATM2(); // Instantiate a Form object.
-        //    InsertCard.Show(); 
-        //    this.Close();
-
-
-        //   // not100yet:
-        //   //if this.WelcomeProgressBar.Value= 100 (
-
-        //    //     )
-        //    // else
-        //    // goto not100yet
-        //    //         end if
-
-        //}
+        
     }
 }

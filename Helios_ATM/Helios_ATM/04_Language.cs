@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,8 +11,9 @@ using System.Windows.Forms;
 
 namespace Helios_ATM
 {
-    public partial class ATM4 : Form
+    public partial class ATM4 : MetroFramework.Forms.MetroForm
     {
+
         public ATM4()
         {
             InitializeComponent();
@@ -23,7 +25,8 @@ namespace Helios_ATM
         }
 
         private async void CardInserted_Click(object sender, EventArgs e)
-        {
+        {   //name of Button is not fitting but renaming leads to trouble :-(
+            //English selection continues
             await Task.Delay(500);
 
             Form ATM5 = new ATM5(); // Instantiate a Form object.
@@ -32,29 +35,27 @@ namespace Helios_ATM
             this.Visible = false;  //Hide the old form
         }
 
-        //private void timer1_Tick(object sender, EventArgs e)
-        //{
-        //    this.WelcomeProgressBar.Increment(10);
-        //}
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            //Cancel MsgBox & close the message after certain time:
+            AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500);
 
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    this.WelcomeTimer.Start();
-        //    this.WelcomeProgressBar.Visible = true;
+            //Going back to first form (=restart)
+            Form ATM1 = new ATM1(); // Instantiate a Form object.
+            ATM1.Show(); //show the new Form
 
-        //    Form InsertCard = new ATM2(); // Instantiate a Form object.
-        //    InsertCard.Show(); 
-        //    this.Close();
+            this.Visible = false;
+        }
 
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            //continue to next form
+            Form ATM3 = new ATM3(); // Instantiate a Form object.
+            ATM3.Show(); //show the new Form
 
-        //   // not100yet:
-        //   //if this.WelcomeProgressBar.Value= 100 (
+            this.Visible = false;
+        }
 
-        //    //     )
-        //    // else
-        //    // goto not100yet
-        //    //         end if
-
-        //}
+       
     }
 }

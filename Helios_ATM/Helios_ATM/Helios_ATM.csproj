@@ -33,8 +33,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MetroFramework">
-      <HintPath>\\psf\Home\Documents\Visual Studio 2015\Projects\DownloadBooksForm\packages\ModernUI.1.3.0.0\lib\net40\MetroFramework.dll</HintPath>
+    <Reference Include="AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.Core.3.3.7\lib\net45\AWSSDK.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AWSSDK.DynamoDBv2, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.DynamoDBv2.3.3.1.3\lib\net45\AWSSDK.DynamoDBv2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,11 +66,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="06_CreditDebitCheck.cs">
+    <Compile Include="07b_WithdrawAmountChoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="06_CreditDebitCheck.Designer.cs">
-      <DependentUpon>06_CreditDebitCheck.cs</DependentUpon>
+    <Compile Include="07b_WithdrawAmountChoice.Designer.cs">
+      <DependentUpon>07b_WithdrawAmountChoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="07a_WithdrawAmountSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="07a_WithdrawAmountSelection.Designer.cs">
+      <DependentUpon>07a_WithdrawAmountSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="09_EnquireBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="09_EnquireBalance.Designer.cs">
+      <DependentUpon>09_EnquireBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="06_MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="06_MainMenu.Designer.cs">
+      <DependentUpon>06_MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="08_ChangePIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="08_ChangePIN.Designer.cs">
+      <DependentUpon>08_ChangePIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="07_WithdrawCreditDebitCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="07_WithdrawCreditDebitCheck.Designer.cs">
+      <DependentUpon>07_WithdrawCreditDebitCheck.cs</DependentUpon>
     </Compile>
     <Compile Include="05_EnterPIN.cs">
       <SubType>Form</SubType>
@@ -81,8 +128,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="06_CreditDebitCheck.resx">
-      <DependentUpon>06_CreditDebitCheck.cs</DependentUpon>
+    <EmbeddedResource Include="07b_WithdrawAmountChoice.resx">
+      <DependentUpon>07b_WithdrawAmountChoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="07a_WithdrawAmountSelection.resx">
+      <DependentUpon>07a_WithdrawAmountSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="09_EnquireBalance.resx">
+      <DependentUpon>09_EnquireBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="06_MainMenu.resx">
+      <DependentUpon>06_MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="08_ChangePIN.resx">
+      <DependentUpon>08_ChangePIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="07_WithdrawCreditDebitCheck.resx">
+      <DependentUpon>07_WithdrawCreditDebitCheck.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="05_EnterPIN.resx">
       <DependentUpon>05_EnterPIN.cs</DependentUpon>
@@ -105,6 +167,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -117,6 +180,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\AWSSDK.DynamoDBv2.3.3.1.3\analyzers\dotnet\cs\AWSSDK.DynamoDBv2.CodeAnalysis.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
