@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A8CB63F2-EB84-409B-AA57-E80A724812B8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Helios_ATM</RootNamespace>
+    <AssemblyName>Helios_ATM</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.Core.3.3.7\lib\net45\AWSSDK.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AWSSDK.DynamoDBv2, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.DynamoDBv2.3.3.1.3\lib\net45\AWSSDK.DynamoDBv2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AWSSDK.S3, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.S3.3.3.5.2\lib\net45\AWSSDK.S3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="07b_WithdrawAmountChoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="07b_WithdrawAmountChoice.Designer.cs">
+      <DependentUpon>07b_WithdrawAmountChoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="07a_WithdrawAmountSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="07a_WithdrawAmountSelection.Designer.cs">
+      <DependentUpon>07a_WithdrawAmountSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="09_EnquireBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="09_EnquireBalance.Designer.cs">
+      <DependentUpon>09_EnquireBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="06_MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="06_MainMenu.Designer.cs">
+      <DependentUpon>06_MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="08_ChangePIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="08_ChangePIN.Designer.cs">
+      <DependentUpon>08_ChangePIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="07_WithdrawCreditDebitCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="07_WithdrawCreditDebitCheck.Designer.cs">
+      <DependentUpon>07_WithdrawCreditDebitCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="05_EnterPIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="05_EnterPIN.Designer.cs">
+      <DependentUpon>05_EnterPIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="04_Language.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="04_Language.Designer.cs">
+      <DependentUpon>04_Language.cs</DependentUpon>
+    </Compile>
+    <Compile Include="03_InsertCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03_InsertCard.Designer.cs">
+      <DependentUpon>03_InsertCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="01_ATM_Screen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="01_ATM_Screen.Designer.cs">
+      <DependentUpon>01_ATM_Screen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lib.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="07b_WithdrawAmountChoice.resx">
+      <DependentUpon>07b_WithdrawAmountChoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="07a_WithdrawAmountSelection.resx">
+      <DependentUpon>07a_WithdrawAmountSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="09_EnquireBalance.resx">
+      <DependentUpon>09_EnquireBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="06_MainMenu.resx">
+      <DependentUpon>06_MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="08_ChangePIN.resx">
+      <DependentUpon>08_ChangePIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="07_WithdrawCreditDebitCheck.resx">
+      <DependentUpon>07_WithdrawCreditDebitCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="05_EnterPIN.resx">
+      <DependentUpon>05_EnterPIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04_Language.resx">
+      <DependentUpon>04_Language.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="03_InsertCard.resx">
+      <DependentUpon>03_InsertCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="01_ATM_Screen.resx">
+      <DependentUpon>01_ATM_Screen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\AWSSDK.DynamoDBv2.3.3.1.3\analyzers\dotnet\cs\AWSSDK.DynamoDBv2.CodeAnalysis.dll" />
+    <Analyzer Include="..\packages\AWSSDK.S3.3.3.5.2\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

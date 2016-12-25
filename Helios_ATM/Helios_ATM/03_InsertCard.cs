@@ -40,7 +40,7 @@ namespace Helios_ATM
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
 
-            this.Visible = false;  //Hide the old form
+            this.Visible = false;  //Heide the old form
         }
 
         
