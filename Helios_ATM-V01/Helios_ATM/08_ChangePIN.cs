@@ -28,7 +28,7 @@ namespace Helios_ATM
             InitializeComponent();
             //delay_progressbar();
             //Tell user what to do
-            AutoClosingMessageBox.Show("Please provide your PIN and confirm.","PIN change",1500);
+            AutoClosingMessageBox.Show("Please provide your PIN and confirm.","PIN change",1500, this);
 
             OLDPinEntry.Enabled = true;
             NewPinEntry.Enabled = false;
@@ -56,7 +56,7 @@ namespace Helios_ATM
         private void metroButton1_Click(object sender, EventArgs e)
         {
             //CancelMsgBox
-            AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500);
+            AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
 
             //Going back to first form (restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
@@ -160,7 +160,7 @@ namespace Helios_ATM
             {
                 if (newPIN == newPIN2)
                 {
-                    AutoClosingMessageBox.Show("PIN successful changed.","Success", 1000);
+                    AutoClosingMessageBox.Show("PIN successful changed.","Success", 1000, this);
                     correctPIN = newPIN2;
                     //Going back to first form (restart)
                     Form ATM6 = new ATM6(); // Instantiate a Form object.
@@ -169,7 +169,7 @@ namespace Helios_ATM
                 }
                 else
                 {
-                    AutoClosingMessageBox.Show("Incorrect re-entry PIN. Please try again.","Incorrect PIN.",1000);
+                    AutoClosingMessageBox.Show("Incorrect re-entry PIN. Please try again.","Incorrect PIN.",1000, this);
                     ConfirmNewPinEntry.Enabled = false;
                     NewPinEntry.Enabled = true;
                     ConfirmNewPinEntry.Text = "";
@@ -181,13 +181,13 @@ namespace Helios_ATM
             {
                 if (newPIN.Length >= 4 && newPIN.Length < 9)
                 {
-                    AutoClosingMessageBox.Show("Entry success. Please re-enter the new PIN.","Reentry", 1000);
+                    AutoClosingMessageBox.Show("Entry success. Please re-enter the new PIN.","Reentry", 1000, this);
                     ConfirmNewPinEntry.Enabled = true;
                     NewPinEntry.Enabled = false;
                 }
                 else
                 {
-                    AutoClosingMessageBox.Show("Incorrect PIN. Please try again.","Incorrect PIN", 1000);
+                    AutoClosingMessageBox.Show("Incorrect PIN. Please try again.","Incorrect PIN", 1000, this);
                     NewPinEntry.Text = "";
                 }
             }
@@ -199,7 +199,7 @@ namespace Helios_ATM
 
                 if (PINentries <= 3 & correctPIN == oldPIN)
                 {
-                    AutoClosingMessageBox.Show( "Correct PIN. Please enter the new PIN.","Nice one", 1000);
+                    AutoClosingMessageBox.Show( "Correct PIN. Please enter the new PIN.","Nice one", 1000, this);
                     NewPinEntry.Enabled = true;
                     OLDPinEntry.Enabled = false;
                 }

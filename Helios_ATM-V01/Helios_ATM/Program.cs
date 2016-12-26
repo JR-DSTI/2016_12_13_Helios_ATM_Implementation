@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using MetroFramework;
 
 namespace Helios_ATM
@@ -25,17 +26,24 @@ namespace Helios_ATM
     {
         System.Threading.Timer _timeoutTimer;
         string _caption;
-        AutoClosingMessageBox(string text, string caption, int timeout)
+        string _text;
+
+         AutoClosingMessageBox(string text, string caption, int timeout, System.Windows.Forms.IWin32Window Parent)
         {
+            _text = text;
             _caption = caption;
             _timeoutTimer = new System.Threading.Timer(OnTimerElapsed,
                 null, timeout, System.Threading.Timeout.Infinite);
-            MessageBox.Show(text, caption);
-        }
+            // MessageBox.Show(text, caption);
+            
+            //Parent=new System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+            MetroMessageBox.Show(Parent, text, caption);
+        }// System.Windows.Forms.IWin32Window,
 
-        public static void Show(string text, string caption, int timeout)
+        public static void Show(string text, string caption, int timeout, System.Windows.Forms.IWin32Window Parent)
         {
-            new AutoClosingMessageBox(text, caption, timeout);
+            new AutoClosingMessageBox(text, caption, timeout, Parent);
+            //await Task.Delay(timeout); //async
         }
 
         void OnTimerElapsed(object state)

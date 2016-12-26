@@ -76,7 +76,7 @@ namespace Helios_ATM
         private void metroButton3_Click(object sender, EventArgs e)
         {
             //CancelMsgBox
-            AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500);
+            AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
 
             //Going back to first form (restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.

@@ -112,7 +112,7 @@ namespace Helios_ATM
             if (result == DialogResult.Yes)
             {
                 //Doing Assans AWS Printing magic here
-                AutoClosingMessageBox.Show("Finished AWS printing magic.", "Info", 1500);
+                AutoClosingMessageBox.Show("Finished AWS printing magic.", "Info", 1500, this);
             }
 
             //Asking for Performing other transaction
@@ -128,7 +128,7 @@ namespace Helios_ATM
             }
             else
             {
-                AutoClosingMessageBox.Show("Finished current operation. Ejecting card and restarting...", "Restarting", 1500);
+                AutoClosingMessageBox.Show("Finished current operation. Ejecting card and restarting...", "Restarting", 1500, this);
                 //return to initial screen 
 
                 Form ATM1 = new ATM1(); // Instantiate a Form object.
@@ -169,7 +169,7 @@ namespace Helios_ATM
         private void metroButton1_Click(object sender, EventArgs e)
         {
             //CancelMsgBox
-            AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500);
+            AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
 
             //Going back to first form (restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
