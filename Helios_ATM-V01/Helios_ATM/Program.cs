@@ -48,7 +48,7 @@ namespace Helios_ATM
 
         void OnTimerElapsed(object state)
         {
-            IntPtr mbWnd = FindWindow(null, _caption);
+            IntPtr mbWnd = FindWindow(null, "");
             if (mbWnd != IntPtr.Zero)
                 SendMessage(mbWnd, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
             _timeoutTimer.Dispose();
@@ -58,5 +58,6 @@ namespace Helios_ATM
         static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
         [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
         static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
+        
     }
 }
