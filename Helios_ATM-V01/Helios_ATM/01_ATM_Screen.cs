@@ -23,11 +23,21 @@ namespace Helios_ATM
             this.WelcomeProgressBar.Increment(10);  // this = is the current form
         }
 
+        private async void MetroProgressBar_nextscreen_progress()
+        {
+
+            do
+            {
+                this.MetroProgressBar_nextscreen.Increment(6);
+                await Task.Delay(50);
+            } while  (this.MetroProgressBar_nextscreen.ProgressTotalPercent < 100);
+            
+        }
         private async void button1_Click(object sender, EventArgs e)
         {
-            //timer to extend waiting and system setup :
-            this.WelcomeTimer.Start();
-            this.WelcomeProgressBar.Visible = true;
+            //timer to pretend waiting and system setup :
+            MetroProgressBar_nextscreen_progress();
+
             //"await" needs the async in the function declaration and equals "Sleep"
             await Task.Delay(2000);
             
@@ -55,9 +65,6 @@ namespace Helios_ATM
             this.Visible = false;  //Hide the old form
         }
 
-        private void WelcomeProgressBar_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

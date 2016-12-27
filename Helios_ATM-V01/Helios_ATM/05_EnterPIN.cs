@@ -76,7 +76,9 @@ namespace Helios_ATM
 
             if (Lib.getBlocked())
             {
-                MetroMessageBox.Show(this, "no attempts left, no money for you, your card is being captured.");
+                //MetroMessageBox.Show(this, "no attempts left, no money for you, your card is being captured.");
+                AutoClosingMessageBox.Show("No attempts left, no money for you, your card is being captured.", "Bad news", 1000, Parent: Form.ActiveForm);
+
                 PINentries = 3;
                 blocked=true;             
                 this.Close();
@@ -97,7 +99,8 @@ namespace Helios_ATM
                 {
                     Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
                     //here i wat to insert the delayed mesgbx
-                    MetroMessageBox.Show(this, "PIN entry successful!");
+                    //MetroMessageBox.Show(this, "PIN entry successful!");
+                    AutoClosingMessageBox.Show("PIN entry successful!", "Good news", 1000, Parent: Form.ActiveForm);
 
                     //next screen after messagebox
                     Form ATM6 = new ATM6(); // Instantiate a Form object.
@@ -110,7 +113,8 @@ namespace Helios_ATM
                 {
                     Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
                     //if incorrect PIN:
-                    MetroMessageBox.Show(this, "PIN entry not successful, retry! Left attempts: " + Convert.ToString(3-PINentries));
+                    //MetroMessageBox.Show(this, "PIN entry not successful, retry! Left attempts: " + Convert.ToString(3-PINentries));
+                    AutoClosingMessageBox.Show("PIN entry not successful, retry! Left attempts: " + Convert.ToString(3 - PINentries), "Bad news", 1000, Parent: Form.ActiveForm);
                     //Resetting the PIN:
                     PIN = "";
                 }

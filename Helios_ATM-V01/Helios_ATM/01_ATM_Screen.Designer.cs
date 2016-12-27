@@ -39,6 +39,7 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
+            this.MetroProgressBar_nextscreen = new MetroFramework.Controls.MetroProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +65,6 @@
             this.WelcomeProgressBar.Size = new System.Drawing.Size(219, 61);
             this.WelcomeProgressBar.TabIndex = 3;
             this.WelcomeProgressBar.Visible = false;
-            this.WelcomeProgressBar.Click += new System.EventHandler(this.WelcomeProgressBar_Click);
             // 
             // label1
             // 
@@ -114,6 +114,17 @@
             this.NetworkSignal.UseSelectable = true;
             this.NetworkSignal.Value = 100;
             // 
+            // MetroProgressBar_nextscreen
+            // 
+            this.MetroProgressBar_nextscreen.Location = new System.Drawing.Point(159, 208);
+            this.MetroProgressBar_nextscreen.MarqueeAnimationSpeed = 10;
+            this.MetroProgressBar_nextscreen.Name = "MetroProgressBar_nextscreen";
+            this.MetroProgressBar_nextscreen.ProgressBarStyle = System.Windows.Forms.ProgressBarStyle.Blocks;
+            this.MetroProgressBar_nextscreen.Size = new System.Drawing.Size(176, 68);
+            this.MetroProgressBar_nextscreen.TabIndex = 11;
+            this.MetroProgressBar_nextscreen.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.MetroProgressBar_nextscreen.UseWaitCursor = true;
+            // 
             // ATM1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -122,6 +133,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(516, 544);
             this.ControlBox = false;
+            this.Controls.Add(this.MetroProgressBar_nextscreen);
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
             this.Controls.Add(this.metroButton1);
@@ -150,6 +162,7 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
+        private MetroFramework.Controls.MetroProgressBar MetroProgressBar_nextscreen;
     }
 }
 
