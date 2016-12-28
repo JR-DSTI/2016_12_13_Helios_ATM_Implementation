@@ -20,6 +20,7 @@ using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
 using System.Windows.Forms;
+using System.Management;
 //using Amazon.SimpleEmail;
 
 namespace Helios_ATM
@@ -35,7 +36,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval",1000,Parent:Form.ActiveForm);
+            MessageBox.Show("\n*** Executing RetrieveAccount() ***");
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -57,7 +58,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+            MessageBox.Show("\n*** Executing RetrieveAccount() ***");
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -89,9 +90,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            //MessageBox.Show("\n*** Executing RetrieveAccount() ***");
-            AutoClosingMessageBox.Show("\n*** Executing Blockcheck() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
-
+            MessageBox.Show("\n*** Executing RetrieveAccount() ***");
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -113,8 +112,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            //MessageBox.Show("\n*** Finding your info ***");
-            AutoClosingMessageBox.Show("\n*** Finding your info ***", "Data check", 1000, Parent: Form.ActiveForm);
+            MessageBox.Show("\n*** Finding your info ***");
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -136,8 +134,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            //MessageBox.Show("***Retrieving Account Details ***");
-            AutoClosingMessageBox.Show("\n*** Retrieving Account Details ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+            MessageBox.Show("***Retrieving Account Details ***");
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -159,9 +156,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            //MessageBox.Show("*** Finding BankName ***");
-            AutoClosingMessageBox.Show("\n*** Finding BankName ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
-
+            MessageBox.Show("*** Finding BankName ***");
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -230,20 +225,14 @@ namespace Helios_ATM
                 // Send the email. 
                 try
                 {
-                    //MessageBox.Show("Attempting to send an email through the Amazon SES SMTP interface...");
-                    AutoClosingMessageBox.Show("Attempting to send an email through the Amazon SES SMTP interface...", "Attempting", 1000, Parent: Form.ActiveForm);
-
+                    MessageBox.Show("Attempting to send an email through the Amazon SES SMTP interface...");
                     client.Send(FROM, TO, SUBJECT, BODY);
-                    //MessageBox.Show("Email sent!");
-                    AutoClosingMessageBox.Show("\n*** Email sent! ***", "Success", 1000, Parent: Form.ActiveForm);
-
+                    MessageBox.Show("Email sent!");
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show("The email was not sent.");
-                    AutoClosingMessageBox.Show("The email was not sent! \n Error message: " + ex.Message, "ERROR", 1000, Parent: Form.ActiveForm);
-
-                    //MessageBox.Show("Error message: " + ex.Message);
+                    MessageBox.Show("The email was not sent.");
+                    MessageBox.Show("Error message: " + ex.Message);
                 }
             }
 
@@ -273,21 +262,16 @@ namespace Helios_ATM
             //if the the query succeeds
             if (document.Count() > 0)
             {
-                //MessageBox.Show("RetrieveBalance: Balance retrieved...");
-                AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
-
+                MessageBox.Show("RetrieveBalance: Balance retrieved...");
                 PrintDocument(document);
             }
             //if the query fails
             else
             {
-               // MessageBox.Show("RetrieveBalance: Account unknown...");
-               // MessageBox.Show("please contact your Bank");
+                MessageBox.Show("RetrieveBalance: Account unknown...");
+                MessageBox.Show("please contact your Bank");
 
-
-                //MessageBox.Show("Please enter a key");
-                AutoClosingMessageBox.Show("\n*** RetrieveBalance: Account unknown... *** \n please contact your Bank \n Please enter a key", "Data retrieval", 10000, Parent: Form.ActiveForm);
-
+                MessageBox.Show("Please enter a key");
                 Console.ReadKey();
             }
         }
@@ -331,9 +315,7 @@ namespace Helios_ATM
                 else if (value is PrimitiveList)
                     stringValue = string.Join(",", (from primitive in value.AsPrimitiveList().Entries select primitive.Value).ToArray());
 
-                //MessageBox.Show(attribute + " - " + stringValue);
-                AutoClosingMessageBox.Show(attribute + " - " + stringValue, "Info", 1000, Parent: Form.ActiveForm);
-
+                MessageBox.Show(attribute + " - " + stringValue);
                 val = (updatedDocument[attribute]).ToString();
                 //MessageBox.Show(val.ToString());
             }
@@ -347,6 +329,19 @@ namespace Helios_ATM
             Console.WriteLine("              ATM Bank Account");
             Console.WriteLine("===============================================");
         }
+    }
+
+    public class Lib2
+    {
+        public static int decrement = 1;
+        public static int charge=100;
+        public static int form1visit = 0;
+        public static int decr()
+        {
+            return  3;
+        }
+
+
     }
 }
 

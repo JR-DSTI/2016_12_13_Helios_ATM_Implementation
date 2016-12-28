@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Helios_ATM
 {
@@ -31,9 +32,36 @@ namespace Helios_ATM
 
             Form ATM5 = new ATM5(); // Instantiate a Form object.
             ATM5.Show(); //show the new Form
-
+            this.log();
             this.Visible = false;  //Hide the old form
         }
+
+        private void log(string linguo="english")
+        {
+            if (linguo=="english")
+            {
+                string path = @"C:\Users\assan\Downloads\truc.txt";
+                string appendText = "English Language" + " " + (DateTime.Now).ToString() + Environment.NewLine;
+                File.AppendAllText(path, appendText);
+            }
+            else
+            {
+
+                string path = @"C:\Users\assan\Downloads\truc.txt";
+                string appendText = "Other language" + " " + (DateTime.Today).ToString() + Environment.NewLine;
+                string appendText2 = "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString() + Environment.NewLine;
+
+                File.AppendAllText(path, appendText);
+                File.AppendAllText(path, appendText2);
+
+            }
+
+
+        }
+
+
+
+
 
         private void metroButton1_Click(object sender, EventArgs e)
         {

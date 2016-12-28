@@ -33,21 +33,26 @@ namespace Helios_ATM
 
         private void ATM3_Load(object sender, EventArgs e)
         {
+            BatteryCharge.Value = Lib2.charge;
+            this.timer1.Start();
+           
+
 
         }
 
         private void CardInserted_Click(object sender, EventArgs e)
         {
+            this.timer1.Stop();
+
             //again "sleep" for the form
-            
+
             //getBalance();
             //await Task.Delay(500);
 
             //continue to next form:
+            this.log(true);
             Form ATM4 = new ATM4(); // Instantiate a Form object.
             ATM4.Show(); //show the new Form
-
-
             this.Visible = false;  //Hide the old form
         }
 
@@ -84,10 +89,56 @@ namespace Helios_ATM
             //cancel to initial form, maybe not too necessary here
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
-
+            this.log(false);
             this.Visible = false;  //Hide the old form
         }
 
-        
+        private void BatteryCharge_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void discharge()
+        {
+            if (BatteryCharge.Value > 1)
+            {
+                BatteryCharge.Value -= Lib2.decrement;
+                Lib2.charge = BatteryCharge.Value;
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            discharge();
+        }
+
+
+        private void log(Boolean flag)
+        {
+            if (flag)
+            {
+                string path = @"C:\Users\assan\Downloads\truc.txt";
+        string appendText = "Card Inserted" + " " + (DateTime.Now).ToString() +Environment.NewLine;
+        File.AppendAllText(path, appendText);
+            }
+            else
+            {
+               
+                string path = @"C:\Users\assan\Downloads\truc.txt";
+                string appendText = "Card Not Inserted" + " " + (DateTime.Today).ToString() + Environment.NewLine;
+                string appendText2 = "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString() + Environment.NewLine;
+
+                File.AppendAllText(path, appendText);
+                File.AppendAllText(path, appendText2);
+
+            }
+
+
+        }
+
+
+
     }
 }
