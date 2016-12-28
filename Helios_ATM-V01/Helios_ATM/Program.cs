@@ -48,6 +48,7 @@ namespace Helios_ATM
 
         void OnTimerElapsed(object state)
         {
+            //IntPtr mbWnd =FindWindowByCaption(IntPtr.Zero, _caption);
             IntPtr mbWnd = FindWindow(null, "");
             if (mbWnd != IntPtr.Zero)
                 SendMessage(mbWnd, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);

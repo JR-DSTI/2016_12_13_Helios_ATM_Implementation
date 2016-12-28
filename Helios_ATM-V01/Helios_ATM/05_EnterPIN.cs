@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Helios_ATM
 {
@@ -23,8 +24,7 @@ namespace Helios_ATM
 
         public ATM5()
         {
-            InitializeComponent();
-            
+            InitializeComponent();   
         }
 
         private void ATM5_Load(object sender, EventArgs e1)
@@ -61,10 +61,8 @@ namespace Helios_ATM
         private async void CardInserted_Click(object sender, EventArgs e)
         {
             await Task.Delay(500);
-
             Form ATM7 = new ATM7(); // Instantiate a Form object.
             ATM7.Show(); //show the new Form
-
             this.Visible = false;  //Hide the old form
         }
 
@@ -76,9 +74,7 @@ namespace Helios_ATM
 
             if (Lib.getBlocked())
             {
-                //MetroMessageBox.Show(this, "no attempts left, no money for you, your card is being captured.");
-                AutoClosingMessageBox.Show("No attempts left, no money for you, your card is being captured.", "Bad news", 1000, Parent: Form.ActiveForm);
-
+                MetroMessageBox.Show(this, "no attempts left, no money for you, your card is being captured.");
                 PINentries = 3;
                 blocked=true;             
                 this.Close();
@@ -99,8 +95,7 @@ namespace Helios_ATM
                 {
                     Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
                     //here i wat to insert the delayed mesgbx
-                    //MetroMessageBox.Show(this, "PIN entry successful!");
-                    AutoClosingMessageBox.Show("PIN entry successful!", "Good news", 1000, Parent: Form.ActiveForm);
+                    MetroMessageBox.Show(this, "PIN entry successful!");
 
                     //next screen after messagebox
                     Form ATM6 = new ATM6(); // Instantiate a Form object.
@@ -113,8 +108,7 @@ namespace Helios_ATM
                 {
                     Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
                     //if incorrect PIN:
-                    //MetroMessageBox.Show(this, "PIN entry not successful, retry! Left attempts: " + Convert.ToString(3-PINentries));
-                    AutoClosingMessageBox.Show("PIN entry not successful, retry! Left attempts: " + Convert.ToString(3 - PINentries), "Bad news", 1000, Parent: Form.ActiveForm);
+                    MetroMessageBox.Show(this, "PIN entry not successful, retry! Left attempts: " + Convert.ToString(3-PINentries));
                     //Resetting the PIN:
                     PIN = "";
                 }
@@ -128,7 +122,6 @@ namespace Helios_ATM
                     this.Close(); //return;
                 };
                  
-
             }
             else
             {
@@ -235,6 +228,31 @@ namespace Helios_ATM
         {
             PIN = PIN + digit;
             this.PinEntry.Text = PIN;
+        }
+        private void log(Boolean flag = true)
+        {
+            if (flag == true)
+            {
+                string path = @"C:\Users\assan\Downloads\truc.txt";
+                string appendText = "Correct Pin" + " " + (DateTime.Now).ToString() + Environment.NewLine;
+                string appendText2 = "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString() + Environment.NewLine;
+
+                File.AppendAllText(path, appendText);
+                File.AppendAllText(path, appendText2);
+            }
+            else
+            {
+
+                string path = @"C:\Users\assan\Downloads\truc.txt";
+                string appendText = "Incorrect Pin:" + " " + (DateTime.Now).ToString() + Environment.NewLine;
+                string appendText2 = "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString() + Environment.NewLine;
+
+                File.AppendAllText(path, appendText);
+                File.AppendAllText(path, appendText2);
+
+            }
+
+
         }
 
 
