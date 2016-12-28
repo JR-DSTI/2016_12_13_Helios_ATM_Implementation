@@ -233,7 +233,7 @@ namespace Helios_ATM
         {
             if (flag == true)
             {
-                string path = @"C:\Users\assan\Downloads\truc.txt";
+                string path = @"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt";
                 string appendText = "Correct Pin" + " " + (DateTime.Now).ToString() + Environment.NewLine;
                 string appendText2 = "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString() + Environment.NewLine;
 
@@ -243,7 +243,7 @@ namespace Helios_ATM
             else
             {
 
-                string path = @"C:\Users\assan\Downloads\truc.txt";
+                string path = @"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt";
                 string appendText = "Incorrect Pin:" + " " + (DateTime.Now).ToString() + Environment.NewLine;
                 string appendText2 = "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString() + Environment.NewLine;
 

@@ -15,7 +15,8 @@ namespace Helios_ATM
         /// </summary>
         [STAThread]
         static void Main()
-        {
+        {   
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ATM1());

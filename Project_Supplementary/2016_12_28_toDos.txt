@@ -1,0 +1,8 @@
+1) update balance textbox in balance enquiry out of cloud
+
+2) framework testcases: 
+Accounts:  zero balance, blocked, 10,000 balance
+Help case: with lots of information
+Raw version: just user interface
+
+3) Logging: create automatic variable instead of having a (specific) local Dir file

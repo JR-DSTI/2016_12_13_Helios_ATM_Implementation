@@ -59,7 +59,7 @@ namespace Helios_ATM
         {
             this.BatteryCharge.Value = Lib2.charge;
             Lib2.form1visit += 1;
-            using (StreamWriter sr = new StreamWriter(@"C:\Users\assan\Downloads\truc.txt"))
+            using (StreamWriter sr = new StreamWriter(@"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt"))
             {     
                 sr.WriteLine("Battery life: "+Lib2.charge +"% "+ (DateTime.Now).ToString());
                 sr.WriteLine("visit to Main Menu: "+ (Lib2.form1visit).ToString()+ (DateTime.Now).ToString());
