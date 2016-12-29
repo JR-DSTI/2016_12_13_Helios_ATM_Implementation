@@ -51,7 +51,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            MessageBox.Show("\n*** Executing RetrieveAccount() ***");
+            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -75,7 +75,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            MessageBox.Show("\n*** Executing RetrieveAccount() ***");
+            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -84,7 +84,7 @@ namespace Helios_ATM
                 ConsistentRead = true
             };
 
-            //from the table, get the item described in the config
+            //from the table, get the item described in the config & return print result of PrintDoc function
             Document document = LoadProduct.GetItem(myAccountId, config);
             return strPrintDocument(document);
 
@@ -99,7 +99,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            MessageBox.Show("\n*** Executing RetrieveAccount() ***");
+            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -123,7 +123,8 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            MessageBox.Show("\n*** Executing RetrieveAccount() ***");
+            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -135,7 +136,6 @@ namespace Helios_ATM
             //from the table, get the item described in the config
             Document document = LoadProduct.GetItem(myAccountId, config);
             return strPrintDocument(document);
-            //strPrintDocument(document);
         }
 
 
@@ -148,7 +148,8 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            MessageBox.Show("\n*** Executing RetrieveAccount() ***");
+            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -172,7 +173,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            MessageBox.Show("\n*** Executing RetrieveAccount() ***");
+            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -196,7 +197,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            MessageBox.Show("\n*** Finding your info ***");
+            AutoClosingMessageBox.Show("\n*** Finding your info ***", "Data check", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -220,7 +221,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            MessageBox.Show("\n*** Finding your info ***");
+            AutoClosingMessageBox.Show("\n*** Finding your info ***", "Data check", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -235,17 +236,6 @@ namespace Helios_ATM
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
         //Retrieve the details of a given account based on a table name and an account id
         public static String RetrieveAccount(String tablename = "ATM", String myAccountId = "0002")
         {
@@ -254,7 +244,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            MessageBox.Show("***Retrieving Account Details ***");
+            AutoClosingMessageBox.Show("\n*** Retrieving Account Details ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -278,7 +268,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            MessageBox.Show("*** Finding BankName ***");
+            AutoClosingMessageBox.Show("\n*** Finding bank's name ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -368,21 +358,20 @@ namespace Helios_ATM
                 // Code below to actually Send the email. 
                 try
                 {
-                    MessageBox.Show("Sending your receipt..");
+                    AutoClosingMessageBox.Show("Sending your receipt..", "Email delivery", 1000, Parent: Form.ActiveForm);
                     client.Send(FROM, TO, SUBJECT, BODY);
-                    MessageBox.Show("Email sent!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("The email was not sent.");
-                    MessageBox.Show("Error message: " + ex.Message);
-                }
+                    AutoClosingMessageBox.Show("\n Email sent!", "Success", 1000, Parent: Form.ActiveForm);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        AutoClosingMessageBox.Show("The email was not sent! \n Error message: " + ex.Message, "ERROR", 1000, Parent: Form.ActiveForm);
+                    }
                 }
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
-               
             }
 
 
@@ -395,16 +384,13 @@ namespace Helios_ATM
             //if the the query succeeds
             if (document.Count() > 0)
             {
-                MessageBox.Show("RetrieveBalance: Balance retrieved...");
+                AutoClosingMessageBox.Show("\n RetrieveBalance: Balance retrieved...", "Data retrieval", 1000, Parent: Form.ActiveForm);
                 PrintDocument(document);
             }
             //if the query fails
             else
             {
-                MessageBox.Show("RetrieveBalance: Account unknown...");
-                MessageBox.Show("please contact your Bank");
-
-                MessageBox.Show("Please enter a key");
+                AutoClosingMessageBox.Show("\n*** RetrieveBalance: Account unknown... *** \n Please contact your bank! \n Please enter a key", "Data retrieval", 10000, Parent: Form.ActiveForm);
                 Console.ReadKey();
             }
         }
@@ -429,10 +415,9 @@ namespace Helios_ATM
                     stringValue = string.Join(",", (from primitive in value.AsPrimitiveList().Entries select primitive.Value).ToArray());
                 }
                 val = (updatedDocument[attribute]).AsBoolean();
-                MessageBox.Show(attribute +" - " +val);
-                
-                //MessageBox.Show(val.ToString());
-                
+                AutoClosingMessageBox.Show(attribute + " - " + val, "Info", 1000, Parent: Form.ActiveForm);
+
+
             }
             return val;
         }
@@ -447,14 +432,21 @@ namespace Helios_ATM
             {
                 string stringValue = null;
                 var value = updatedDocument[attribute];
-                if (value is Primitive)
-                    stringValue = value.AsPrimitive().Value.ToString();
-                else if (value is PrimitiveList)
-                    stringValue = string.Join(",", (from primitive in value.AsPrimitiveList().Entries select primitive.Value).ToArray());
 
-                MessageBox.Show(attribute + " - " + stringValue);
+                if (value is Primitive)
+                {
+                    stringValue = value.AsPrimitive().Value.ToString();
+                }
+                else if (value is PrimitiveList)
+                {
+                    stringValue = string.Join(",", (from primitive in value.AsPrimitiveList().Entries select primitive.Value).ToArray());
+                }
+                   
+
+                AutoClosingMessageBox.Show(attribute + " - " + stringValue, "Info", 1000, Parent: Form.ActiveForm);
                 val = (updatedDocument[attribute]).ToString();
-                MessageBox.Show(val.ToString());
+                //express MessageBox.Show(val.ToString());
+                AutoClosingMessageBox.Show(attribute + " - " + val, "Info", 1000, Parent: Form.ActiveForm);
             }
             return val;
         }
