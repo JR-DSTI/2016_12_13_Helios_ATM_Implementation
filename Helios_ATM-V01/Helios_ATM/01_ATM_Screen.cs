@@ -24,7 +24,7 @@ namespace Helios_ATM
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.WelcomeProgressBar.Increment(10);  // this = is the current form        
+            this.WelcomeProgressBar.Increment(10);  
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -33,12 +33,15 @@ namespace Helios_ATM
             this.WelcomeTimer.Start();
             this.timer2.Start();
             this.WelcomeProgressBar.Visible = true;
+            s3log.logOperation(sender);
+            Console.WriteLine(s3log.strLog);
+
             //"await" needs the async in the function declaration and equals "Sleep"
             await Task.Delay(2000);
             //MetroFramework.MetroMessageBox.Show(this, (Pinger("stackoverflow.com", 4)).ToString());
             if (Pinger("stackoverflow.com", 5) > 129)
             {
-                MetroFramework.MetroMessageBox.Show(this, "the connection is lost");
+                MetroFramework.MetroMessageBox.Show(this, "the connection is lost"); // this = current form        
                 this.WelcomeProgressBar.Value = 0;
                 WelcomeTimer.Stop();
                 this.timer2.Stop();
@@ -58,12 +61,12 @@ namespace Helios_ATM
         private void ATM1_Load(object sender, EventArgs e)
         {
             this.BatteryCharge.Value = Lib2.charge;
-            Lib2.form1visit += 1;
-            using (StreamWriter sr = new StreamWriter(@"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt"))
-            {     
-                sr.WriteLine("Battery life: "+Lib2.charge +"% "+ (DateTime.Now).ToString());
-                sr.WriteLine("visit to Main Menu: "+ (Lib2.form1visit).ToString()+ (DateTime.Now).ToString());
-            }
+            //Lib2.form1visit += 1;
+            //using (StreamWriter sr = new StreamWriter(@"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt"))
+            //{     
+            //    sr.WriteLine("Battery life: "+Lib2.charge +"% "+ (DateTime.Now).ToString());
+            //    sr.WriteLine("visit to Main Menu: "+ (Lib2.form1visit).ToString()+ (DateTime.Now).ToString());
+            //}
         }
         //Quick jump to current Form:
         private void metroButton1_Click(object sender, EventArgs e)
@@ -76,6 +79,7 @@ namespace Helios_ATM
             }
             else
             {
+
             MetroFramework.Forms.MetroForm ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
             this.timer2.Stop();
@@ -98,9 +102,9 @@ namespace Helios_ATM
         for (int i=0; i<echoNum; i++)
             {
                 Ping pingSender=new Ping();
-        PingReply r = pingSender.Send(host,timeOut);
+                PingReply r = pingSender.Send(host,timeOut);
                 if (r.Status==IPStatus.Success)
-                    {
+                {
                     totalTime += r.RoundtripTime;
                 }
             }
@@ -121,6 +125,7 @@ namespace Helios_ATM
             }
             else
             {
+
                 MetroFramework.MetroMessageBox.Show(this, "The ATM is running out of power");
                 Environment.Exit(0);
             }
@@ -129,6 +134,12 @@ namespace Helios_ATM
         private void timer2_Tick(object sender, EventArgs e)
         {
             this.discharge();
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+
+
         }
     }
 

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Configuration;
+using System.Reflection;
+
 
 using Amazon;
 using Amazon.Runtime;
@@ -310,14 +312,14 @@ namespace Helios_ATM
         {
             var itemData = new Dictionary<string, AttributeValue>
             {{"ID", new AttributeValue{S="0002"} },
-             {"Balance", new AttributeValue{N=Balance.ToString()}},
-             {"BankName", new AttributeValue{S="Credit Agricole"}},
-             {"Blocked", new AttributeValue{BOOL=blocked}},
-             {"Name", new AttributeValue{S="Jonas Rathke"}},
-              {"Trials", new AttributeValue{N=Pinentry}},
-              {"Code", new AttributeValue{S=Code}},
-              {"CheckingBalance", new AttributeValue{S="2000"}},
-              {"SavingsBalance", new AttributeValue{S="4567"}}
+            {"Balance", new AttributeValue{N=Balance.ToString()}},
+            {"BankName", new AttributeValue{S="Credit Agricole"}},
+            {"Blocked", new AttributeValue{BOOL=blocked}},
+            {"Name", new AttributeValue{S="Jonas Rathke"}},
+            {"Trials", new AttributeValue{N=Pinentry}},
+            {"Code", new AttributeValue{S=Code}},
+            {"CheckingBalance", new AttributeValue{S="2000"}},
+            {"SavingsBalance", new AttributeValue{S="4567"}}
             };
 
             return itemData;
@@ -363,7 +365,7 @@ namespace Helios_ATM
                     AutoClosingMessageBox.Show("\n Email sent!", "Success", 1000, Parent: Form.ActiveForm);
 
                     }
-                    catch (Exception ex)
+                catch (Exception ex)
                     {
                         AutoClosingMessageBox.Show("The email was not sent! \n Error message: " + ex.Message, "ERROR", 1000, Parent: Form.ActiveForm);
                     }
@@ -371,7 +373,7 @@ namespace Helios_ATM
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                AutoClosingMessageBox.Show("Problem. \n Error message: " + ex.Message, "ERROR", 1000, Parent: Form.ActiveForm);
             }
 
 
@@ -479,7 +481,7 @@ namespace Helios_ATM
   
 
     public static String connectionOK(double p)
-    {
+        {
             String mystring="";
             if (p > 100 )
             {
@@ -491,18 +493,65 @@ namespace Helios_ATM
             }
 
             return mystring;
-    }
+        }
     }
     //static class which holds the public battery charge properties
     public class Lib2
     {
         public static int decrement = 1;
         public static int charge=100;
-        public static int form1visit = 0;
         public static int decr()
         {
             return  2;
         }
     }
+
+    //Class to store log and send it to AWS S3 if transaction finished
+    public class s3log
+    {
+        public static string strLog;
+        static int iFormCount = 0;
+       
+        //public var strLog;
+
+        //public static int atm1visit = 0;
+        //public static int atm3visit = 0;
+        //public static int atm4visit = 0;
+        //public static int atm5visit = 0;
+        //public static int atm6visit = 0;
+        //public static int atm7visit = 0;
+        //public static int atm7avisit = 0;
+        //public static int atm7bvisit = 0;
+        //public static int atm8visit = 0;
+        //public static int atm9visit = 0;
+        static List<string> listVisits = new List<string>();
+
+
+        public static bool logOperation(object sender)
+        {
+            listVisits.Add(Form.ActiveForm.Name);
+            iFormCount = listVisits.Where(s => s == Form.ActiveForm.Name).Count();
+            strLog += "\n" + "========================";
+            strLog += "\n" + "Form: " + Form.ActiveForm.Name;
+            strLog += "\n" + "Operation: " + ((Button)sender).Name;
+            strLog += "\n" + "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString();
+            strLog += "\n" + "# of form visits: " + (iFormCount).ToString() + " " + (DateTime.Now).ToString();
+            strLog += "\n" + "Ping: " + (Lib.Pinger()).ToString() + " " + (DateTime.Now).ToString();
+           
+            //int tag = (sender as Button).Tag;
+
+
+            return true;
+        }
+
+        //MetroFramework.MetroMessageBox.Show(this, "this.name: " + this.Name);
+        // possible other way: MetroFramework.MetroMessageBox.Show(this, "this.GetType().Name: " + this.GetType().Name);
+
+        // counter list for storing the values of visited forms
+
+       
+
+    }
+
 }
 

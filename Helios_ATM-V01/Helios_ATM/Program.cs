@@ -15,12 +15,14 @@ namespace Helios_ATM
         /// </summary>
         [STAThread]
         static void Main()
-        {   
-
+        {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //Variables.strLog = "";
             Application.Run(new ATM1());
         }
+        
     }
 
     public class AutoClosingMessageBox
@@ -62,4 +64,9 @@ namespace Helios_ATM
         static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
         
     }
+
+    //public class Variables
+    //{
+    //    public static string strLog;
+    //}
 }

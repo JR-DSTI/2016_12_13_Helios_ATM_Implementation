@@ -139,30 +139,39 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="07b_WithdrawAmountChoice.resx">
       <DependentUpon>07b_WithdrawAmountChoice.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="07a_WithdrawAmountSelection.resx">
       <DependentUpon>07a_WithdrawAmountSelection.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="09_EnquireBalance.resx">
       <DependentUpon>09_EnquireBalance.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="06_MainMenu.resx">
       <DependentUpon>06_MainMenu.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="08_ChangePIN.resx">
       <DependentUpon>08_ChangePIN.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="07_WithdrawCreditDebitCheck.resx">
       <DependentUpon>07_WithdrawCreditDebitCheck.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="05_EnterPIN.resx">
       <DependentUpon>05_EnterPIN.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="04_Language.resx">
       <DependentUpon>04_Language.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="03_InsertCard.resx">
       <DependentUpon>03_InsertCard.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="01_ATM_Screen.resx">
       <DependentUpon>01_ATM_Screen.cs</DependentUpon>

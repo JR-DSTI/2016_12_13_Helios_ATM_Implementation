@@ -1,8 +1,19 @@
-1) update balance textbox in balance enquiry out of cloud
+1) DONE update balance textbox in balance enquiry out of cloud
 
-2) framework testcases: 
+2) framework Testcases: 
 Accounts:  zero balance, blocked, 10,000 balance
 Help case: with lots of information
 Raw version: just user interface
 
 3) Logging: create automatic variable instead of having a (specific) local Dir file
+=> worst case: create txt file, upload it, delete it locally
+
+4) changing PIN in cloud update
+
+5) after 
+(Lib2.form1visit).ToString()
+insert +" "
+
+6) exchange @"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt"
+
+to creating a local file or the strLog variable

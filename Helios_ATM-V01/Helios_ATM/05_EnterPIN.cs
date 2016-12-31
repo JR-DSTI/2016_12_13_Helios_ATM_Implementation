@@ -74,7 +74,7 @@ namespace Helios_ATM
 
             if (Lib.getBlocked())
             {
-                MetroMessageBox.Show(this, "no attempts left, no money for you, your card is being captured.");
+                AutoClosingMessageBox.Show("No attempts left, no money for you, your card is being captured.", "Bad news", 2000, Parent: Form.ActiveForm);
                 PINentries = 3;
                 blocked=true;             
                 this.Close();
@@ -94,8 +94,8 @@ namespace Helios_ATM
                 if (PINentries<=3 & PIN == correctPIN)
                 {
                     Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
-                    //here i wat to insert the delayed mesgbx
-                    MetroMessageBox.Show(this, "PIN entry successful!");
+                    //delayed mesgbx
+                    AutoClosingMessageBox.Show("PIN entry successful!", "Success", 2000, Parent: Form.ActiveForm);
 
                     //next screen after messagebox
                     Form ATM6 = new ATM6(); // Instantiate a Form object.
@@ -108,7 +108,7 @@ namespace Helios_ATM
                 {
                     Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
                     //if incorrect PIN:
-                    MetroMessageBox.Show(this, "PIN entry not successful, retry! Left attempts: " + Convert.ToString(3-PINentries));
+                    AutoClosingMessageBox.Show("PIN entry not successful, retry! Left attempts: " + Convert.ToString(3 - PINentries), "Retry!", 2000, Parent: Form.ActiveForm);
                     //Resetting the PIN:
                     PIN = "";
                 }
@@ -116,8 +116,8 @@ namespace Helios_ATM
                 {
                     blocked = true;
                     Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
-                    //3 times Wrong  PIN:
-                    MetroMessageBox.Show(this, "Last PIN entry not successful, no attempts left, no money for you, your card is being captured.");
+                    //3 times Wrong PIN entry:
+                    AutoClosingMessageBox.Show("Last PIN entry not successful, no attempts left, no money for you, your card is being captured.", "Success", 2000, Parent: Form.ActiveForm);
                     PIN = "";
                     this.Close(); //return;
                 };
@@ -125,8 +125,8 @@ namespace Helios_ATM
             }
             else
             {
-
-                MetroMessageBox.Show(this, "Please provide a numercial PIN.");
+                //in case of alphanumeric keyboard:
+                AutoClosingMessageBox.Show("Please provide a numercial PIN.", "Error", 2000, Parent: Form.ActiveForm);
                 PIN = "";
             }
 
@@ -223,12 +223,15 @@ namespace Helios_ATM
         {
             pin_update("0");  
         }
+        
         // refactored function AS
         public void pin_update(String digit)
         {
             PIN = PIN + digit;
             this.PinEntry.Text = PIN;
         }
+
+        //check if log is already inserted
         private void log(Boolean flag = true)
         {
             if (flag == true)
@@ -254,8 +257,6 @@ namespace Helios_ATM
 
 
         }
-
-
 
 
         //Delete all of the PIN entry textbox

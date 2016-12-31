@@ -59,18 +59,18 @@ namespace Helios_ATM
         private void metroButton1_Click(object sender, EventArgs e)
         {
             //Set default value for other account
-            SavingsLabel.Text = "XX,XXX.XX";
+            SavingsLabel.Text ="XX,XXX.XX";
             //Insert here the code to get current checkings amount
-            CheckingsLabel.Text= string.Format("{0:##,###.00}", Convert.ToDecimal("100000"));
+            CheckingsLabel.Text= string.Format("{0:##,###.00}", Convert.ToDecimal(Lib.getCheckingBalance()));
 
         }
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
             //Set default value for other account
-            CheckingsLabel.Text = "XX,XXX.XX";
+            CheckingsLabel.Text =  "XX,XXX.XX";
             //Insert here the code to get current savings amount
-            SavingsLabel.Text = string.Format("{0:##,###.00}", Convert.ToDecimal("100000"));
+            SavingsLabel.Text = string.Format("{0:##,###.00}", Convert.ToDecimal(Lib.getSavingsBalance()));
         }
 
         private void metroButton3_Click(object sender, EventArgs e)

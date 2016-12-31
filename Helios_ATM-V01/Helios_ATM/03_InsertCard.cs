@@ -48,12 +48,15 @@ namespace Helios_ATM
 
             //getBalance();
             //await Task.Delay(500);
+            s3log.logOperation(sender);
+            Console.WriteLine(s3log.strLog);
 
             //continue to next form:
             this.log(true);
             Form ATM4 = new ATM4(); // Instantiate a Form object.
             ATM4.Show(); //show the new Form
             this.Visible = false;  //Hide the old form
+
         }
 
 
@@ -120,8 +123,8 @@ namespace Helios_ATM
             if (flag)
             {
                 string path = @"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt";
-        string appendText = "Card Inserted" + " " + (DateTime.Now).ToString() +Environment.NewLine;
-        File.AppendAllText(path, appendText);
+                string appendText = "Card Inserted" + " " + (DateTime.Now).ToString() +Environment.NewLine;
+                File.AppendAllText(path, appendText);
             }
             else
             {
@@ -132,13 +135,17 @@ namespace Helios_ATM
 
                 File.AppendAllText(path, appendText);
                 File.AppendAllText(path, appendText2);
-
             }
 
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Variables.strLog = Variables.strLog + "\n" + "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString();
+            //Variables.strLog = Variables.strLog + "\n" + "visit to Main Menu: " + (Lib2.form1visit).ToString() + " " + (DateTime.Now).ToString();
+            //MetroFramework.MetroMessageBox.Show(this, Variables.strLog);
 
-
+        }
     }
 }
