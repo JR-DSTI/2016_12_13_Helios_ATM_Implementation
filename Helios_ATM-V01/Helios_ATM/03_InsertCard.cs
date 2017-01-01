@@ -31,31 +31,28 @@ namespace Helios_ATM
             InitializeComponent();
         }
 
+
         private void ATM3_Load(object sender, EventArgs e)
         {
             BatteryCharge.Value = Lib2.charge;
             this.timer1.Start();
-           
-
-
         }
+
+
 
         private void CardInserted_Click(object sender, EventArgs e)
         {
             this.timer1.Stop();
 
-            //again "sleep" for the form
-
-            //getBalance();
-            //await Task.Delay(500);
+            //Log current operation:
             s3log.logOperation(sender);
-            Console.WriteLine(s3log.strLog);
 
             //continue to next form:
             this.log(true);
             Form ATM4 = new ATM4(); // Instantiate a Form object.
             ATM4.Show(); //show the new Form
             this.Visible = false;  //Hide the old form
+
 
         }
 
@@ -94,6 +91,9 @@ namespace Helios_ATM
             ATM1.Show(); //show the new Form
             this.log(false);
             this.Visible = false;  //Hide the old form
+            //Log current operation:
+            s3log.logOperation(sender);
+
         }
 
         private void BatteryCharge_Click(object sender, EventArgs e)

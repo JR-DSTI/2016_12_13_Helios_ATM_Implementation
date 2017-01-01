@@ -63,6 +63,9 @@ namespace Helios_ATM
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
 
+            //Log current operation:
+            s3log.logOperation(sender);
+
             this.Visible = false;
         }
     }

@@ -35,6 +35,9 @@ namespace Helios_ATM
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+
             Form ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
 
@@ -75,6 +78,9 @@ namespace Helios_ATM
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+            
             //CancelMsgBox
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
 

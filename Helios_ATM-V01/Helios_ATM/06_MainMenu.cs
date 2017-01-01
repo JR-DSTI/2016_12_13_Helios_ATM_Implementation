@@ -30,28 +30,38 @@ namespace Helios_ATM
         private void Num1_Click(object sender, EventArgs e)
         {
             sUserChoice = "1";
-            ConfirmMenuSelection.Visible = true;
+            ConfirmMenuSelectionButton.Visible = true;
+
+            //Log current operation:
+            s3log.logOperation(sender);
         }
 
         private void Num2_Click(object sender, EventArgs e)
         {
             sUserChoice = "2";
-            ConfirmMenuSelection.Visible = true;
+            ConfirmMenuSelectionButton.Visible = true;
 
+            //Log current operation:
+            s3log.logOperation(sender);
         }
 
         private void Num3_Click(object sender, EventArgs e)
         {
             sUserChoice = "3";
-            ConfirmMenuSelection.Visible = true;
+            ConfirmMenuSelectionButton.Visible = true;
+
+            //Log current operation:
+            s3log.logOperation(sender);
 
         }
 
         //Confirm button that takes user choice and directs to the appropriate Form
         private void ConfirmPINentry_Click_1(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
 
-            switch(sUserChoice)
+            switch (sUserChoice)
             {
                 case "1":
                     //Withdraw moneeeeeeey
@@ -115,6 +125,9 @@ namespace Helios_ATM
             //Going back to first form (restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
+
+            //Log current operation:
+            s3log.logOperation(sender);
 
             this.Visible = false;
         }

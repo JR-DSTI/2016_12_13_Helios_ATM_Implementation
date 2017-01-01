@@ -33,8 +33,8 @@ namespace Helios_ATM
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM3));
             this.label1 = new System.Windows.Forms.Label();
-            this.CardInserted = new MetroFramework.Controls.MetroButton();
-            this.CancelButton = new MetroFramework.Controls.MetroButton();
+            this.CardInsertedButton = new MetroFramework.Controls.MetroButton();
+            this.AbortCancelButton = new MetroFramework.Controls.MetroButton();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -54,27 +54,27 @@ namespace Helios_ATM
             this.label1.TabIndex = 4;
             this.label1.Text = "Please insert your card.";
             // 
-            // CardInserted
+            // CardInsertedButton
             // 
-            this.CardInserted.Location = new System.Drawing.Point(361, 430);
-            this.CardInserted.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.CardInserted.Name = "CardInserted";
-            this.CardInserted.Size = new System.Drawing.Size(93, 73);
-            this.CardInserted.TabIndex = 5;
-            this.CardInserted.Text = "Card Inserted";
-            this.CardInserted.UseSelectable = true;
-            this.CardInserted.Click += new System.EventHandler(this.CardInserted_Click);
+            this.CardInsertedButton.Location = new System.Drawing.Point(361, 430);
+            this.CardInsertedButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CardInsertedButton.Name = "CardInsertedButton";
+            this.CardInsertedButton.Size = new System.Drawing.Size(93, 73);
+            this.CardInsertedButton.TabIndex = 5;
+            this.CardInsertedButton.Text = "Card Inserted";
+            this.CardInsertedButton.UseSelectable = true;
+            this.CardInsertedButton.Click += new System.EventHandler(this.CardInserted_Click);
             // 
-            // CancelButton
+            // AbortCancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(35, 430);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(93, 73);
-            this.CancelButton.TabIndex = 6;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseSelectable = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.AbortCancelButton.Location = new System.Drawing.Point(35, 430);
+            this.AbortCancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AbortCancelButton.Name = "AbortCancelButton";
+            this.AbortCancelButton.Size = new System.Drawing.Size(93, 73);
+            this.AbortCancelButton.TabIndex = 6;
+            this.AbortCancelButton.Text = "Cancel";
+            this.AbortCancelButton.UseSelectable = true;
+            this.AbortCancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // NetworkSignal
             // 
@@ -123,8 +123,8 @@ namespace Helios_ATM
             this.Controls.Add(this.button1);
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
-            this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.CardInserted);
+            this.Controls.Add(this.AbortCancelButton);
+            this.Controls.Add(this.CardInsertedButton);
             this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -140,8 +140,8 @@ namespace Helios_ATM
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private new MetroFramework.Controls.MetroButton CancelButton;
-        private MetroFramework.Controls.MetroButton CardInserted;
+        private new MetroFramework.Controls.MetroButton AbortCancelButton;
+        private MetroFramework.Controls.MetroButton CardInsertedButton;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
         private System.Windows.Forms.Timer timer1;

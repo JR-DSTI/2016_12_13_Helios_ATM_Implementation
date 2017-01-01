@@ -30,6 +30,9 @@ namespace Helios_ATM
         {
             //Cancel MsgBox & close the message after certain time:
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
+            
+            //Log current operation:
+            s3log.logOperation(sender);
 
             //Going back to first form (=restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
@@ -45,6 +48,9 @@ namespace Helios_ATM
             ATM6.Show(); //show the new Form
 
             this.Visible = false;
+
+            //Log current operation:
+            s3log.logOperation(sender);
         }
 
 
@@ -59,6 +65,7 @@ namespace Helios_ATM
         public void check_and_pay(int balance)
         
         {
+
             Boolean withdraw = true;
             if (Int32.Parse(Lib.getBalance()) < balance)
             {
@@ -78,8 +85,7 @@ namespace Helios_ATM
         private void withdrawPrintReceipt(int WithdrawAmount)
         {
             //Dispense WithdrawAmount
-            MetroMessageBox.Show(this, "Requested amount of " + WithdrawAmount + " Pesos is available in slot now");
-            
+            AutoClosingMessageBox.Show("Requested amount of " + WithdrawAmount + " Pesos is available in slot now","Info", 1500, this);        
             
             //Ask & send receipt
 
@@ -100,6 +106,7 @@ namespace Helios_ATM
                 result = MetroMessageBox.Show(this, "Do you to perform another transaction?", "Return to main menu", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
+                    
                     //Return to main menu for other transaction
                     Form ATM6 = new ATM6(); // Instantiate a Form object.
                     ATM6.Show(); //show the new Form
@@ -125,41 +132,66 @@ namespace Helios_ATM
 
         private void Withdraw500_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+
             check_and_pay(500);
         }
 
         private void Withdraw5_Click(object sender, EventArgs e)
-        { 
+        {
+            //Log current operation:
+            s3log.logOperation(sender);
+
             check_and_pay(5);   
         }
 
         private void Withdraw200_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+
             check_and_pay(200);        
         }
 
         private void Withdraw100_Click(object sender, EventArgs e)
         {
+
+            //Log current operation:
+            s3log.logOperation(sender);
+
             check_and_pay(100);       
         }
 
         private void Withdraw50_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+
             check_and_pay(50);         
         }
 
         private void Withdraw20_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+
             check_and_pay(20);      
         }
 
         private void Withdraw10_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+
             check_and_pay(20);
         }
 
         private void WithdrawOther_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+            
             //Go to new form for further transaction
             Form ATM7b = new ATM7b(); // Instantiate a Form object.
             ATM7b.Show(); //show the new Form
@@ -172,7 +204,7 @@ namespace Helios_ATM
   
         String header = "======================================";
         String header2 = "                 Receipt";
-        String subject = "You have withdrawn " + WithdrawAmount+ "Pesos";
+        String subject = "You have withdrawn " + WithdrawAmount+ " Pesos";
         String timeStamp = "Date :" + DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
         String activity = "Action : Withdraw";
         String ATMlocation = "Location : Munchen";

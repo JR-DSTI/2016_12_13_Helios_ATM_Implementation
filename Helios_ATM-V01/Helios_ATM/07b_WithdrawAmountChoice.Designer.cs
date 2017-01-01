@@ -35,9 +35,9 @@ namespace Helios_ATM
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM7b));
             this.label1 = new System.Windows.Forms.Label();
-            this.ConfirmPINentry = new MetroFramework.Controls.MetroButton();
+            this.ConfirmPINentryButton = new MetroFramework.Controls.MetroButton();
             this.WithdrawAmountTextbox = new System.Windows.Forms.TextBox();
-            this.CancelButton = new MetroFramework.Controls.MetroButton();
+            this.CancelButtonButton = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.NumDeleteAll = new MetroFramework.Controls.MetroButton();
             this.NumBack = new MetroFramework.Controls.MetroButton();
@@ -51,7 +51,7 @@ namespace Helios_ATM
             this.Num9 = new MetroFramework.Controls.MetroButton();
             this.Num8 = new MetroFramework.Controls.MetroButton();
             this.Num7 = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.AbortButton = new MetroFramework.Controls.MetroButton();
             this.PesosLabel1 = new MetroFramework.Controls.MetroLabel();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
@@ -72,15 +72,15 @@ namespace Helios_ATM
             this.label1.TabIndex = 4;
             this.label1.Text = "Enter desired amount.";
             // 
-            // ConfirmPINentry
+            // ConfirmPINentryButton
             // 
-            this.ConfirmPINentry.Location = new System.Drawing.Point(420, 435);
-            this.ConfirmPINentry.Name = "ConfirmPINentry";
-            this.ConfirmPINentry.Size = new System.Drawing.Size(73, 75);
-            this.ConfirmPINentry.TabIndex = 7;
-            this.ConfirmPINentry.Text = "Confirm";
-            this.ConfirmPINentry.UseSelectable = true;
-            this.ConfirmPINentry.Click += new System.EventHandler(this.ConfirmPINentry_Click_1);
+            this.ConfirmPINentryButton.Location = new System.Drawing.Point(420, 435);
+            this.ConfirmPINentryButton.Name = "ConfirmPINentryButton";
+            this.ConfirmPINentryButton.Size = new System.Drawing.Size(73, 75);
+            this.ConfirmPINentryButton.TabIndex = 7;
+            this.ConfirmPINentryButton.Text = "Confirm";
+            this.ConfirmPINentryButton.UseSelectable = true;
+            this.ConfirmPINentryButton.Click += new System.EventHandler(this.ConfirmPINentry_Click_1);
             // 
             // WithdrawAmountTextbox
             // 
@@ -96,15 +96,15 @@ namespace Helios_ATM
             this.WithdrawAmountTextbox.TextChanged += new System.EventHandler(this.PinEntry_TextChanged);
             this.WithdrawAmountTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PinEntry_KeyDown);
             // 
-            // CancelButton
+            // CancelButtonButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(23, 409);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(77, 30);
-            this.CancelButton.TabIndex = 9;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseSelectable = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelButtonButton.Location = new System.Drawing.Point(23, 409);
+            this.CancelButtonButton.Name = "CancelButtonButton";
+            this.CancelButtonButton.Size = new System.Drawing.Size(77, 30);
+            this.CancelButtonButton.TabIndex = 9;
+            this.CancelButtonButton.Text = "Cancel";
+            this.CancelButtonButton.UseSelectable = true;
+            this.CancelButtonButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // metroPanel1
             // 
@@ -286,15 +286,15 @@ namespace Helios_ATM
             this.Num7.UseSelectable = true;
             this.Num7.Click += new System.EventHandler(this.Num7_Click);
             // 
-            // metroButton1
+            // AbortButton
             // 
-            this.metroButton1.Location = new System.Drawing.Point(23, 445);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(77, 68);
-            this.metroButton1.TabIndex = 12;
-            this.metroButton1.Text = "Abort and\r\neject card";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.AbortButton.Location = new System.Drawing.Point(23, 445);
+            this.AbortButton.Name = "AbortButton";
+            this.AbortButton.Size = new System.Drawing.Size(77, 68);
+            this.AbortButton.TabIndex = 12;
+            this.AbortButton.Text = "Abort and\r\neject card";
+            this.AbortButton.UseSelectable = true;
+            this.AbortButton.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // PesosLabel1
             // 
@@ -335,11 +335,11 @@ namespace Helios_ATM
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
             this.Controls.Add(this.PesosLabel1);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.AbortButton);
             this.Controls.Add(this.metroPanel1);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelButtonButton);
             this.Controls.Add(this.WithdrawAmountTextbox);
-            this.Controls.Add(this.ConfirmPINentry);
+            this.Controls.Add(this.ConfirmPINentryButton);
             this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -447,8 +447,8 @@ namespace Helios_ATM
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox WithdrawAmountTextbox;
-        private new MetroFramework.Controls.MetroButton CancelButton;
-        private MetroFramework.Controls.MetroButton ConfirmPINentry;
+        private new MetroFramework.Controls.MetroButton CancelButtonButton;
+        private MetroFramework.Controls.MetroButton ConfirmPINentryButton;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroButton NumDeleteAll;
         private MetroFramework.Controls.MetroButton NumBack;
@@ -462,7 +462,7 @@ namespace Helios_ATM
         private MetroFramework.Controls.MetroButton Num9;
         private MetroFramework.Controls.MetroButton Num8;
         private MetroFramework.Controls.MetroButton Num7;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton AbortButton;
         private MetroFramework.Controls.MetroLabel PesosLabel1;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;

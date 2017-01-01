@@ -29,37 +29,16 @@ namespace Helios_ATM
         {   //name of Button is not fitting but renaming leads to trouble :-(
             //English selection continues
             await Task.Delay(500);
+           
+            //Log current operation:
+            s3log.logOperation(sender);
 
             Form ATM5 = new ATM5(); // Instantiate a Form object.
             ATM5.Show(); //show the new Form
-            this.log();
             this.Visible = false;  //Hide the old form
         }
 
-        private void log(string linguo="english")
-        {
-            if (linguo=="english")
-            {
-                string path = @"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt";
-                string appendText = "English Language" + " " + (DateTime.Now).ToString() + Environment.NewLine;
-                File.AppendAllText(path, appendText);
-            }
-            else
-            {
-
-                string path = @"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt";
-                string appendText = "Other language" + " " + (DateTime.Today).ToString() + Environment.NewLine;
-                string appendText2 = "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString() + Environment.NewLine;
-
-                File.AppendAllText(path, appendText);
-                File.AppendAllText(path, appendText2);
-
-            }
-
-
-        }
-
-
+        
 
 
 
@@ -72,6 +51,9 @@ namespace Helios_ATM
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
 
+            //Log current operation:
+            s3log.logOperation(sender);
+
             this.Visible = false;
         }
 
@@ -81,9 +63,16 @@ namespace Helios_ATM
             Form ATM3 = new ATM3(); // Instantiate a Form object.
             ATM3.Show(); //show the new Form
 
+            //Log current operation:
+            s3log.logOperation(sender);
+
             this.Visible = false;
         }
 
-       
+        private void SpanishButton_Click(object sender, EventArgs e)
+        {
+            //Log current operation:
+            s3log.logOperation(sender);
+        }
     }
 }

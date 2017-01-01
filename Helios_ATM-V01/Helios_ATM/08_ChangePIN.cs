@@ -55,6 +55,9 @@ namespace Helios_ATM
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+            
             //CancelMsgBox
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
 
@@ -156,6 +159,9 @@ namespace Helios_ATM
 
         private void ConfirmPINentry_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+
             if (ConfirmNewPinEntry.Enabled == true)
             {
                 if (newPIN == newPIN2)
@@ -276,6 +282,9 @@ namespace Helios_ATM
         //return to main form
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+
             Form ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
             this.Visible = false;  //Hide the old form

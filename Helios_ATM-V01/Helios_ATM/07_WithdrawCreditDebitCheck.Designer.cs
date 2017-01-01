@@ -30,25 +30,25 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM7));
-            this.button1 = new MetroFramework.Controls.MetroButton();
+            this.CreditCardButton = new MetroFramework.Controls.MetroButton();
             this.WelcomeTimer = new System.Windows.Forms.Timer(this.components);
             this.WelcomeProgressBar = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.DebitCardButton = new MetroFramework.Controls.MetroButton();
+            this.AbortButton = new MetroFramework.Controls.MetroButton();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
             this.SuspendLayout();
             // 
-            // button1
+            // CreditCardButton
             // 
-            this.button1.Location = new System.Drawing.Point(376, 426);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Credit Card";
-            this.button1.UseSelectable = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.CreditCardButton.Location = new System.Drawing.Point(376, 426);
+            this.CreditCardButton.Name = "CreditCardButton";
+            this.CreditCardButton.Size = new System.Drawing.Size(104, 23);
+            this.CreditCardButton.TabIndex = 0;
+            this.CreditCardButton.Text = "Credit Card";
+            this.CreditCardButton.UseSelectable = true;
+            this.CreditCardButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // WelcomeTimer
             // 
@@ -74,25 +74,25 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Check for card type...\r\n";
             // 
-            // button2
+            // DebitCardButton
             // 
-            this.button2.Location = new System.Drawing.Point(376, 455);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(104, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Debit Card";
-            this.button2.UseSelectable = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.DebitCardButton.Location = new System.Drawing.Point(376, 455);
+            this.DebitCardButton.Name = "DebitCardButton";
+            this.DebitCardButton.Size = new System.Drawing.Size(104, 23);
+            this.DebitCardButton.TabIndex = 5;
+            this.DebitCardButton.Text = "Debit Card";
+            this.DebitCardButton.UseSelectable = true;
+            this.DebitCardButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // metroButton1
+            // AbortButton
             // 
-            this.metroButton1.Location = new System.Drawing.Point(54, 426);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(77, 68);
-            this.metroButton1.TabIndex = 13;
-            this.metroButton1.Text = "Abort and\r\neject card";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.AbortButton.Location = new System.Drawing.Point(54, 426);
+            this.AbortButton.Name = "AbortButton";
+            this.AbortButton.Size = new System.Drawing.Size(77, 68);
+            this.AbortButton.TabIndex = 13;
+            this.AbortButton.Text = "Abort and\r\neject card";
+            this.AbortButton.UseSelectable = true;
+            this.AbortButton.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // NetworkSignal
             // 
@@ -122,11 +122,11 @@
             this.ControlBox = false;
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
-            this.Controls.Add(this.metroButton1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.AbortButton);
+            this.Controls.Add(this.DebitCardButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.WelcomeProgressBar);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.CreditCardButton);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -140,9 +140,9 @@
         private System.Windows.Forms.Timer WelcomeTimer;
         private System.Windows.Forms.ProgressBar WelcomeProgressBar;
         private System.Windows.Forms.Label label1;
-        private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroButton button1;
-        private MetroFramework.Controls.MetroButton button2;
+        private MetroFramework.Controls.MetroButton AbortButton;
+        private MetroFramework.Controls.MetroButton CreditCardButton;
+        private MetroFramework.Controls.MetroButton DebitCardButton;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
     }

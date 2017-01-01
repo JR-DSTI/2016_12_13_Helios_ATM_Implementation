@@ -33,11 +33,13 @@ namespace Helios_ATM
             this.WelcomeTimer.Start();
             this.timer2.Start();
             this.WelcomeProgressBar.Visible = true;
+
+            //Log current operation:
             s3log.logOperation(sender);
-            Console.WriteLine(s3log.strLog);
 
             //"await" needs the async in the function declaration and equals "Sleep"
             await Task.Delay(2000);
+
             //MetroFramework.MetroMessageBox.Show(this, (Pinger("stackoverflow.com", 4)).ToString());
             if (Pinger("stackoverflow.com", 5) > 129)
             {
@@ -125,9 +127,9 @@ namespace Helios_ATM
             }
             else
             {
-
-                MetroFramework.MetroMessageBox.Show(this, "The ATM is running out of power");
-                Environment.Exit(0);
+                AutoClosingMessageBox.Show("The ATM is running out of power. Disconnecting... and recharging.", "Low energy", 1500, this);
+                Lib2.charge = 100;
+                //Environment.Exit(0);
             }
         }
 

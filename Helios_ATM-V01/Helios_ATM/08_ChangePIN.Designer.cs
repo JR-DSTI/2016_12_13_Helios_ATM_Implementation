@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM8));
             this.label1 = new System.Windows.Forms.Label();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.AbortButton = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.NumDeleteAll = new MetroFramework.Controls.MetroButton();
             this.NumBack = new MetroFramework.Controls.MetroButton();
@@ -47,8 +47,8 @@
             this.OLDPinEntry = new System.Windows.Forms.TextBox();
             this.NewPinEntry = new System.Windows.Forms.TextBox();
             this.ConfirmNewPinEntry = new System.Windows.Forms.TextBox();
-            this.ConfirmPINentry = new MetroFramework.Controls.MetroButton();
-            this.CancelButtonCP = new MetroFramework.Controls.MetroButton();
+            this.ConfirmPINentryButton = new MetroFramework.Controls.MetroButton();
+            this.CancelButton = new MetroFramework.Controls.MetroButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -67,15 +67,15 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Change PIN";
             // 
-            // metroButton1
+            // AbortButton
             // 
-            this.metroButton1.Location = new System.Drawing.Point(21, 434);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(77, 68);
-            this.metroButton1.TabIndex = 13;
-            this.metroButton1.Text = "Abort and\r\neject card";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.AbortButton.Location = new System.Drawing.Point(21, 434);
+            this.AbortButton.Name = "AbortButton";
+            this.AbortButton.Size = new System.Drawing.Size(77, 68);
+            this.AbortButton.TabIndex = 13;
+            this.AbortButton.Text = "Abort and\r\neject card";
+            this.AbortButton.UseSelectable = true;
+            this.AbortButton.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // metroPanel1
             // 
@@ -296,25 +296,25 @@
             this.ConfirmNewPinEntry.Text = "****";
             this.ConfirmNewPinEntry.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // ConfirmPINentry
+            // ConfirmPINentryButton
             // 
-            this.ConfirmPINentry.Location = new System.Drawing.Point(106, 427);
-            this.ConfirmPINentry.Name = "ConfirmPINentry";
-            this.ConfirmPINentry.Size = new System.Drawing.Size(73, 75);
-            this.ConfirmPINentry.TabIndex = 18;
-            this.ConfirmPINentry.Text = "Confirm";
-            this.ConfirmPINentry.UseSelectable = true;
-            this.ConfirmPINentry.Click += new System.EventHandler(this.ConfirmPINentry_Click);
+            this.ConfirmPINentryButton.Location = new System.Drawing.Point(106, 427);
+            this.ConfirmPINentryButton.Name = "ConfirmPINentryButton";
+            this.ConfirmPINentryButton.Size = new System.Drawing.Size(73, 75);
+            this.ConfirmPINentryButton.TabIndex = 18;
+            this.ConfirmPINentryButton.Text = "Confirm";
+            this.ConfirmPINentryButton.UseSelectable = true;
+            this.ConfirmPINentryButton.Click += new System.EventHandler(this.ConfirmPINentry_Click);
             // 
-            // CancelButtonCP
+            // CancelButton
             // 
-            this.CancelButtonCP.Location = new System.Drawing.Point(23, 508);
-            this.CancelButtonCP.Name = "CancelButtonCP";
-            this.CancelButtonCP.Size = new System.Drawing.Size(77, 30);
-            this.CancelButtonCP.TabIndex = 19;
-            this.CancelButtonCP.Text = "Cancel";
-            this.CancelButtonCP.UseSelectable = true;
-            this.CancelButtonCP.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelButton.Location = new System.Drawing.Point(23, 508);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(77, 30);
+            this.CancelButton.TabIndex = 19;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseSelectable = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // metroLabel1
             // 
@@ -374,13 +374,13 @@
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.CancelButtonCP);
-            this.Controls.Add(this.ConfirmPINentry);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.ConfirmPINentryButton);
             this.Controls.Add(this.ConfirmNewPinEntry);
             this.Controls.Add(this.NewPinEntry);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.OLDPinEntry);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.AbortButton);
             this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -395,7 +395,7 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton AbortButton;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroButton NumDeleteAll;
         private MetroFramework.Controls.MetroButton NumBack;
@@ -412,8 +412,8 @@
         private System.Windows.Forms.TextBox OLDPinEntry;
         private System.Windows.Forms.TextBox NewPinEntry;
         private System.Windows.Forms.TextBox ConfirmNewPinEntry;
-        private MetroFramework.Controls.MetroButton ConfirmPINentry;
-        private MetroFramework.Controls.MetroButton CancelButtonCP;
+        private MetroFramework.Controls.MetroButton ConfirmPINentryButton;
+        private MetroFramework.Controls.MetroButton CancelButton;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;

@@ -37,9 +37,9 @@ namespace Helios_ATM
             this.SavingsLabel = new MetroFramework.Controls.MetroLabel();
             this.PesosLabel2 = new MetroFramework.Controls.MetroLabel();
             this.PesosLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
+            this.CheckingsButton = new MetroFramework.Controls.MetroButton();
+            this.SavingsButton = new MetroFramework.Controls.MetroButton();
+            this.AbortButton = new MetroFramework.Controls.MetroButton();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
             this.SuspendLayout();
@@ -112,37 +112,37 @@ namespace Helios_ATM
             this.PesosLabel1.TabIndex = 9;
             this.PesosLabel1.Text = "Pesos";
             // 
-            // metroButton1
+            // CheckingsButton
             // 
-            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButton1.Location = new System.Drawing.Point(64, 179);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(146, 40);
-            this.metroButton1.TabIndex = 11;
-            this.metroButton1.Text = "Checkings";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.CheckingsButton.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.CheckingsButton.Location = new System.Drawing.Point(64, 179);
+            this.CheckingsButton.Name = "CheckingsButton";
+            this.CheckingsButton.Size = new System.Drawing.Size(146, 40);
+            this.CheckingsButton.TabIndex = 11;
+            this.CheckingsButton.Text = "Checkings";
+            this.CheckingsButton.UseSelectable = true;
+            this.CheckingsButton.Click += new System.EventHandler(this.metroButton1_Click);
             // 
-            // metroButton2
+            // SavingsButton
             // 
-            this.metroButton2.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButton2.Location = new System.Drawing.Point(64, 274);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(146, 40);
-            this.metroButton2.TabIndex = 12;
-            this.metroButton2.Text = "Savings";
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
+            this.SavingsButton.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.SavingsButton.Location = new System.Drawing.Point(64, 274);
+            this.SavingsButton.Name = "SavingsButton";
+            this.SavingsButton.Size = new System.Drawing.Size(146, 40);
+            this.SavingsButton.TabIndex = 12;
+            this.SavingsButton.Text = "Savings";
+            this.SavingsButton.UseSelectable = true;
+            this.SavingsButton.Click += new System.EventHandler(this.metroButton2_Click);
             // 
-            // metroButton3
+            // AbortButton
             // 
-            this.metroButton3.Location = new System.Drawing.Point(385, 435);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(77, 68);
-            this.metroButton3.TabIndex = 13;
-            this.metroButton3.Text = "Abort and\r\neject card";
-            this.metroButton3.UseSelectable = true;
-            this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
+            this.AbortButton.Location = new System.Drawing.Point(385, 435);
+            this.AbortButton.Name = "AbortButton";
+            this.AbortButton.Size = new System.Drawing.Size(77, 68);
+            this.AbortButton.TabIndex = 13;
+            this.AbortButton.Text = "Abort and\r\neject card";
+            this.AbortButton.UseSelectable = true;
+            this.AbortButton.Click += new System.EventHandler(this.metroButton3_Click);
             // 
             // NetworkSignal
             // 
@@ -172,9 +172,9 @@ namespace Helios_ATM
             this.ControlBox = false;
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
-            this.Controls.Add(this.metroButton3);
-            this.Controls.Add(this.metroButton2);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.AbortButton);
+            this.Controls.Add(this.SavingsButton);
+            this.Controls.Add(this.CheckingsButton);
             this.Controls.Add(this.PesosLabel2);
             this.Controls.Add(this.PesosLabel1);
             this.Controls.Add(this.SavingsLabel);
@@ -198,9 +198,9 @@ namespace Helios_ATM
         private MetroFramework.Controls.MetroLabel SavingsLabel;
         private MetroFramework.Controls.MetroLabel PesosLabel2;
         private MetroFramework.Controls.MetroLabel PesosLabel1;
-        private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroButton metroButton2;
-        private MetroFramework.Controls.MetroButton metroButton3;
+        private MetroFramework.Controls.MetroButton CheckingsButton;
+        private MetroFramework.Controls.MetroButton SavingsButton;
+        private MetroFramework.Controls.MetroButton AbortButton;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
     }

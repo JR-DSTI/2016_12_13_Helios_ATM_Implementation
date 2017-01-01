@@ -20,7 +20,7 @@ namespace Helios_ATM
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Variables.strLog = "";
-            Application.Run(new ATM1());
+            Application.Run(new ATM0());
         }
         
     }
@@ -37,7 +37,6 @@ namespace Helios_ATM
             _caption = caption;
             _timeoutTimer = new System.Threading.Timer(OnTimerElapsed,
                 null, timeout, System.Threading.Timeout.Infinite);
-            // MessageBox.Show(text, caption);
             
             //Parent=new System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
             MetroMessageBox.Show(Parent, text, caption);
@@ -46,7 +45,6 @@ namespace Helios_ATM
         public static void Show(string text, string caption, int timeout, System.Windows.Forms.IWin32Window Parent)
         {
             new AutoClosingMessageBox(text, caption, timeout, Parent);
-            //await Task.Delay(timeout); //async
         }
 
         void OnTimerElapsed(object state)
@@ -63,10 +61,47 @@ namespace Helios_ATM
         [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
         static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
         
+        }
+
+    //storing all use case variables
+    public class useCaseVariables
+    {
+        public static string strNotificationAddress;
+
+        public static bool bCheckBoxPINEntriesExhausted;
+        public static bool bCheckBoxNetworkConnectionUnstable;
+        public static bool bCheckBoxPowerSourceBattery;
+
     }
 
-    //public class Variables
-    //{
-    //    public static string strLog;
-    //}
+    // //static class which holds the public battery charge properties, functions for decreasing
+    public class battery
+
+    {
+        public static int decrement = 1;
+        public static int charge = 100;
+        public static int decr()
+        {
+            return 2;
+        }
+
+
+
+        public void discharge(MetroFramework.Controls.MetroProgressBar BatteryCharge)
+        {
+
+            if (charge > 0)
+            {
+                BatteryCharge.Value -= decrement;
+                charge = BatteryCharge.Value;
+            }
+            else
+            {
+                AutoClosingMessageBox.Show("The ATM is running out of power. Disconnecting... and recharging.", "Low energy", 1500, Form.ActiveForm);
+                //charge = 100;
+                Environment.Exit(0);
+            }
+           
+        }
+    }
 }

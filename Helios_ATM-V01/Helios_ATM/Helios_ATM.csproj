@@ -74,6 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="00_Use_Cases.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="00_Use_Cases.Designer.cs">
+      <DependentUpon>00_Use_Cases.cs</DependentUpon>
+    </Compile>
     <Compile Include="07b_WithdrawAmountChoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,10 @@
     <Compile Include="Lib.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="00_Use_Cases.resx">
+      <DependentUpon>00_Use_Cases.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="07b_WithdrawAmountChoice.resx">
       <DependentUpon>07b_WithdrawAmountChoice.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -175,6 +185,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="01_ATM_Screen.resx">
       <DependentUpon>01_ATM_Screen.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

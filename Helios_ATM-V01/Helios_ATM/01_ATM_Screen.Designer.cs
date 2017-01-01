@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM1));
-            this.button1 = new MetroFramework.Controls.MetroButton();
+            this.EnterHereButton = new MetroFramework.Controls.MetroButton();
             this.WelcomeTimer = new System.Windows.Forms.Timer(this.components);
             this.WelcomeProgressBar = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,16 +46,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // EnterHereButton
             // 
-            this.button1.Location = new System.Drawing.Point(164, 510);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "ENTER HERE";
-            this.button1.UseSelectable = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.EnterHereButton.Location = new System.Drawing.Point(164, 510);
+            this.EnterHereButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.EnterHereButton.Name = "EnterHereButton";
+            this.EnterHereButton.Size = new System.Drawing.Size(171, 23);
+            this.EnterHereButton.TabIndex = 0;
+            this.EnterHereButton.Text = "ENTER HERE";
+            this.EnterHereButton.UseSelectable = true;
+            this.EnterHereButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // WelcomeTimer
             // 
@@ -167,7 +167,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.WelcomeProgressBar);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.EnterHereButton);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -187,7 +187,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroButton button1;
+        private MetroFramework.Controls.MetroButton EnterHereButton;
         private System.Windows.Forms.BindingSource bindingSource1;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;

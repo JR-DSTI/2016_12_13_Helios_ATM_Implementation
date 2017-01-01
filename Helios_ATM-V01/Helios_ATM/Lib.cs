@@ -67,7 +67,7 @@ namespace Helios_ATM
             return strPrintDocument(document);
 
         }
-            
+
         //get the Code of a given account based on a table name and an account id
 
         public static String getCode(String tablename = "ATM", String myAccountId = "0002")
@@ -91,8 +91,8 @@ namespace Helios_ATM
             return strPrintDocument(document);
 
         }
-        
-            
+
+
         //get the CheckingBalance of a given account based on a table name and an account id
         public static String getCheckingBalance(String tablename = "ATM", String myAccountId = "0002")
         {
@@ -115,7 +115,7 @@ namespace Helios_ATM
             return strPrintDocument(document);
 
         }
-        
+
 
         //get the SavingsBalance of a given account based on a table name and an account id
         public static String getSavingsBalance(String tablename = "ATM", String myAccountId = "0002")
@@ -289,7 +289,7 @@ namespace Helios_ATM
 
         //function update
         //function itself
-        public static void update(String Pinentry, Boolean blocked, Double Balance=0, String Code = "1111")
+        public static void update(String Pinentry, Boolean blocked, Double Balance = 0, String Code = "1111")
         {
             var client = new AmazonDynamoDBClient();
             var request = new PutItemRequest()
@@ -302,13 +302,13 @@ namespace Helios_ATM
                 {{ ":value", new AttributeValue{ S="0002"}}},
 
                 ConditionExpression = "#id=:value",
-                Item = CreateItemData(Pinentry,blocked, Balance,Code)
+                Item = CreateItemData(Pinentry, blocked, Balance, Code)
 
             };
             client.PutItem(request);
         }
         // helper function create items
-        public static Dictionary<string, AttributeValue> CreateItemData(String Pinentry, Boolean blocked, Double Balance = 2000, String Code="1111")
+        public static Dictionary<string, AttributeValue> CreateItemData(String Pinentry, Boolean blocked, Double Balance = 2000, String Code = "1111")
         {
             var itemData = new Dictionary<string, AttributeValue>
             {{"ID", new AttributeValue{S="0002"} },
@@ -327,11 +327,12 @@ namespace Helios_ATM
 
 
         //function send email (=receipt)
-        public static void sendMail(String subject,String body)
+        public static void sendMail(String subject, String body)
         {
+            string strTOAddress = useCaseVariables.strNotificationAddress;// "";
             const String FROM = "assansanogo@gmail.com";          // Replace with your "From" address. This address must be verified.
-            const String TO = "jonas.rathke@edu.dsti.institute";  // Replace with a "To" address. If your account is still in the
-                                                                  // sandbox, this address must be verified.
+            string TO = strTOAddress;// = jonas.rathke@edu.dsti.institute";  // Replace with a "To" address. If your account is still in the
+                                                     // sandbox, this address must be verified.
 
             String SUBJECT = subject;
             String BODY = body;
@@ -349,29 +350,29 @@ namespace Helios_ATM
             {
                 // Create an SMTP client with the specified host name and port.
                 using (System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient(HOST, PORT))
-            {
-                // Create a network credential with your SMTP user name and password.
-                client.Credentials = new System.Net.NetworkCredential(SMTP_USERNAME, SMTP_PASSWORD);
-
-                // Use SSL when accessing Amazon SES. The SMTP session will begin on an unencrypted connection, and then 
-                // the client will issue a STARTTLS command to upgrade to an encrypted connection using SSL.
-                client.EnableSsl = true;
-
-                // Code below to actually Send the email. 
-                try
                 {
-                    AutoClosingMessageBox.Show("Sending your receipt..", "Email delivery", 1000, Parent: Form.ActiveForm);
-                    client.Send(FROM, TO, SUBJECT, BODY);
-                    AutoClosingMessageBox.Show("\n Email sent!", "Success", 1000, Parent: Form.ActiveForm);
+                    // Create a network credential with your SMTP user name and password.
+                    client.Credentials = new System.Net.NetworkCredential(SMTP_USERNAME, SMTP_PASSWORD);
+
+                    // Use SSL when accessing Amazon SES. The SMTP session will begin on an unencrypted connection, and then 
+                    // the client will issue a STARTTLS command to upgrade to an encrypted connection using SSL.
+                    client.EnableSsl = true;
+
+                    // Code below to actually Send the email. 
+                    try
+                    {
+                        AutoClosingMessageBox.Show("Sending your receipt..", "Email delivery", 1000, Parent: Form.ActiveForm);
+                        client.Send(FROM, TO, SUBJECT, BODY);
+                        AutoClosingMessageBox.Show("\n Email sent!", "Success", 1000, Parent: Form.ActiveForm);
 
                     }
-                catch (Exception ex)
+                    catch (Exception ex)
                     {
                         AutoClosingMessageBox.Show("The email was not sent! \n Error message: " + ex.Message, "ERROR", 1000, Parent: Form.ActiveForm);
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 AutoClosingMessageBox.Show("Problem. \n Error message: " + ex.Message, "ERROR", 1000, Parent: Form.ActiveForm);
             }
@@ -401,7 +402,7 @@ namespace Helios_ATM
         //the function print a message Box
         public static Boolean PrintDocument(Document updatedDocument)
         {
-            Boolean val=true;
+            Boolean val = true;
             //Loop through all the attributes in the list outputed by Document.GetAttributeNames()
             foreach (var attribute in updatedDocument.GetAttributeNames())
             {
@@ -410,7 +411,7 @@ namespace Helios_ATM
                 if (value is Primitive)
                 {
                     stringValue = value.AsPrimitive().Value.ToString();
-                    
+
                 }
                 else if (value is PrimitiveList)
                 {
@@ -443,7 +444,7 @@ namespace Helios_ATM
                 {
                     stringValue = string.Join(",", (from primitive in value.AsPrimitiveList().Entries select primitive.Value).ToArray());
                 }
-                   
+
 
                 AutoClosingMessageBox.Show(attribute + " - " + stringValue, "Info", 1000, Parent: Form.ActiveForm);
                 val = (updatedDocument[attribute]).ToString();
@@ -462,7 +463,7 @@ namespace Helios_ATM
             Console.WriteLine("===============================================");
         }
 
-        public static double Pinger(string host="stackoverflow.com", int echoNum=4)
+        public static double Pinger(string host = "stackoverflow.com", int echoNum = 4)
         {
 
             long totalTime = 0;
@@ -478,12 +479,12 @@ namespace Helios_ATM
             }
             return (totalTime / echoNum);
         }
-  
 
-    public static String connectionOK(double p)
+
+        public static String connectionOK(double p)
         {
-            String mystring="";
-            if (p > 100 )
+            String mystring = "";
+            if (p > 100)
             {
                 mystring = "NOK";
             }
@@ -495,63 +496,41 @@ namespace Helios_ATM
             return mystring;
         }
     }
-    //static class which holds the public battery charge properties
-    public class Lib2
-    {
-        public static int decrement = 1;
-        public static int charge=100;
-        public static int decr()
-        {
-            return  2;
-        }
-    }
+    
 
-    //Class to store log and send it to AWS S3 if transaction finished
+    //Class to store log and send it to AWS S3 if transaction finished = Abortion of operation
     public class s3log
     {
         public static string strLog;
         static int iFormCount = 0;
-       
-        //public var strLog;
 
-        //public static int atm1visit = 0;
-        //public static int atm3visit = 0;
-        //public static int atm4visit = 0;
-        //public static int atm5visit = 0;
-        //public static int atm6visit = 0;
-        //public static int atm7visit = 0;
-        //public static int atm7avisit = 0;
-        //public static int atm7bvisit = 0;
-        //public static int atm8visit = 0;
-        //public static int atm9visit = 0;
         static List<string> listVisits = new List<string>();
 
 
         public static bool logOperation(object sender)
         {
+            if (string.Compare(((Button)sender).Name, "Abort") > 0)
+            {
+                // Missing: before resetting log, Send log to S3!
+                strLog = "";
+                listVisits.Clear();
+            };
+
             listVisits.Add(Form.ActiveForm.Name);
             iFormCount = listVisits.Where(s => s == Form.ActiveForm.Name).Count();
-            strLog += "\n" + "========================";
-            strLog += "\n" + "Form: " + Form.ActiveForm.Name;
-            strLog += "\n" + "Operation: " + ((Button)sender).Name;
-            strLog += "\n" + "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString();
-            strLog += "\n" + "# of form visits: " + (iFormCount).ToString() + " " + (DateTime.Now).ToString();
-            strLog += "\n" + "Ping: " + (Lib.Pinger()).ToString() + " " + (DateTime.Now).ToString();
-           
-            //int tag = (sender as Button).Tag;
+            strLog += "\n" + "========================"
+                       + "\n" + "Form: " + Form.ActiveForm.Name
+                       + "\n" + "Operation: " + ((Button)sender).Name
+                       + "\n" + "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString()
+                       + "\n" + "# of form visits: " + (iFormCount).ToString() + " " + (DateTime.Now).ToString()
+                       + "\n" + "Ping: " + (Lib.Pinger()).ToString() + " " + (DateTime.Now).ToString();
 
 
             return true;
         }
 
-        //MetroFramework.MetroMessageBox.Show(this, "this.name: " + this.Name);
-        // possible other way: MetroFramework.MetroMessageBox.Show(this, "this.GetType().Name: " + this.GetType().Name);
-
-        // counter list for storing the values of visited forms
-
-       
-
     }
 
+   
 }
 

@@ -35,12 +35,12 @@ namespace Helios_ATM
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM6));
             this.label1 = new System.Windows.Forms.Label();
-            this.ConfirmMenuSelection = new MetroFramework.Controls.MetroButton();
+            this.ConfirmMenuSelectionButton = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.Num3 = new MetroFramework.Controls.MetroButton();
-            this.Num2 = new MetroFramework.Controls.MetroButton();
-            this.Num1 = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.BalanceEnquiryButton = new MetroFramework.Controls.MetroButton();
+            this.ChangePINButton = new MetroFramework.Controls.MetroButton();
+            this.WithdrawCashButton = new MetroFramework.Controls.MetroButton();
+            this.AbortButton = new MetroFramework.Controls.MetroButton();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
             this.metroPanel1.SuspendLayout();
@@ -60,22 +60,22 @@ namespace Helios_ATM
             this.label1.TabIndex = 4;
             this.label1.Text = "Main menu";
             // 
-            // ConfirmMenuSelection
+            // ConfirmMenuSelectionButton
             // 
-            this.ConfirmMenuSelection.Location = new System.Drawing.Point(420, 435);
-            this.ConfirmMenuSelection.Name = "ConfirmMenuSelection";
-            this.ConfirmMenuSelection.Size = new System.Drawing.Size(73, 75);
-            this.ConfirmMenuSelection.TabIndex = 7;
-            this.ConfirmMenuSelection.Text = "Confirm";
-            this.ConfirmMenuSelection.UseSelectable = true;
-            this.ConfirmMenuSelection.Visible = false;
-            this.ConfirmMenuSelection.Click += new System.EventHandler(this.ConfirmPINentry_Click_1);
+            this.ConfirmMenuSelectionButton.Location = new System.Drawing.Point(420, 435);
+            this.ConfirmMenuSelectionButton.Name = "ConfirmMenuSelectionButton";
+            this.ConfirmMenuSelectionButton.Size = new System.Drawing.Size(73, 75);
+            this.ConfirmMenuSelectionButton.TabIndex = 7;
+            this.ConfirmMenuSelectionButton.Text = "Confirm";
+            this.ConfirmMenuSelectionButton.UseSelectable = true;
+            this.ConfirmMenuSelectionButton.Visible = false;
+            this.ConfirmMenuSelectionButton.Click += new System.EventHandler(this.ConfirmPINentry_Click_1);
             // 
             // metroPanel1
             // 
-            this.metroPanel1.Controls.Add(this.Num3);
-            this.metroPanel1.Controls.Add(this.Num2);
-            this.metroPanel1.Controls.Add(this.Num1);
+            this.metroPanel1.Controls.Add(this.BalanceEnquiryButton);
+            this.metroPanel1.Controls.Add(this.ChangePINButton);
+            this.metroPanel1.Controls.Add(this.WithdrawCashButton);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
@@ -87,54 +87,54 @@ namespace Helios_ATM
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            // Num3
+            // BalanceEnquiryButton
             // 
-            this.Num3.DisplayFocus = true;
-            this.Num3.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.Num3.Highlight = true;
-            this.Num3.Location = new System.Drawing.Point(22, 221);
-            this.Num3.Name = "Num3";
-            this.Num3.Size = new System.Drawing.Size(262, 75);
-            this.Num3.TabIndex = 10;
-            this.Num3.Text = "3: Balance Enquiry";
-            this.Num3.UseSelectable = true;
-            this.Num3.Click += new System.EventHandler(this.Num3_Click);
+            this.BalanceEnquiryButton.DisplayFocus = true;
+            this.BalanceEnquiryButton.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.BalanceEnquiryButton.Highlight = true;
+            this.BalanceEnquiryButton.Location = new System.Drawing.Point(22, 221);
+            this.BalanceEnquiryButton.Name = "BalanceEnquiryButton";
+            this.BalanceEnquiryButton.Size = new System.Drawing.Size(262, 75);
+            this.BalanceEnquiryButton.TabIndex = 10;
+            this.BalanceEnquiryButton.Text = "3: Balance Enquiry";
+            this.BalanceEnquiryButton.UseSelectable = true;
+            this.BalanceEnquiryButton.Click += new System.EventHandler(this.Num3_Click);
             // 
-            // Num2
+            // ChangePINButton
             // 
-            this.Num2.DisplayFocus = true;
-            this.Num2.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.Num2.Highlight = true;
-            this.Num2.Location = new System.Drawing.Point(22, 131);
-            this.Num2.Name = "Num2";
-            this.Num2.Size = new System.Drawing.Size(262, 75);
-            this.Num2.TabIndex = 9;
-            this.Num2.Text = "2: Change PIN       ";
-            this.Num2.UseSelectable = true;
-            this.Num2.Click += new System.EventHandler(this.Num2_Click);
+            this.ChangePINButton.DisplayFocus = true;
+            this.ChangePINButton.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.ChangePINButton.Highlight = true;
+            this.ChangePINButton.Location = new System.Drawing.Point(22, 131);
+            this.ChangePINButton.Name = "ChangePINButton";
+            this.ChangePINButton.Size = new System.Drawing.Size(262, 75);
+            this.ChangePINButton.TabIndex = 9;
+            this.ChangePINButton.Text = "2: Change PIN       ";
+            this.ChangePINButton.UseSelectable = true;
+            this.ChangePINButton.Click += new System.EventHandler(this.Num2_Click);
             // 
-            // Num1
+            // WithdrawCashButton
             // 
-            this.Num1.DisplayFocus = true;
-            this.Num1.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.Num1.Highlight = true;
-            this.Num1.Location = new System.Drawing.Point(22, 38);
-            this.Num1.Name = "Num1";
-            this.Num1.Size = new System.Drawing.Size(262, 75);
-            this.Num1.TabIndex = 8;
-            this.Num1.Text = "1:  Withdraw Cash";
-            this.Num1.UseSelectable = true;
-            this.Num1.Click += new System.EventHandler(this.Num1_Click);
+            this.WithdrawCashButton.DisplayFocus = true;
+            this.WithdrawCashButton.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.WithdrawCashButton.Highlight = true;
+            this.WithdrawCashButton.Location = new System.Drawing.Point(22, 38);
+            this.WithdrawCashButton.Name = "WithdrawCashButton";
+            this.WithdrawCashButton.Size = new System.Drawing.Size(262, 75);
+            this.WithdrawCashButton.TabIndex = 8;
+            this.WithdrawCashButton.Text = "1:  Withdraw Cash";
+            this.WithdrawCashButton.UseSelectable = true;
+            this.WithdrawCashButton.Click += new System.EventHandler(this.Num1_Click);
             // 
-            // metroButton1
+            // AbortButton
             // 
-            this.metroButton1.Location = new System.Drawing.Point(23, 445);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(77, 68);
-            this.metroButton1.TabIndex = 12;
-            this.metroButton1.Text = "Abort and\r\neject card";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.AbortButton.Location = new System.Drawing.Point(23, 445);
+            this.AbortButton.Name = "AbortButton";
+            this.AbortButton.Size = new System.Drawing.Size(77, 68);
+            this.AbortButton.TabIndex = 12;
+            this.AbortButton.Text = "Abort and\r\neject card";
+            this.AbortButton.UseSelectable = true;
+            this.AbortButton.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // NetworkSignal
             // 
@@ -164,9 +164,9 @@ namespace Helios_ATM
             this.ControlBox = false;
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.AbortButton);
             this.Controls.Add(this.metroPanel1);
-            this.Controls.Add(this.ConfirmMenuSelection);
+            this.Controls.Add(this.ConfirmMenuSelectionButton);
             this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -273,12 +273,12 @@ namespace Helios_ATM
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private MetroFramework.Controls.MetroButton ConfirmMenuSelection;
+        private MetroFramework.Controls.MetroButton ConfirmMenuSelectionButton;
         private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroButton Num3;
-        private MetroFramework.Controls.MetroButton Num2;
-        private MetroFramework.Controls.MetroButton Num1;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton BalanceEnquiryButton;
+        private MetroFramework.Controls.MetroButton ChangePINButton;
+        private MetroFramework.Controls.MetroButton WithdrawCashButton;
+        private MetroFramework.Controls.MetroButton AbortButton;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
     }
