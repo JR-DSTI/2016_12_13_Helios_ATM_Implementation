@@ -30,12 +30,6 @@ using System.Net.NetworkInformation;
 using System.Windows;
 
 
-
-
-
-
-
-
 //using Amazon.SimpleEmail;
 
 namespace Helios_ATM
@@ -507,25 +501,54 @@ namespace Helios_ATM
         static List<string> listVisits = new List<string>();
 
 
-        public static bool logOperation(object sender)
+        public static bool logOperation(object sender=null, string strAdditionalLogtext="")
         {
-            if (string.Compare(((Button)sender).Name, "Abort") > 0)
+            //if there is no logtext provided, log all parameters
+            if (sender != null)
+            {       
+                //if log all operations and constraints:    
+                listVisits.Add(Form.ActiveForm.Name);
+
+                //count all occurences of formname in the list:
+                iFormCount = listVisits.Where(s => s == Form.ActiveForm.Name).Count();
+                strLog += "\n" + "========================"
+                            + "\n" + "Date and time: " + (DateTime.Now).ToString()
+                            + "\n" + "Form: " + Form.ActiveForm.Name
+                            + "\n" + "Operation: Button " + ((Button)sender).Name
+                            + "\n" + "Battery life: " + battery.charge + "% "
+                            + "\n" + "# of form visits: " + (iFormCount).ToString()
+                            + "\n" + "Ping: " + (networkConnection.Pinger("stackoverflow.com", 5)).ToString();
+                
+                //if the abortion button was clicked, send log to s3
+                if (((Button)sender).Name.IndexOf("Abort") > 0)
+                {
+
+                    // Missing: before resetting log, Send log to S3!
+
+                    //Missing: end
+                    //resetting the log for next customer:
+                    strLog = "";
+                    listVisits.Clear();
+
+                }
+            }
+            else
             {
-                // Missing: before resetting log, Send log to S3!
-                strLog = "";
-                listVisits.Clear();
-            };
-
-            listVisits.Add(Form.ActiveForm.Name);
-            iFormCount = listVisits.Where(s => s == Form.ActiveForm.Name).Count();
-            strLog += "\n" + "========================"
-                       + "\n" + "Form: " + Form.ActiveForm.Name
-                       + "\n" + "Operation: " + ((Button)sender).Name
-                       + "\n" + "Battery life: " + battery.charge + "% " + (DateTime.Now).ToString()
-                       + "\n" + "# of form visits: " + (iFormCount).ToString() + " " + (DateTime.Now).ToString()
-                       + "\n" + "Ping: " + (networkConnection.Pinger("stackoverflow.com", 5)).ToString() + " " + (DateTime.Now).ToString();
+                listVisits.Add(Form.ActiveForm.Name);
+                iFormCount = listVisits.Where(s => s == Form.ActiveForm.Name).Count();
+                strLog += "\n" + "========================"
+                           + "\n" + "Date and time: " + (DateTime.Now).ToString()
+                           + "\n" + "Form: " + Form.ActiveForm.Name
+                           + "\n" + "Operation: Logtext: " + strAdditionalLogtext
+                           + "\n" + "Battery life: " + battery.charge + "% "
+                           + "\n" + "# of form visits: " + (iFormCount).ToString()
+                           + "\n" + "Ping: " + (networkConnection.Pinger("stackoverflow.com", 5)).ToString();
+            }
 
 
+            //AutoClosingMessageBox.Show(strLog, "Info", 5000, Parent: Form.ActiveForm);
+            System.Diagnostics.Debug.WriteLine(strLog);
+            
             return true;
         }
 

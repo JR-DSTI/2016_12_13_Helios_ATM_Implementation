@@ -81,41 +81,55 @@ namespace Helios_ATM
             if (Int32.Parse(Lib.getBalance()) < balance)
             {
                 MessageBox.Show("Sorry, but ur broke dude.");
-                withdraw=false;
+                //update s3log:
+                s3log.logOperation(null , "Blocked withdrawal due to unsufficient account balance.");
+
+                withdraw =false;
 
             }
             else
             {
                 String strBalance = Lib.getBalance();
-                double newBalance=Int32.Parse(strBalance)-500;
+                double newBalance=Int32.Parse(strBalance)- balance;
                 Lib.update("1111", false, newBalance);
                 Lib.getBalance();
                 withdrawPrintReceipt(balance);
+                withdraw = true;
+                s3log.logOperation(null, "Withdrawal success.");
+
             }
         }
         private void withdrawPrintReceipt(int WithdrawAmount)
         {
             //Dispense WithdrawAmount
-            AutoClosingMessageBox.Show("Requested amount of " + WithdrawAmount + " Pesos is available in slot now","Info", 1500, this);        
-            
+            AutoClosingMessageBox.Show("Requested amount of " + WithdrawAmount + " Pesos is available in slot now","Info", 1500, this);
+            s3log.logOperation(null, "Withdrawal success: " + WithdrawAmount + " Pesos given out in slot.");
+
             //Ask & send receipt
 
             var result = MetroMessageBox.Show(this, "Do you want to print a receipt?","Receipt" , MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
+                s3log.logOperation(null, "Receipt printing requested.");
+
                 //Doing Assans AWS Printing magic here
-                String body=headz(WithdrawAmount);
+                String body =headz(WithdrawAmount);
                 String title = "Thank you for using HELIOS Banking";
                 Lib.sendMail(title, body);
                 AutoClosingMessageBox.Show("Finished AWS printing magic." , "Info", 1500, this);
+
             }
            
                 //Asking for Performing other transaction
                 result = MetroMessageBox.Show(this, "Do you to perform another transaction?", "Return to main menu", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    
+                    s3log.logOperation(null, "User requested another transaction.");
+
+                    //stop the BatteryNetworkTimer
+                    this.BatteryNetworkTimer.Stop();
+
                     //Return to main menu for other transaction
                     Form ATM6 = new ATM6(); // Instantiate a Form object.
                     ATM6.Show(); //show the new Form
@@ -126,9 +140,12 @@ namespace Helios_ATM
                 else
                 {
                     AutoClosingMessageBox.Show("Finished current operation. Ejecting card and restarting...", "Restarting", 1500, this);
-                     //return to initial screen 
+                    //return to initial screen 
 
-                     Form ATM1 = new ATM1(); // Instantiate a Form object.
+                    //stop the BatteryNetworkTimer
+                    this.BatteryNetworkTimer.Stop();
+
+                    Form ATM1 = new ATM1(); // Instantiate a Form object.
                     ATM1.Show(); //show the new Form
 
                     this.Visible = false;  //Hide the old form
@@ -193,7 +210,7 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
 
-            check_and_pay(20);
+            check_and_pay(10);
         }
 
         private void WithdrawOther_Click(object sender, EventArgs e)

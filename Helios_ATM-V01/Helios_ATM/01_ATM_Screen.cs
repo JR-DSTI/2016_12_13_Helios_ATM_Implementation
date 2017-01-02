@@ -55,6 +55,7 @@ namespace Helios_ATM
             this.BatteryCharge.Value = battery.charge;
             this.BatteryNetworkTimer.Start();
         }
+        
         //Quick jump to current Form:
         private void metroButton1_Click(object sender, EventArgs e)
         {

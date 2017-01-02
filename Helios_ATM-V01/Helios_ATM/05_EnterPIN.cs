@@ -89,14 +89,14 @@ namespace Helios_ATM
             {
                 AutoClosingMessageBox.Show("No attempts left, no money for you, your card is being captured.", "Bad news", 2000, Parent: Form.ActiveForm);
                 PINentries = 3;
-                blocked=true;     
+                blocked=true;
+                
                 //update s3log:
-                        
+                s3log.logOperation(null, "PIN entries blocked.");
+
                 this.Close();
             }
-
             
-
             //if not CHAR then continue
             else if (!PIN.Any(char.IsLetter)) //Continue if PIN contains only numeric
             {
@@ -112,6 +112,9 @@ namespace Helios_ATM
                     
                     //delayed mesgbx
                     AutoClosingMessageBox.Show("PIN entry successful!", "Success", 2000, Parent: Form.ActiveForm);
+                    
+                    //update s3log:
+                    s3log.logOperation(null, "PIN entry success.");
 
                     //next screen after messagebox
                     Form ATM6 = new ATM6(); // Instantiate a Form object.
@@ -130,7 +133,8 @@ namespace Helios_ATM
                     
                     //if incorrect PIN:
                     AutoClosingMessageBox.Show("PIN entry not successful, retry! Left attempts: " + Convert.ToString(3 - PINentries), "Retry!", 2000, Parent: Form.ActiveForm);
-                    
+                    s3log.logOperation(null, "PIN entry fail, left attempts: " + Convert.ToString(3 - PINentries));
+
                     //Resetting the PIN:
                     PIN = "";
 
@@ -144,6 +148,8 @@ namespace Helios_ATM
                    
                     //3 times Wrong PIN entry:
                     AutoClosingMessageBox.Show("Last PIN entry not successful, no attempts left, no money for you, your card is being captured.", "Success", 2000, Parent: Form.ActiveForm);
+                    s3log.logOperation(null, "Third PIN entry failure. PIN blocked.");
+
                     PIN = "";
                     this.Close(); //return;
 
