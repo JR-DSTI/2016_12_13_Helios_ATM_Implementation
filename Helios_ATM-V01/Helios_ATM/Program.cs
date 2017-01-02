@@ -87,20 +87,25 @@ namespace Helios_ATM
 
 
 
-        public void discharge(MetroFramework.Controls.MetroProgressBar BatteryCharge)
+        public static void discharge(MetroFramework.Controls.MetroProgressBar BatteryCharge)
         {
+            //iff the usecase battery source was chosen:
 
-            if (charge > 0)
+            if (useCaseVariables.bCheckBoxPowerSourceBattery)
             {
-                BatteryCharge.Value -= decrement;
-                charge = BatteryCharge.Value;
+                if (charge > 0)
+                {
+                    BatteryCharge.Value -= decrement;
+                    charge = BatteryCharge.Value;
+                }
+                else
+                {
+                    AutoClosingMessageBox.Show("The ATM is running out of power. Disconnecting...", "Low energy", 1500, Form.ActiveForm);
+                    //charge = 100;
+                    Environment.Exit(0);
+                }
             }
-            else
-            {
-                AutoClosingMessageBox.Show("The ATM is running out of power. Disconnecting... and recharging.", "Low energy", 1500, Form.ActiveForm);
-                //charge = 100;
-                Environment.Exit(0);
-            }
+           
            
         }
     }

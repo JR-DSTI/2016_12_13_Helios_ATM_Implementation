@@ -14,3 +14,4 @@ Battery life: 97% 31.12.2016 12:07:49
 Card Inserted 31.12.2016 12:22:12
 Card Inserted 31.12.2016 12:49:38
 Card Inserted 02.01.2017 08:15:08
+Card Inserted 02.01.2017 08:53:30

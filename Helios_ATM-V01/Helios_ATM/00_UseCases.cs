@@ -127,24 +127,24 @@ namespace Helios_ATM
             
         }
 
-        public void discharge()
-        {
-            if (BatteryCharge.Value > 0)
-                {
-                BatteryCharge.Value -= battery.decrement;
-                battery.charge= BatteryCharge.Value;
-            }
-            else
-            {
-                AutoClosingMessageBox.Show("The ATM is running out of power. Disconnecting... and recharging.", "Low energy", 1500, this);
-                battery.charge = 100;
-                //Environment.Exit(0);
-            }
-        }
+        //public void discharge()
+        //{
+        //    if (BatteryCharge.Value > 0)
+        //        {
+        //        BatteryCharge.Value -= battery.decrement;
+        //        battery.charge= BatteryCharge.Value;
+        //    }
+        //    else
+        //    {
+        //        AutoClosingMessageBox.Show("The ATM is running out of power. Disconnecting... and recharging.", "Low energy", 1500, this);
+        //        battery.charge = 100;
+        //        //Environment.Exit(0);
+        //    }
+        //}
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            this.discharge();
+            battery.discharge(this.BatteryCharge);
         }
 
         private void metroButton2_Click(object sender, EventArgs e)

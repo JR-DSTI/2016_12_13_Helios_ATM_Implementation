@@ -329,7 +329,7 @@ namespace Helios_ATM
         //function send email (=receipt)
         public static void sendMail(String subject, String body)
         {
-            string strTOAddress = useCaseVariables.strNotificationAddress;// "";
+            string strTOAddress = useCaseVariables.strNotificationAddress;// ;
             const String FROM = "assansanogo@gmail.com";          // Replace with your "From" address. This address must be verified.
             string TO = strTOAddress;// = jonas.rathke@edu.dsti.institute";  // Replace with a "To" address. If your account is still in the
                                                      // sandbox, this address must be verified.
