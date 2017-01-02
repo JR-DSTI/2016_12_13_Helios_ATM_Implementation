@@ -44,7 +44,7 @@ namespace Helios_ATM
             Form ATM3 = new ATM3(); // Instantiate a Form object.
             ATM3.Show(); //show the new Form
             WelcomeTimer.Stop();
-            this.timer2.Stop();
+            this.BatteryNetworkTimer.Stop();
 
             //hide the old form
             this.Visible = false;  //Hide the old form
@@ -53,7 +53,7 @@ namespace Helios_ATM
         private void ATM1_Load(object sender, EventArgs e)
         {
             this.BatteryCharge.Value = battery.charge;
-            this.timer2.Start();
+            this.BatteryNetworkTimer.Start();
         }
         //Quick jump to current Form:
         private void metroButton1_Click(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace Helios_ATM
 
             MetroFramework.Forms.MetroForm ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
-            this.timer2.Stop();
+            this.BatteryNetworkTimer.Stop();
 
             this.Visible = false;  //Hide the old form
         }
@@ -77,7 +77,7 @@ namespace Helios_ATM
             
         }
 
-        private void timer2_Tick(object sender, EventArgs e)
+        private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
         {
             battery.discharge(this.BatteryCharge);
             networkConnection.networkConnectionOK(this.NetworkSignal);

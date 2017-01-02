@@ -125,11 +125,33 @@ namespace Helios_ATM
             for (int i = 0; i < echoNum; i++)
             {
                 Ping pingSender = new Ping();
-                PingReply r = pingSender.Send(host, timeOut);
-                if (r.Status == IPStatus.Success)
+                try
                 {
-                    totalTime += r.RoundtripTime;
+                    PingReply r = pingSender.Send(host, timeOut);
+                    if (r.Status == IPStatus.Success)
+                    {
+                        totalTime += r.RoundtripTime;
+                    }
+
                 }
+                catch(Exception ex)
+                {
+                    AutoClosingMessageBox.Show("Problem. \n Error message: " + ex.Message, "ERROR", 5000, Parent: Form.ActiveForm);
+                    totalTime = 0;
+                    AutoClosingMessageBox.Show("Internal problems with the ATM. ((no network connection))", "Info", 1000, Parent: Form.ActiveForm);
+                    AutoClosingMessageBox.Show("Returning to initial screen.", "Info", 1000, Parent: Form.ActiveForm);
+                    //cancel to initial form, maybe not too necessary here
+                    Form ATM1 = new ATM1(); // Instantiate a Form object.
+                    ATM1.Show(); //show the new Form
+                    //Form.ActiveForm.log(false);
+                    Form.ActiveForm.Visible = false;  //Hide the old form
+                                           //Log current operation:
+                    //s3log.logOperation(sender);
+
+                    return (totalTime / echoNum);
+
+                }
+
             }
             return (totalTime / echoNum);
         }

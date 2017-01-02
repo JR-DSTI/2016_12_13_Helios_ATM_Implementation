@@ -17,3 +17,5 @@ Card Inserted 02.01.2017 08:15:08
 Card Inserted 02.01.2017 08:53:30
 Card Inserted 02.01.2017 09:00:35
 Card Inserted 02.01.2017 09:38:26
+Card Not Inserted 02.01.2017 00:00:00
+Battery life: 97% 02.01.2017 10:56:54

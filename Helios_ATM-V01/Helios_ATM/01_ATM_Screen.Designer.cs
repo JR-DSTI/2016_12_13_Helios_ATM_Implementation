@@ -41,7 +41,7 @@
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.label3 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,10 +135,10 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Initializing...";
             // 
-            // timer2
+            // BatteryNetworkTimer
             // 
-            this.timer2.Interval = 1000;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.BatteryNetworkTimer.Interval = 1000;
+            this.BatteryNetworkTimer.Tick += new System.EventHandler(this.BatteryNetworkTimer_Tick);
             // 
             // ATM1
             // 
@@ -181,7 +181,7 @@
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer BatteryNetworkTimer;
     }
 }
 

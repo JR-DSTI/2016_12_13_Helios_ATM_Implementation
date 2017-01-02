@@ -523,7 +523,7 @@ namespace Helios_ATM
                        + "\n" + "Operation: " + ((Button)sender).Name
                        + "\n" + "Battery life: " + battery.charge + "% " + (DateTime.Now).ToString()
                        + "\n" + "# of form visits: " + (iFormCount).ToString() + " " + (DateTime.Now).ToString()
-                       + "\n" + "Ping: " + (Lib.Pinger()).ToString() + " " + (DateTime.Now).ToString();
+                       + "\n" + "Ping: " + (networkConnection.Pinger("stackoverflow.com", 5)).ToString() + " " + (DateTime.Now).ToString();
 
 
             return true;
