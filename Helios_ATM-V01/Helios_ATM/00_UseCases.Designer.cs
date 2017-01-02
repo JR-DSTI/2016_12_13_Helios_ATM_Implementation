@@ -38,6 +38,11 @@
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.CheckBoxZeroCash = new MetroFramework.Controls.MetroCheckBox();
+            this.CheckBoxPowerSourceBattery = new MetroFramework.Controls.MetroCheckBox();
+            this.CheckBoxPINEntriesExhausted = new MetroFramework.Controls.MetroCheckBox();
+            this.UseCaseLabel = new MetroFramework.Controls.MetroLabel();
+            this.CheckBoxNetworkConnectionUnstable = new MetroFramework.Controls.MetroCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,6 +99,56 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // CheckBoxZeroCash
+            // 
+            this.CheckBoxZeroCash.AutoSize = true;
+            this.CheckBoxZeroCash.Location = new System.Drawing.Point(229, 242);
+            this.CheckBoxZeroCash.Name = "CheckBoxZeroCash";
+            this.CheckBoxZeroCash.Size = new System.Drawing.Size(149, 17);
+            this.CheckBoxZeroCash.TabIndex = 11;
+            this.CheckBoxZeroCash.Text = "Zero cash on account";
+            this.CheckBoxZeroCash.UseSelectable = true;
+            // 
+            // CheckBoxPowerSourceBattery
+            // 
+            this.CheckBoxPowerSourceBattery.AutoSize = true;
+            this.CheckBoxPowerSourceBattery.Location = new System.Drawing.Point(229, 277);
+            this.CheckBoxPowerSourceBattery.Name = "CheckBoxPowerSourceBattery";
+            this.CheckBoxPowerSourceBattery.Size = new System.Drawing.Size(151, 17);
+            this.CheckBoxPowerSourceBattery.TabIndex = 12;
+            this.CheckBoxPowerSourceBattery.Text = "Power source: battery";
+            this.CheckBoxPowerSourceBattery.UseSelectable = true;
+            // 
+            // CheckBoxPINEntriesExhausted
+            // 
+            this.CheckBoxPINEntriesExhausted.AutoSize = true;
+            this.CheckBoxPINEntriesExhausted.Location = new System.Drawing.Point(229, 312);
+            this.CheckBoxPINEntriesExhausted.Name = "CheckBoxPINEntriesExhausted";
+            this.CheckBoxPINEntriesExhausted.Size = new System.Drawing.Size(169, 17);
+            this.CheckBoxPINEntriesExhausted.TabIndex = 13;
+            this.CheckBoxPINEntriesExhausted.Text = "No more PIN entries left.";
+            this.CheckBoxPINEntriesExhausted.UseSelectable = true;
+            // 
+            // UseCaseLabel
+            // 
+            this.UseCaseLabel.AutoSize = true;
+            this.UseCaseLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.UseCaseLabel.Location = new System.Drawing.Point(35, 97);
+            this.UseCaseLabel.Name = "UseCaseLabel";
+            this.UseCaseLabel.Size = new System.Drawing.Size(429, 25);
+            this.UseCaseLabel.TabIndex = 14;
+            this.UseCaseLabel.Text = "Choose the use case for the upcoming ATM screens:";
+            // 
+            // CheckBoxNetworkConnectionUnstable
+            // 
+            this.CheckBoxNetworkConnectionUnstable.AutoSize = true;
+            this.CheckBoxNetworkConnectionUnstable.Location = new System.Drawing.Point(229, 355);
+            this.CheckBoxNetworkConnectionUnstable.Name = "CheckBoxNetworkConnectionUnstable";
+            this.CheckBoxNetworkConnectionUnstable.Size = new System.Drawing.Size(195, 17);
+            this.CheckBoxNetworkConnectionUnstable.TabIndex = 15;
+            this.CheckBoxNetworkConnectionUnstable.Text = "Unstable network connection.";
+            this.CheckBoxNetworkConnectionUnstable.UseSelectable = true;
+            // 
             // ATM0
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -102,6 +157,11 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(516, 544);
             this.ControlBox = false;
+            this.Controls.Add(this.CheckBoxNetworkConnectionUnstable);
+            this.Controls.Add(this.UseCaseLabel);
+            this.Controls.Add(this.CheckBoxPINEntriesExhausted);
+            this.Controls.Add(this.CheckBoxPowerSourceBattery);
+            this.Controls.Add(this.CheckBoxZeroCash);
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
             this.Controls.Add(this.label1);
@@ -128,6 +188,11 @@
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private MetroFramework.Controls.MetroCheckBox CheckBoxZeroCash;
+        private MetroFramework.Controls.MetroCheckBox CheckBoxPowerSourceBattery;
+        private MetroFramework.Controls.MetroCheckBox CheckBoxPINEntriesExhausted;
+        private MetroFramework.Controls.MetroLabel UseCaseLabel;
+        private MetroFramework.Controls.MetroCheckBox CheckBoxNetworkConnectionUnstable;
     }
 }
 

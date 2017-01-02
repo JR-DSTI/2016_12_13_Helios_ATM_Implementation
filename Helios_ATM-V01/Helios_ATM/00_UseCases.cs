@@ -27,37 +27,46 @@ namespace Helios_ATM
             //this.WelcomeProgressBar.Increment(10);  
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private  void button1_Click(object sender, EventArgs e)
         {
-            //timer to extend waiting and system setup :
-            this.WelcomeTimer.Start();
-            this.timer2.Start();
-           // this.WelcomeProgressBar.Visible = true;
+            
 
             //Log current operation:
             s3log.logOperation(sender);
 
-            //"await" needs the async in the function declaration and equals "Sleep"
-            await Task.Delay(2000);
+            //useCaseVariables.strNotificationAddress = EmailTextBox.Text;
+            useCaseVariables.bCheckBoxPowerSourceBattery = CheckBoxPowerSourceBattery.Checked;
+            useCaseVariables.bCheckBoxPINEntriesExhausted = CheckBoxPINEntriesExhausted.Checked;
+            useCaseVariables.bCheckBoxNetworkConnectionUnstable = CheckBoxNetworkConnectionUnstable.Checked;
+            useCaseVariables.bCheckBoxZeroCash = CheckBoxZeroCash.Checked;
 
-            //MetroFramework.MetroMessageBox.Show(this, (Pinger("stackoverflow.com", 4)).ToString());
-            if (Pinger("stackoverflow.com", 5) > 129)
-            {
-                MetroFramework.MetroMessageBox.Show(this, "the connection is lost"); // this = current form        
-                //this.WelcomeProgressBar.Value = 0;
-                WelcomeTimer.Stop();
-                this.timer2.Stop();
-            }
-            else
-            {
-                //start the next form
-                Form ATM3 = new ATM3(); // Instantiate a Form object.
-                ATM3.Show(); //show the new Form
-                WelcomeTimer.Stop();
+            //start the First form
+            Form ATM1 = new ATM1(); // Instantiate a Form object.
+            ATM1.Show(); //show the new Form
 
-                //hide the old form
-                this.Visible = false;  //Hide the old form
-            }
+            //hide the old form
+            this.Visible = false;  //Hide the old form
+
+
+
+            ////MetroFramework.MetroMessageBox.Show(this, (Pinger("stackoverflow.com", 4)).ToString());
+            //if (Pinger("stackoverflow.com", 5) > 129)
+            //{
+            //    MetroFramework.MetroMessageBox.Show(this, "the connection is lost"); // this = current form        
+            //    //this.WelcomeProgressBar.Value = 0;
+            //    WelcomeTimer.Stop();
+            //    this.timer2.Stop();
+            //}
+            //else
+            //{
+            //    //start the next form
+            //    Form ATM3 = new ATM3(); // Instantiate a Form object.
+            //    ATM3.Show(); //show the new Form
+            //    WelcomeTimer.Stop();
+
+            //    //hide the old form
+            //    this.Visible = false;  //Hide the old form
+            //}
 
         }
         private void ATM0_Load(object sender, EventArgs e)
