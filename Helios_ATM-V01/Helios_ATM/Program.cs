@@ -20,7 +20,7 @@ namespace Helios_ATM
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Variables.strLog = "";
-            Application.Run(new ATM1());
+            Application.Run(new ATM0());
         }
         
     }

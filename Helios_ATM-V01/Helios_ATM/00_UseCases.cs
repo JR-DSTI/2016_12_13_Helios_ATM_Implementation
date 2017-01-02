@@ -24,7 +24,7 @@ namespace Helios_ATM
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.WelcomeProgressBar.Increment(10);  
+            //this.WelcomeProgressBar.Increment(10);  
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace Helios_ATM
             //timer to extend waiting and system setup :
             this.WelcomeTimer.Start();
             this.timer2.Start();
-            this.WelcomeProgressBar.Visible = true;
+           // this.WelcomeProgressBar.Visible = true;
 
             //Log current operation:
             s3log.logOperation(sender);
@@ -44,7 +44,7 @@ namespace Helios_ATM
             if (Pinger("stackoverflow.com", 5) > 129)
             {
                 MetroFramework.MetroMessageBox.Show(this, "the connection is lost"); // this = current form        
-                this.WelcomeProgressBar.Value = 0;
+                //this.WelcomeProgressBar.Value = 0;
                 WelcomeTimer.Stop();
                 this.timer2.Stop();
             }
