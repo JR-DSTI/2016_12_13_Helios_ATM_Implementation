@@ -42,7 +42,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,16 +140,6 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // metroButton2
-            // 
-            this.metroButton2.Location = new System.Drawing.Point(96, 357);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(125, 44);
-            this.metroButton2.TabIndex = 12;
-            this.metroButton2.Text = "Test";
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
-            // 
             // ATM1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -159,7 +148,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(516, 544);
             this.ControlBox = false;
-            this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
@@ -194,7 +182,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
-        private MetroFramework.Controls.MetroButton metroButton2;
     }
 }
 

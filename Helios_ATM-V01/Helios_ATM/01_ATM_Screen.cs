@@ -31,7 +31,7 @@ namespace Helios_ATM
         {
             //timer to extend waiting and system setup :
             this.WelcomeTimer.Start();
-            this.timer2.Start();
+            this.timer1.Start();
             this.WelcomeProgressBar.Visible = true;
 
             //Log current operation:
@@ -44,6 +44,7 @@ namespace Helios_ATM
             Form ATM3 = new ATM3(); // Instantiate a Form object.
             ATM3.Show(); //show the new Form
             WelcomeTimer.Stop();
+            this.timer2.Stop();
 
             //hide the old form
             this.Visible = false;  //Hide the old form
@@ -52,24 +53,11 @@ namespace Helios_ATM
         private void ATM1_Load(object sender, EventArgs e)
         {
             this.BatteryCharge.Value = battery.charge;
-            //battery.form1visit += 1;
-            //using (StreamWriter sr = new StreamWriter(@"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt"))
-            //{     
-            //    sr.WriteLine("Battery life: "+battery.charge +"% "+ (DateTime.Now).ToString());
-            //    sr.WriteLine("visit to Main Menu: "+ (battery.form1visit).ToString()+ (DateTime.Now).ToString());
-            //}
+            this.timer2.Start();
         }
         //Quick jump to current Form:
         private void metroButton1_Click(object sender, EventArgs e)
         {
-
-            //if (Pinger("stackoverflow.com", 5) > 29)
-            //{
-
-            //    MetroFramework.MetroMessageBox.Show(this, "the connection is lost");
-            //}
-            //else
-            //{
 
             MetroFramework.Forms.MetroForm ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
@@ -84,34 +72,15 @@ namespace Helios_ATM
 
         }
 
-
-       
-
         private void BatteryCharge_Click(object sender, EventArgs e)
         {
             
         }
 
-        //public void discharge()
-        //{
-        //    if (BatteryCharge.Value > 0)
-        //        {
-        //        BatteryCharge.Value -= battery.decrement;
-        //        battery.charge= BatteryCharge.Value;
-        //    }
-        //    else
-        //    {
-        //        AutoClosingMessageBox.Show("The ATM is running out of power. Disconnecting... and recharging.", "Low energy", 1500, this);
-        //        battery.charge = 100;
-        //        //Environment.Exit(0);
-        //    }
-        //}
-
         private void timer2_Tick(object sender, EventArgs e)
         {
             battery.discharge(this.BatteryCharge);
-            networkConnection.networkConnectionOK();
-
+            networkConnection.networkConnectionOK(this.NetworkSignal);
         }
 
         private void metroButton2_Click(object sender, EventArgs e)

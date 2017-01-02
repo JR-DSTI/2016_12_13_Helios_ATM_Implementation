@@ -91,6 +91,8 @@ namespace Helios_ATM
 
         public static void discharge(MetroFramework.Controls.MetroProgressBar BatteryCharge)
         {
+            BatteryCharge.Value=charge;
+
             //iff the usecase battery source was chosen:
 
             if (useCaseVariables.bCheckBoxPowerSourceBattery)
@@ -115,7 +117,7 @@ namespace Helios_ATM
     public class networkConnection
     {
 
-        public double Pinger(string host, int echoNum)
+        public static double Pinger(string host, int echoNum)
         {
 
             long totalTime = 0;
@@ -132,23 +134,31 @@ namespace Helios_ATM
             return (totalTime / echoNum);
         }
 
-        public static bool networkConnectionOK()
+        public static bool networkConnectionOK(MetroFramework.Controls.MetroProgressSpinner NetworkSignal)
         {
             //iff the usecase bad network connection was chosen:
+            if (useCaseVariables.bCheckBoxNetworkConnectionUnstable)
+            { 
+                //MetroFramework.MetroMessageBox.Show(this, (Pinger("stackoverflow.com", 4)).ToString());
+                if (Pinger("stackoverflow.com", 5) > 100)
+                {
+                    MetroFramework.MetroMessageBox.Show(Form.ActiveForm, "The connection is lost"); // this = current form        
+                    return false;
+                    //this.WelcomeProgressBar.Value = 0;
+                    //WelcomeTimer.Stop();
+                    //this.timer2.Stop();
+                }
+                else
+                {
+                    NetworkSignal.Value =Convert.ToInt32(Pinger("stackoverflow.com", 5));
+                    return true;
 
-            //MetroFramework.MetroMessageBox.Show(this, (Pinger("stackoverflow.com", 4)).ToString());
-            if (Pinger("stackoverflow.com", 5) > 129)
-            {
-                MetroFramework.MetroMessageBox.Show(Form.ActiveForm, "the connection is lost"); // this = current form        
-                return false;
-                //this.WelcomeProgressBar.Value = 0;
-                //WelcomeTimer.Stop();
-                //this.timer2.Stop();
+                }
             }
             else
             {
                 return true;
             }
-    }
+        }
     }
 }
