@@ -38,7 +38,7 @@ namespace Helios_ATM
         }
         private void ATM0_Load(object sender, EventArgs e)
         {
-            this.BatteryCharge.Value = Lib2.charge;
+            this.BatteryCharge.Value = battery.charge;
 
         }
         //Quick jump to current Form:
@@ -81,7 +81,7 @@ namespace Helios_ATM
         private void timer2_Tick(object sender, EventArgs e)
         {
             //if batterymode==True then:
-            this.discharge();
+            //this.discharge();
         }
 
         private void metroButton2_Click(object sender, EventArgs e)

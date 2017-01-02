@@ -34,7 +34,7 @@ namespace Helios_ATM
 
         private void ATM3_Load(object sender, EventArgs e)
         {
-            BatteryCharge.Value = Lib2.charge;
+            BatteryCharge.Value = battery.charge;
             this.timer1.Start();
         }
 
@@ -104,8 +104,8 @@ namespace Helios_ATM
         {
             if (BatteryCharge.Value > 1)
             {
-                BatteryCharge.Value -= Lib2.decrement;
-                Lib2.charge = BatteryCharge.Value;
+                BatteryCharge.Value -= battery.decrement;
+                battery.charge = BatteryCharge.Value;
             }
             else
             {
@@ -131,7 +131,7 @@ namespace Helios_ATM
                
                 string path = @"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt";
                 string appendText = "Card Not Inserted" + " " + (DateTime.Today).ToString() + Environment.NewLine;
-                string appendText2 = "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString() + Environment.NewLine;
+                string appendText2 = "Battery life: " + battery.charge + "% " + (DateTime.Now).ToString() + Environment.NewLine;
 
                 File.AppendAllText(path, appendText);
                 File.AppendAllText(path, appendText2);
@@ -142,8 +142,8 @@ namespace Helios_ATM
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Variables.strLog = Variables.strLog + "\n" + "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString();
-            //Variables.strLog = Variables.strLog + "\n" + "visit to Main Menu: " + (Lib2.form1visit).ToString() + " " + (DateTime.Now).ToString();
+            //Variables.strLog = Variables.strLog + "\n" + "Battery life: " + battery.charge + "% " + (DateTime.Now).ToString();
+            //Variables.strLog = Variables.strLog + "\n" + "visit to Main Menu: " + (battery.form1visit).ToString() + " " + (DateTime.Now).ToString();
             //MetroFramework.MetroMessageBox.Show(this, Variables.strLog);
 
         }

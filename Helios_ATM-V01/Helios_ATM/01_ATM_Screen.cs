@@ -62,12 +62,12 @@ namespace Helios_ATM
         }
         private void ATM1_Load(object sender, EventArgs e)
         {
-            this.BatteryCharge.Value = Lib2.charge;
-            //Lib2.form1visit += 1;
+            this.BatteryCharge.Value = battery.charge;
+            //battery.form1visit += 1;
             //using (StreamWriter sr = new StreamWriter(@"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt"))
             //{     
-            //    sr.WriteLine("Battery life: "+Lib2.charge +"% "+ (DateTime.Now).ToString());
-            //    sr.WriteLine("visit to Main Menu: "+ (Lib2.form1visit).ToString()+ (DateTime.Now).ToString());
+            //    sr.WriteLine("Battery life: "+battery.charge +"% "+ (DateTime.Now).ToString());
+            //    sr.WriteLine("visit to Main Menu: "+ (battery.form1visit).ToString()+ (DateTime.Now).ToString());
             //}
         }
         //Quick jump to current Form:
@@ -122,13 +122,13 @@ namespace Helios_ATM
         {
             if (BatteryCharge.Value > 0)
                 {
-                BatteryCharge.Value -= Lib2.decrement;
-                Lib2.charge= BatteryCharge.Value;
+                BatteryCharge.Value -= battery.decrement;
+                battery.charge= BatteryCharge.Value;
             }
             else
             {
                 AutoClosingMessageBox.Show("The ATM is running out of power. Disconnecting... and recharging.", "Low energy", 1500, this);
-                Lib2.charge = 100;
+                battery.charge = 100;
                 //Environment.Exit(0);
             }
         }

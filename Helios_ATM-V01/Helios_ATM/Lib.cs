@@ -521,7 +521,7 @@ namespace Helios_ATM
             strLog += "\n" + "========================"
                        + "\n" + "Form: " + Form.ActiveForm.Name
                        + "\n" + "Operation: " + ((Button)sender).Name
-                       + "\n" + "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString()
+                       + "\n" + "Battery life: " + battery.charge + "% " + (DateTime.Now).ToString()
                        + "\n" + "# of form visits: " + (iFormCount).ToString() + " " + (DateTime.Now).ToString()
                        + "\n" + "Ping: " + (Lib.Pinger()).ToString() + " " + (DateTime.Now).ToString();
 

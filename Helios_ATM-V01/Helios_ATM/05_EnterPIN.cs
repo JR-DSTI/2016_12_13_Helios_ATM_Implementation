@@ -238,7 +238,7 @@ namespace Helios_ATM
             {
                 string path = @"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt";
                 string appendText = "Correct Pin" + " " + (DateTime.Now).ToString() + Environment.NewLine;
-                string appendText2 = "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString() + Environment.NewLine;
+                string appendText2 = "Battery life: " + battery.charge + "% " + (DateTime.Now).ToString() + Environment.NewLine;
 
                 File.AppendAllText(path, appendText);
                 File.AppendAllText(path, appendText2);
@@ -248,7 +248,7 @@ namespace Helios_ATM
 
                 string path = @"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt";
                 string appendText = "Incorrect Pin:" + " " + (DateTime.Now).ToString() + Environment.NewLine;
-                string appendText2 = "Battery life: " + Lib2.charge + "% " + (DateTime.Now).ToString() + Environment.NewLine;
+                string appendText2 = "Battery life: " + battery.charge + "% " + (DateTime.Now).ToString() + Environment.NewLine;
 
                 File.AppendAllText(path, appendText);
                 File.AppendAllText(path, appendText2);
