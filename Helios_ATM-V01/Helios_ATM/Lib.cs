@@ -368,7 +368,7 @@ namespace Helios_ATM
                     }
                     catch (Exception ex)
                     {
-                        AutoClosingMessageBox.Show("The email was not sent! \n Error message: " + ex.Message, "ERROR", 1000, Parent: Form.ActiveForm);
+                        AutoClosingMessageBox.Show("The email was not sent! \n Error message: " + ex.Message, "ERROR", 10000, Parent: Form.ActiveForm);
                     }
                 }
             }

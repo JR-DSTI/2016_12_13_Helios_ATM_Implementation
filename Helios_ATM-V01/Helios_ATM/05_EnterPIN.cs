@@ -72,7 +72,7 @@ namespace Helios_ATM
             //checking whether PIN is correct:
             PIN = this.PinEntry.Text;
 
-            if (Lib.getBlocked())
+            if (Lib.getBlocked() & !useCaseVariables.bCheckBoxPINEntriesExhausted)
             {
                 AutoClosingMessageBox.Show("No attempts left, no money for you, your card is being captured.", "Bad news", 2000, Parent: Form.ActiveForm);
                 PINentries = 3;

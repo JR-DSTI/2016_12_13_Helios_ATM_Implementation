@@ -104,7 +104,7 @@
             // CheckBoxZeroCash
             // 
             this.CheckBoxZeroCash.AutoSize = true;
-            this.CheckBoxZeroCash.Location = new System.Drawing.Point(229, 242);
+            this.CheckBoxZeroCash.Location = new System.Drawing.Point(218, 169);
             this.CheckBoxZeroCash.Name = "CheckBoxZeroCash";
             this.CheckBoxZeroCash.Size = new System.Drawing.Size(149, 17);
             this.CheckBoxZeroCash.TabIndex = 11;
@@ -114,7 +114,7 @@
             // CheckBoxPowerSourceBattery
             // 
             this.CheckBoxPowerSourceBattery.AutoSize = true;
-            this.CheckBoxPowerSourceBattery.Location = new System.Drawing.Point(229, 277);
+            this.CheckBoxPowerSourceBattery.Location = new System.Drawing.Point(218, 214);
             this.CheckBoxPowerSourceBattery.Name = "CheckBoxPowerSourceBattery";
             this.CheckBoxPowerSourceBattery.Size = new System.Drawing.Size(151, 17);
             this.CheckBoxPowerSourceBattery.TabIndex = 12;
@@ -124,7 +124,7 @@
             // CheckBoxPINEntriesExhausted
             // 
             this.CheckBoxPINEntriesExhausted.AutoSize = true;
-            this.CheckBoxPINEntriesExhausted.Location = new System.Drawing.Point(229, 312);
+            this.CheckBoxPINEntriesExhausted.Location = new System.Drawing.Point(218, 259);
             this.CheckBoxPINEntriesExhausted.Name = "CheckBoxPINEntriesExhausted";
             this.CheckBoxPINEntriesExhausted.Size = new System.Drawing.Size(169, 17);
             this.CheckBoxPINEntriesExhausted.TabIndex = 13;
@@ -144,7 +144,7 @@
             // CheckBoxNetworkConnectionUnstable
             // 
             this.CheckBoxNetworkConnectionUnstable.AutoSize = true;
-            this.CheckBoxNetworkConnectionUnstable.Location = new System.Drawing.Point(229, 355);
+            this.CheckBoxNetworkConnectionUnstable.Location = new System.Drawing.Point(218, 304);
             this.CheckBoxNetworkConnectionUnstable.Name = "CheckBoxNetworkConnectionUnstable";
             this.CheckBoxNetworkConnectionUnstable.Size = new System.Drawing.Size(195, 17);
             this.CheckBoxNetworkConnectionUnstable.TabIndex = 15;

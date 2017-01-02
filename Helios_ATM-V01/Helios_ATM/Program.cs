@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using MetroFramework;
+using System.Net.NetworkInformation;
+
 
 namespace Helios_ATM
 {
@@ -108,5 +110,45 @@ namespace Helios_ATM
            
            
         }
+    }
+
+    public class networkConnection
+    {
+
+        public double Pinger(string host, int echoNum)
+        {
+
+            long totalTime = 0;
+            int timeOut = 120;
+            for (int i = 0; i < echoNum; i++)
+            {
+                Ping pingSender = new Ping();
+                PingReply r = pingSender.Send(host, timeOut);
+                if (r.Status == IPStatus.Success)
+                {
+                    totalTime += r.RoundtripTime;
+                }
+            }
+            return (totalTime / echoNum);
+        }
+
+        public static bool networkConnectionOK()
+        {
+            //iff the usecase bad network connection was chosen:
+
+            //MetroFramework.MetroMessageBox.Show(this, (Pinger("stackoverflow.com", 4)).ToString());
+            if (Pinger("stackoverflow.com", 5) > 129)
+            {
+                MetroFramework.MetroMessageBox.Show(Form.ActiveForm, "the connection is lost"); // this = current form        
+                return false;
+                //this.WelcomeProgressBar.Value = 0;
+                //WelcomeTimer.Stop();
+                //this.timer2.Stop();
+            }
+            else
+            {
+                return true;
+            }
+    }
     }
 }

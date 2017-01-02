@@ -40,24 +40,13 @@ namespace Helios_ATM
             //"await" needs the async in the function declaration and equals "Sleep"
             await Task.Delay(2000);
 
-            //MetroFramework.MetroMessageBox.Show(this, (Pinger("stackoverflow.com", 4)).ToString());
-            if (Pinger("stackoverflow.com", 5) > 129)
-            {
-                MetroFramework.MetroMessageBox.Show(this, "the connection is lost"); // this = current form        
-                this.WelcomeProgressBar.Value = 0;
-                WelcomeTimer.Stop();
-                this.timer2.Stop();
-            }
-            else
-            {
-                //start the next form
-                Form ATM3 = new ATM3(); // Instantiate a Form object.
-                ATM3.Show(); //show the new Form
-                WelcomeTimer.Stop();
+            //start the next form
+            Form ATM3 = new ATM3(); // Instantiate a Form object.
+            ATM3.Show(); //show the new Form
+            WelcomeTimer.Stop();
 
-                //hide the old form
-                this.Visible = false;  //Hide the old form
-            }
+            //hide the old form
+            this.Visible = false;  //Hide the old form
 
         }
         private void ATM1_Load(object sender, EventArgs e)
@@ -74,13 +63,13 @@ namespace Helios_ATM
         private void metroButton1_Click(object sender, EventArgs e)
         {
 
-            if (Pinger("stackoverflow.com", 5) > 29)
-            {
-   
-                MetroFramework.MetroMessageBox.Show(this, "the connection is lost");
-            }
-            else
-            {
+            //if (Pinger("stackoverflow.com", 5) > 29)
+            //{
+
+            //    MetroFramework.MetroMessageBox.Show(this, "the connection is lost");
+            //}
+            //else
+            //{
 
             MetroFramework.Forms.MetroForm ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
@@ -88,7 +77,7 @@ namespace Helios_ATM
 
             this.Visible = false;  //Hide the old form
         }
-    }
+    
 
         private void WelcomeProgressBar_Click(object sender, EventArgs e)
         {
@@ -96,22 +85,7 @@ namespace Helios_ATM
         }
 
 
-        public double Pinger(string host, int echoNum)
-        {
-  
-        long totalTime = 0;
-        int timeOut = 120;
-        for (int i=0; i<echoNum; i++)
-            {
-                Ping pingSender=new Ping();
-                PingReply r = pingSender.Send(host,timeOut);
-                if (r.Status==IPStatus.Success)
-                {
-                    totalTime += r.RoundtripTime;
-                }
-            }
-            return (totalTime / echoNum);
-        }
+       
 
         private void BatteryCharge_Click(object sender, EventArgs e)
         {
@@ -136,6 +110,8 @@ namespace Helios_ATM
         private void timer2_Tick(object sender, EventArgs e)
         {
             battery.discharge(this.BatteryCharge);
+            networkConnection.networkConnectionOK();
+
         }
 
         private void metroButton2_Click(object sender, EventArgs e)
