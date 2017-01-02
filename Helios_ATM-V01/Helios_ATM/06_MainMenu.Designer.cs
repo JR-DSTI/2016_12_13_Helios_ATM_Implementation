@@ -35,7 +35,7 @@ namespace Helios_ATM
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM6));
-            this.label1 = new System.Windows.Forms.Label();
+            this.MainMenuLabel1 = new System.Windows.Forms.Label();
             this.ConfirmMenuSelectionButton = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.BalanceEnquiryButton = new MetroFramework.Controls.MetroButton();
@@ -48,19 +48,19 @@ namespace Helios_ATM
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // MainMenuLabel1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.Cursor = System.Windows.Forms.Cursors.PanSouth;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(153, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 42);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Main menu";
+            this.MainMenuLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.MainMenuLabel1.AutoSize = true;
+            this.MainMenuLabel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.MainMenuLabel1.Cursor = System.Windows.Forms.Cursors.PanSouth;
+            this.MainMenuLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.MainMenuLabel1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenuLabel1.Location = new System.Drawing.Point(153, 12);
+            this.MainMenuLabel1.Name = "MainMenuLabel1";
+            this.MainMenuLabel1.Size = new System.Drawing.Size(195, 42);
+            this.MainMenuLabel1.TabIndex = 4;
+            this.MainMenuLabel1.Text = "Main menu";
             // 
             // ConfirmMenuSelectionButton
             // 
@@ -174,7 +174,7 @@ namespace Helios_ATM
             this.Controls.Add(this.AbortButton);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.ConfirmMenuSelectionButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.MainMenuLabel1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -279,7 +279,7 @@ namespace Helios_ATM
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label MainMenuLabel1;
         private MetroFramework.Controls.MetroButton ConfirmMenuSelectionButton;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroButton BalanceEnquiryButton;

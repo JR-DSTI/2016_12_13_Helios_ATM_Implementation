@@ -33,7 +33,7 @@
             this.CreditCardButton = new MetroFramework.Controls.MetroButton();
             this.WelcomeTimer = new System.Windows.Forms.Timer(this.components);
             this.WelcomeProgressBar = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
+            this.CheckForCardTypelabel1 = new System.Windows.Forms.Label();
             this.DebitCardButton = new MetroFramework.Controls.MetroButton();
             this.AbortButton = new MetroFramework.Controls.MetroButton();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
@@ -66,15 +66,15 @@
             this.WelcomeProgressBar.TabIndex = 3;
             this.WelcomeProgressBar.Visible = false;
             // 
-            // label1
+            // CheckForCardTypelabel1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(65, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(393, 48);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Check for card type...\r\n";
+            this.CheckForCardTypelabel1.AutoSize = true;
+            this.CheckForCardTypelabel1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CheckForCardTypelabel1.Location = new System.Drawing.Point(65, 26);
+            this.CheckForCardTypelabel1.Name = "CheckForCardTypelabel1";
+            this.CheckForCardTypelabel1.Size = new System.Drawing.Size(393, 48);
+            this.CheckForCardTypelabel1.TabIndex = 4;
+            this.CheckForCardTypelabel1.Text = "Check for card type...\r\n";
             // 
             // DebitCardButton
             // 
@@ -135,7 +135,7 @@
             this.Controls.Add(this.BatteryCharge);
             this.Controls.Add(this.AbortButton);
             this.Controls.Add(this.DebitCardButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.CheckForCardTypelabel1);
             this.Controls.Add(this.WelcomeProgressBar);
             this.Controls.Add(this.CreditCardButton);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -151,7 +151,7 @@
         #endregion
         private System.Windows.Forms.Timer WelcomeTimer;
         private System.Windows.Forms.ProgressBar WelcomeProgressBar;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label CheckForCardTypelabel1;
         private MetroFramework.Controls.MetroButton AbortButton;
         private MetroFramework.Controls.MetroButton CreditCardButton;
         private MetroFramework.Controls.MetroButton DebitCardButton;

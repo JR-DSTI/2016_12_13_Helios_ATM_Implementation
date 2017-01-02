@@ -32,7 +32,7 @@ namespace Helios_ATM
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM7a));
-            this.label1 = new System.Windows.Forms.Label();
+            this.ChooseWithdrawalAmountlabel1 = new System.Windows.Forms.Label();
             this.Withdraw500Button = new MetroFramework.Controls.MetroButton();
             this.Withdraw100Button = new MetroFramework.Controls.MetroButton();
             this.Withdraw20Button = new MetroFramework.Controls.MetroButton();
@@ -48,19 +48,19 @@ namespace Helios_ATM
             this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // label1
+            // ChooseWithdrawalAmountlabel1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.Cursor = System.Windows.Forms.Cursors.PanSouth;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(459, 42);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Choose amount to withdraw";
+            this.ChooseWithdrawalAmountlabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ChooseWithdrawalAmountlabel1.AutoSize = true;
+            this.ChooseWithdrawalAmountlabel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ChooseWithdrawalAmountlabel1.Cursor = System.Windows.Forms.Cursors.PanSouth;
+            this.ChooseWithdrawalAmountlabel1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ChooseWithdrawalAmountlabel1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChooseWithdrawalAmountlabel1.Location = new System.Drawing.Point(24, 25);
+            this.ChooseWithdrawalAmountlabel1.Name = "ChooseWithdrawalAmountlabel1";
+            this.ChooseWithdrawalAmountlabel1.Size = new System.Drawing.Size(459, 42);
+            this.ChooseWithdrawalAmountlabel1.TabIndex = 4;
+            this.ChooseWithdrawalAmountlabel1.Text = "Choose amount to withdraw";
             // 
             // Withdraw500Button
             // 
@@ -243,7 +243,7 @@ namespace Helios_ATM
             this.Controls.Add(this.Withdraw20Button);
             this.Controls.Add(this.Withdraw100Button);
             this.Controls.Add(this.Withdraw500Button);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ChooseWithdrawalAmountlabel1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -257,7 +257,7 @@ namespace Helios_ATM
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ChooseWithdrawalAmountlabel1;
         private MetroFramework.Controls.MetroButton AbortButton;
         private MetroFramework.Controls.MetroButton CancelButton;
         private MetroFramework.Controls.MetroButton Withdraw500Button;

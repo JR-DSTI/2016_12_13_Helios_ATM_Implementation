@@ -32,7 +32,7 @@ namespace Helios_ATM
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM9));
-            this.label1 = new System.Windows.Forms.Label();
+            this.EnquireBalanceLabel = new System.Windows.Forms.Label();
             this.CancelButton = new MetroFramework.Controls.MetroButton();
             this.CheckingsLabel = new MetroFramework.Controls.MetroLabel();
             this.SavingsLabel = new MetroFramework.Controls.MetroLabel();
@@ -46,18 +46,18 @@ namespace Helios_ATM
             this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // label1
+            // EnquireBalanceLabel
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(130, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(266, 42);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Enquire balance";
+            this.EnquireBalanceLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.EnquireBalanceLabel.AutoSize = true;
+            this.EnquireBalanceLabel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.EnquireBalanceLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.EnquireBalanceLabel.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnquireBalanceLabel.Location = new System.Drawing.Point(130, 30);
+            this.EnquireBalanceLabel.Name = "EnquireBalanceLabel";
+            this.EnquireBalanceLabel.Size = new System.Drawing.Size(266, 42);
+            this.EnquireBalanceLabel.TabIndex = 4;
+            this.EnquireBalanceLabel.Text = "Enquire balance";
             // 
             // CancelButton
             // 
@@ -187,7 +187,7 @@ namespace Helios_ATM
             this.Controls.Add(this.SavingsLabel);
             this.Controls.Add(this.CheckingsLabel);
             this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.EnquireBalanceLabel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -199,7 +199,7 @@ namespace Helios_ATM
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label EnquireBalanceLabel;
         private new MetroFramework.Controls.MetroButton CancelButton;
         private MetroFramework.Controls.MetroLabel CheckingsLabel;
         private MetroFramework.Controls.MetroLabel SavingsLabel;

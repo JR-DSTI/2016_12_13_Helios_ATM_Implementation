@@ -35,7 +35,7 @@ namespace Helios_ATM
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM5));
-            this.label1 = new System.Windows.Forms.Label();
+            this.EnterPINLabel1 = new System.Windows.Forms.Label();
             this.ConfirmPINentryButton = new MetroFramework.Controls.MetroButton();
             this.PinEntry = new System.Windows.Forms.TextBox();
             this.CancelButton = new MetroFramework.Controls.MetroButton();
@@ -59,19 +59,19 @@ namespace Helios_ATM
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // EnterPINLabel1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.Cursor = System.Windows.Forms.Cursors.PanSouth;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(63, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(358, 42);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Please enter your PIN.";
+            this.EnterPINLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.EnterPINLabel1.AutoSize = true;
+            this.EnterPINLabel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.EnterPINLabel1.Cursor = System.Windows.Forms.Cursors.PanSouth;
+            this.EnterPINLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.EnterPINLabel1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnterPINLabel1.Location = new System.Drawing.Point(63, 9);
+            this.EnterPINLabel1.Name = "EnterPINLabel1";
+            this.EnterPINLabel1.Size = new System.Drawing.Size(358, 42);
+            this.EnterPINLabel1.TabIndex = 4;
+            this.EnterPINLabel1.Text = "Please enter your PIN.";
             // 
             // ConfirmPINentryButton
             // 
@@ -336,7 +336,7 @@ namespace Helios_ATM
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.PinEntry);
             this.Controls.Add(this.ConfirmPINentryButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.EnterPINLabel1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -441,7 +441,7 @@ namespace Helios_ATM
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label EnterPINLabel1;
         private System.Windows.Forms.TextBox PinEntry;
         private new MetroFramework.Controls.MetroButton CancelButton;
         private MetroFramework.Controls.MetroButton ConfirmPINentryButton;

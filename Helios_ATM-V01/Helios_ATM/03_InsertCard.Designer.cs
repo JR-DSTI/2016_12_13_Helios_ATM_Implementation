@@ -32,7 +32,7 @@ namespace Helios_ATM
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM3));
-            this.label1 = new System.Windows.Forms.Label();
+            this.InsertCardLabel = new System.Windows.Forms.Label();
             this.CardInsertedButton = new MetroFramework.Controls.MetroButton();
             this.AbortCancelButton = new MetroFramework.Controls.MetroButton();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
@@ -42,18 +42,18 @@ namespace Helios_ATM
             this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // label1
+            // InsertCardLabel
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(63, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(374, 42);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Please insert your card.";
+            this.InsertCardLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.InsertCardLabel.AutoSize = true;
+            this.InsertCardLabel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.InsertCardLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.InsertCardLabel.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InsertCardLabel.Location = new System.Drawing.Point(63, 9);
+            this.InsertCardLabel.Name = "InsertCardLabel";
+            this.InsertCardLabel.Size = new System.Drawing.Size(374, 42);
+            this.InsertCardLabel.TabIndex = 4;
+            this.InsertCardLabel.Text = "Please insert your card.";
             // 
             // CardInsertedButton
             // 
@@ -131,7 +131,7 @@ namespace Helios_ATM
             this.Controls.Add(this.BatteryCharge);
             this.Controls.Add(this.AbortCancelButton);
             this.Controls.Add(this.CardInsertedButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.InsertCardLabel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -145,7 +145,7 @@ namespace Helios_ATM
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label InsertCardLabel;
         private new MetroFramework.Controls.MetroButton AbortCancelButton;
         private MetroFramework.Controls.MetroButton CardInsertedButton;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;

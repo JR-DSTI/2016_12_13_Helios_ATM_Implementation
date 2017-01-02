@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM8));
-            this.label1 = new System.Windows.Forms.Label();
+            this.ChangePINLabel = new System.Windows.Forms.Label();
             this.AbortButton = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.NumDeleteAll = new MetroFramework.Controls.MetroButton();
@@ -50,24 +50,24 @@
             this.ConfirmNewPinEntry = new System.Windows.Forms.TextBox();
             this.ConfirmPINentryButton = new MetroFramework.Controls.MetroButton();
             this.CancelButton = new MetroFramework.Controls.MetroButton();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.OldPINLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.NewPINLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.ReentryPINLabel3 = new MetroFramework.Controls.MetroLabel();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
             this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // ChangePINLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(145, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 48);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Change PIN";
+            this.ChangePINLabel.AutoSize = true;
+            this.ChangePINLabel.Font = new System.Drawing.Font("Microsoft JhengHei UI", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangePINLabel.Location = new System.Drawing.Point(145, 21);
+            this.ChangePINLabel.Name = "ChangePINLabel";
+            this.ChangePINLabel.Size = new System.Drawing.Size(232, 48);
+            this.ChangePINLabel.TabIndex = 4;
+            this.ChangePINLabel.Text = "Change PIN";
             // 
             // AbortButton
             // 
@@ -318,32 +318,32 @@
             this.CancelButton.UseSelectable = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
-            // metroLabel1
+            // OldPINLabel1
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(57, 103);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(57, 20);
-            this.metroLabel1.TabIndex = 20;
-            this.metroLabel1.Text = "Old PIN";
+            this.OldPINLabel1.AutoSize = true;
+            this.OldPINLabel1.Location = new System.Drawing.Point(57, 103);
+            this.OldPINLabel1.Name = "OldPINLabel1";
+            this.OldPINLabel1.Size = new System.Drawing.Size(57, 20);
+            this.OldPINLabel1.TabIndex = 20;
+            this.OldPINLabel1.Text = "Old PIN";
             // 
-            // metroLabel2
+            // NewPINLabel2
             // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(57, 202);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(64, 20);
-            this.metroLabel2.TabIndex = 21;
-            this.metroLabel2.Text = "New PIN";
+            this.NewPINLabel2.AutoSize = true;
+            this.NewPINLabel2.Location = new System.Drawing.Point(57, 202);
+            this.NewPINLabel2.Name = "NewPINLabel2";
+            this.NewPINLabel2.Size = new System.Drawing.Size(64, 20);
+            this.NewPINLabel2.TabIndex = 21;
+            this.NewPINLabel2.Text = "New PIN";
             // 
-            // metroLabel3
+            // ReentryPINLabel3
             // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(33, 304);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(114, 20);
-            this.metroLabel3.TabIndex = 22;
-            this.metroLabel3.Text = "Reenter new PIN";
+            this.ReentryPINLabel3.AutoSize = true;
+            this.ReentryPINLabel3.Location = new System.Drawing.Point(33, 304);
+            this.ReentryPINLabel3.Name = "ReentryPINLabel3";
+            this.ReentryPINLabel3.Size = new System.Drawing.Size(114, 20);
+            this.ReentryPINLabel3.TabIndex = 22;
+            this.ReentryPINLabel3.Text = "Reenter new PIN";
             // 
             // NetworkSignal
             // 
@@ -378,9 +378,9 @@
             this.ControlBox = false;
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
-            this.Controls.Add(this.metroLabel3);
-            this.Controls.Add(this.metroLabel2);
-            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.ReentryPINLabel3);
+            this.Controls.Add(this.NewPINLabel2);
+            this.Controls.Add(this.OldPINLabel1);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ConfirmPINentryButton);
             this.Controls.Add(this.ConfirmNewPinEntry);
@@ -388,7 +388,7 @@
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.OLDPinEntry);
             this.Controls.Add(this.AbortButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ChangePINLabel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -401,7 +401,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ChangePINLabel;
         private MetroFramework.Controls.MetroButton AbortButton;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroButton NumDeleteAll;
@@ -421,9 +421,9 @@
         private System.Windows.Forms.TextBox ConfirmNewPinEntry;
         private MetroFramework.Controls.MetroButton ConfirmPINentryButton;
         private MetroFramework.Controls.MetroButton CancelButton;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel OldPINLabel1;
+        private MetroFramework.Controls.MetroLabel NewPINLabel2;
+        private MetroFramework.Controls.MetroLabel ReentryPINLabel3;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
         private System.Windows.Forms.Timer BatteryNetworkTimer;

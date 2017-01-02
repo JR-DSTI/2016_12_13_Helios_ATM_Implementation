@@ -32,7 +32,7 @@ namespace Helios_ATM
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM4));
-            this.label1 = new System.Windows.Forms.Label();
+            this.ChooseLanguageLabel1 = new System.Windows.Forms.Label();
             this.EnglishButton = new MetroFramework.Controls.MetroButton();
             this.FrenchButton = new MetroFramework.Controls.MetroButton();
             this.MandarinButton = new MetroFramework.Controls.MetroButton();
@@ -46,19 +46,19 @@ namespace Helios_ATM
             this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // label1
+            // ChooseLanguageLabel1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.Cursor = System.Windows.Forms.Cursors.PanSouth;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(63, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(408, 42);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Please choose language. ";
+            this.ChooseLanguageLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ChooseLanguageLabel1.AutoSize = true;
+            this.ChooseLanguageLabel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ChooseLanguageLabel1.Cursor = System.Windows.Forms.Cursors.PanSouth;
+            this.ChooseLanguageLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ChooseLanguageLabel1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChooseLanguageLabel1.Location = new System.Drawing.Point(63, 9);
+            this.ChooseLanguageLabel1.Name = "ChooseLanguageLabel1";
+            this.ChooseLanguageLabel1.Size = new System.Drawing.Size(408, 42);
+            this.ChooseLanguageLabel1.TabIndex = 4;
+            this.ChooseLanguageLabel1.Text = "Please choose language. ";
             // 
             // EnglishButton
             // 
@@ -206,7 +206,7 @@ namespace Helios_ATM
             this.Controls.Add(this.MandarinButton);
             this.Controls.Add(this.FrenchButton);
             this.Controls.Add(this.EnglishButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ChooseLanguageLabel1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -218,7 +218,7 @@ namespace Helios_ATM
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ChooseLanguageLabel1;
         private MetroFramework.Controls.MetroButton AbortButton;
         private MetroFramework.Controls.MetroButton CancelButton;
         private MetroFramework.Controls.MetroButton EnglishButton;

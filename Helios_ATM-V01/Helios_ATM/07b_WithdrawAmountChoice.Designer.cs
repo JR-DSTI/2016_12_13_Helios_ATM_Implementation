@@ -35,7 +35,7 @@ namespace Helios_ATM
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM7b));
-            this.label1 = new System.Windows.Forms.Label();
+            this.EnterAmountLabel = new System.Windows.Forms.Label();
             this.ConfirmPINentryButton = new MetroFramework.Controls.MetroButton();
             this.WithdrawAmountTextbox = new System.Windows.Forms.TextBox();
             this.CancelButtonButton = new MetroFramework.Controls.MetroButton();
@@ -60,19 +60,19 @@ namespace Helios_ATM
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // EnterAmountLabel
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.Cursor = System.Windows.Forms.Cursors.PanSouth;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(79, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(361, 42);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Enter desired amount.";
+            this.EnterAmountLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.EnterAmountLabel.AutoSize = true;
+            this.EnterAmountLabel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.EnterAmountLabel.Cursor = System.Windows.Forms.Cursors.PanSouth;
+            this.EnterAmountLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.EnterAmountLabel.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnterAmountLabel.Location = new System.Drawing.Point(79, 12);
+            this.EnterAmountLabel.Name = "EnterAmountLabel";
+            this.EnterAmountLabel.Size = new System.Drawing.Size(361, 42);
+            this.EnterAmountLabel.TabIndex = 4;
+            this.EnterAmountLabel.Text = "Enter desired amount.";
             // 
             // ConfirmPINentryButton
             // 
@@ -347,7 +347,7 @@ namespace Helios_ATM
             this.Controls.Add(this.CancelButtonButton);
             this.Controls.Add(this.WithdrawAmountTextbox);
             this.Controls.Add(this.ConfirmPINentryButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.EnterAmountLabel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -452,7 +452,7 @@ namespace Helios_ATM
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label EnterAmountLabel;
         private System.Windows.Forms.TextBox WithdrawAmountTextbox;
         private new MetroFramework.Controls.MetroButton CancelButtonButton;
         private MetroFramework.Controls.MetroButton ConfirmPINentryButton;

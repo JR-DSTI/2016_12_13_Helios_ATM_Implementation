@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM0));
             this.EnterHereButton = new MetroFramework.Controls.MetroButton();
             this.WelcomeTimer = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
+            this.HeliosLabel = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
@@ -65,15 +65,15 @@
             this.WelcomeTimer.Interval = 1000;
             this.WelcomeTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label1
+            // HeliosLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(125, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(242, 77);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "HELIOS";
+            this.HeliosLabel.AutoSize = true;
+            this.HeliosLabel.Font = new System.Drawing.Font("Microsoft JhengHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeliosLabel.Location = new System.Drawing.Point(125, 9);
+            this.HeliosLabel.Name = "HeliosLabel";
+            this.HeliosLabel.Size = new System.Drawing.Size(242, 77);
+            this.HeliosLabel.TabIndex = 4;
+            this.HeliosLabel.Text = "HELIOS";
             // 
             // BatteryCharge
             // 
@@ -197,7 +197,7 @@
             this.Controls.Add(this.CheckBoxZeroCash);
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.HeliosLabel);
             this.Controls.Add(this.EnterHereButton);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -214,7 +214,7 @@
 
         #endregion
         private System.Windows.Forms.Timer WelcomeTimer;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label HeliosLabel;
         private MetroFramework.Controls.MetroButton EnterHereButton;
         private System.Windows.Forms.BindingSource bindingSource1;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;

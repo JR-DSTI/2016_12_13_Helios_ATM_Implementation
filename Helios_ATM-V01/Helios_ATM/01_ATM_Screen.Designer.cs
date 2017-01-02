@@ -33,8 +33,8 @@
             this.EnterHereButton = new MetroFramework.Controls.MetroButton();
             this.WelcomeTimer = new System.Windows.Forms.Timer(this.components);
             this.WelcomeProgressBar = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.HeliosLabel = new System.Windows.Forms.Label();
+            this.WelcomeLabel = new System.Windows.Forms.Label();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
@@ -72,25 +72,25 @@
             this.WelcomeProgressBar.Visible = false;
             this.WelcomeProgressBar.Click += new System.EventHandler(this.WelcomeProgressBar_Click);
             // 
-            // label1
+            // HeliosLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(125, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(242, 77);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "HELIOS";
+            this.HeliosLabel.AutoSize = true;
+            this.HeliosLabel.Font = new System.Drawing.Font("Microsoft JhengHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeliosLabel.Location = new System.Drawing.Point(125, 9);
+            this.HeliosLabel.Name = "HeliosLabel";
+            this.HeliosLabel.Size = new System.Drawing.Size(242, 77);
+            this.HeliosLabel.TabIndex = 4;
+            this.HeliosLabel.Text = "HELIOS";
             // 
-            // label2
+            // WelcomeLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(83, 430);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(336, 77);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "WELCOME";
+            this.WelcomeLabel.AutoSize = true;
+            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft JhengHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WelcomeLabel.Location = new System.Drawing.Point(83, 430);
+            this.WelcomeLabel.Name = "WelcomeLabel";
+            this.WelcomeLabel.Size = new System.Drawing.Size(336, 77);
+            this.WelcomeLabel.TabIndex = 5;
+            this.WelcomeLabel.Text = "WELCOME";
             // 
             // metroButton1
             // 
@@ -152,8 +152,8 @@
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
             this.Controls.Add(this.metroButton1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.WelcomeLabel);
+            this.Controls.Add(this.HeliosLabel);
             this.Controls.Add(this.WelcomeProgressBar);
             this.Controls.Add(this.EnterHereButton);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -172,8 +172,8 @@
         #endregion
         private System.Windows.Forms.Timer WelcomeTimer;
         private System.Windows.Forms.ProgressBar WelcomeProgressBar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label HeliosLabel;
+        private System.Windows.Forms.Label WelcomeLabel;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton EnterHereButton;
         private System.Windows.Forms.BindingSource bindingSource1;
