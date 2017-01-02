@@ -39,13 +39,6 @@ namespace Helios_ATM
         private  void button1_Click(object sender, EventArgs e)
         {
             
-
-            //Form ATM3 = new ATM3(); // Instantiate a Form object.
-            //ATM3.Show(); //show the new Form
-
-            //this.Visible = false;  //Hide the old form
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -64,6 +57,7 @@ namespace Helios_ATM
             //CancelMsgBox
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
 
+            //Starting next form and close/hide this one
             //Going back to first form (restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
@@ -176,7 +170,8 @@ namespace Helios_ATM
                 {
                     AutoClosingMessageBox.Show("PIN successful changed.","Success", 1000, this);
                     correctPIN = newPIN2;
-                    //Going back to first form (restart)
+                    
+                    //Starting next form and close/hide this one
                     Form ATM6 = new ATM6(); // Instantiate a Form object.
                     ATM6.Show(); //show the new Form
                     this.Visible = false;
@@ -296,6 +291,7 @@ namespace Helios_ATM
             //stop the BatteryNetworkTimer
             this.BatteryNetworkTimer.Stop();
 
+            //Starting next form and close/hide this one
             Form ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
             this.Visible = false;  //Hide the old form

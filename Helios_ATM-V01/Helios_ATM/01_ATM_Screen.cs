@@ -33,6 +33,7 @@ namespace Helios_ATM
             this.WelcomeTimer.Start();
             this.timer1.Start();
             this.WelcomeProgressBar.Visible = true;
+            this.InitializeLabel.Visible = true;
 
             //Log current operation:
             s3log.logOperation(sender);
@@ -40,6 +41,7 @@ namespace Helios_ATM
             //"await" needs the async in the function declaration and equals "Sleep"
             await Task.Delay(2000);
 
+            //Starting next form and close/hide this one
             //start the next form
             Form ATM3 = new ATM3(); // Instantiate a Form object.
             ATM3.Show(); //show the new Form
@@ -52,6 +54,10 @@ namespace Helios_ATM
         }
         private void ATM1_Load(object sender, EventArgs e)
         {
+            //hide the InitializeLabel
+            this.InitializeLabel.Visible = false;
+
+            //setting the current Batterycharge and Network signal:
             this.BatteryCharge.Value = battery.charge;
             this.BatteryNetworkTimer.Start();
         }
@@ -59,27 +65,18 @@ namespace Helios_ATM
         //Quick jump to current Form:
         private void metroButton1_Click(object sender, EventArgs e)
         {
-
+            //Starting next form and close/hide this one
             MetroFramework.Forms.MetroForm ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
             this.BatteryNetworkTimer.Stop();
 
             this.Visible = false;  //Hide the old form
         }
-    
 
-        private void WelcomeProgressBar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BatteryCharge_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
         {
+            //getting the current Batterycharge & discharge and adjust network signal:
             battery.discharge(this.BatteryCharge);
             networkConnection.networkConnectionOK(this.NetworkSignal);
         }

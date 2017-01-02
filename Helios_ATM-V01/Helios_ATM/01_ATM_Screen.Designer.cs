@@ -39,7 +39,7 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
-            this.label3 = new System.Windows.Forms.Label();
+            this.InitializeLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -70,7 +70,6 @@
             this.WelcomeProgressBar.Size = new System.Drawing.Size(219, 16);
             this.WelcomeProgressBar.TabIndex = 3;
             this.WelcomeProgressBar.Visible = false;
-            this.WelcomeProgressBar.Click += new System.EventHandler(this.WelcomeProgressBar_Click);
             // 
             // HeliosLabel
             // 
@@ -111,7 +110,6 @@
             this.BatteryCharge.Size = new System.Drawing.Size(44, 17);
             this.BatteryCharge.TabIndex = 8;
             this.BatteryCharge.Value = 100;
-            this.BatteryCharge.Click += new System.EventHandler(this.BatteryCharge_Click);
             // 
             // NetworkSignal
             // 
@@ -125,15 +123,15 @@
             this.NetworkSignal.UseSelectable = true;
             this.NetworkSignal.Value = 1;
             // 
-            // label3
+            // InitializeLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(140, 250);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 17);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Initializing...";
+            this.InitializeLabel.AutoSize = true;
+            this.InitializeLabel.Location = new System.Drawing.Point(140, 250);
+            this.InitializeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.InitializeLabel.Name = "InitializeLabel";
+            this.InitializeLabel.Size = new System.Drawing.Size(81, 17);
+            this.InitializeLabel.TabIndex = 11;
+            this.InitializeLabel.Text = "Initializing...";
             // 
             // BatteryNetworkTimer
             // 
@@ -148,7 +146,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(516, 544);
             this.ControlBox = false;
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.InitializeLabel);
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
             this.Controls.Add(this.metroButton1);
@@ -179,7 +177,7 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label InitializeLabel;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer BatteryNetworkTimer;
     }

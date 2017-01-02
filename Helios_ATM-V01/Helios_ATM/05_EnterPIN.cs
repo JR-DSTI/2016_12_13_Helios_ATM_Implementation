@@ -65,6 +65,7 @@ namespace Helios_ATM
         private async void CardInserted_Click(object sender, EventArgs e)
         {
             await Task.Delay(500);
+            //Starting next form and close/hide this one
             Form ATM7 = new ATM7(); // Instantiate a Form object.
             ATM7.Show(); //show the new Form
             this.Visible = false;  //Hide the old form
@@ -116,6 +117,7 @@ namespace Helios_ATM
                     //update s3log:
                     s3log.logOperation(null, "PIN entry success.");
 
+                    //Starting next form and close/hide this one
                     //next screen after messagebox
                     Form ATM6 = new ATM6(); // Instantiate a Form object.
                     ATM6.Show(); //show the new Form
@@ -143,17 +145,23 @@ namespace Helios_ATM
                 }
                 else if (PINentries > 3)
                 {
+                    //set PIN blocked variables:
                     blocked = true;
+                    useCaseVariables.bCheckBoxPINEntriesExhausted = true;
+
+                    //Update the database:
                     Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
                    
                     //3 times Wrong PIN entry:
                     AutoClosingMessageBox.Show("Last PIN entry not successful, no attempts left, no money for you, your card is being captured.", "Success", 2000, Parent: Form.ActiveForm);
+                    
+                    //update s3log:
                     s3log.logOperation(null, "Third PIN entry failure. PIN blocked.");
 
+                    //reset PIN and return
                     PIN = "";
-                    this.Close(); //return;
+                    this.Close(); 
 
-                    //update s3log:
 
                 };
                  
@@ -182,6 +190,7 @@ namespace Helios_ATM
         //Return to previous form
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            //Starting next form and close/hide this one
             Form ATM4 = new ATM4(); // Instantiate a Form object.
             ATM4.Show(); //show the new Form
 
@@ -206,6 +215,7 @@ namespace Helios_ATM
             //CancelMsgBox
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500,this);
 
+            //Starting next form and close/hide this one
             //Going back to first form (restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
@@ -348,6 +358,7 @@ namespace Helios_ATM
 
         private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
         {
+            //getting the current Batterycharge & discharge and adjust network signal:
             battery.discharge(this.BatteryCharge);
             networkConnection.networkConnectionOK(this.NetworkSignal);
         }

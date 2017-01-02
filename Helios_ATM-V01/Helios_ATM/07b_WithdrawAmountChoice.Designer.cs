@@ -454,7 +454,7 @@ namespace Helios_ATM
         #endregion
         private System.Windows.Forms.Label EnterAmountLabel;
         private System.Windows.Forms.TextBox WithdrawAmountTextbox;
-        private new MetroFramework.Controls.MetroButton CancelButtonButton;
+        private MetroFramework.Controls.MetroButton CancelButtonButton;
         private MetroFramework.Controls.MetroButton ConfirmPINentryButton;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroButton NumDeleteAll;

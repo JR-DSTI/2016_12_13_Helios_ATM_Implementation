@@ -22,6 +22,7 @@ namespace Helios_ATM
 
         private void ATM4_Load(object sender, EventArgs e)
         {
+            //setting the current Batterycharge and Network signal:
             this.BatteryCharge.Value = battery.charge;
             this.BatteryNetworkTimer.Start();
         }
@@ -34,6 +35,7 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
 
+            //Starting next form and close/hide this one
             Form ATM5 = new ATM5(); // Instantiate a Form object.
             ATM5.Show(); //show the new Form
             this.Visible = false;  //Hide the old form
@@ -52,6 +54,7 @@ namespace Helios_ATM
             //Cancel MsgBox & close the message after certain time:
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500,this);
 
+            //Starting next form and close/hide this one
             //Going back to first form (=restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
@@ -67,6 +70,7 @@ namespace Helios_ATM
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
+            //Starting next form and close/hide this one
             //continue to next form
             Form ATM3 = new ATM3(); // Instantiate a Form object.
             ATM3.Show(); //show the new Form
@@ -88,6 +92,7 @@ namespace Helios_ATM
 
         private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
         {
+            //getting the current Batterycharge & discharge and adjust network signal:
             battery.discharge(this.BatteryCharge);
             networkConnection.networkConnectionOK(this.NetworkSignal);
         }

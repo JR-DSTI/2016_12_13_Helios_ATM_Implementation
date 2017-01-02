@@ -24,16 +24,6 @@ namespace Helios_ATM
             this.BatteryNetworkTimer.Start();
         }
 
-        //private async void CardInserted_Click(object sender, EventArgs e)
-        //{
-        //    await Task.Delay(500);
-
-        //    Form ATM4 = new ATM4(); // Instantiate a Form object.
-        //    ATM4.Show(); //show the new Form
-
-        //    this.Visible = false;  //Hide the old form
-        //}
-
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
@@ -43,6 +33,7 @@ namespace Helios_ATM
             //stop the BatteryNetworkTimer
             this.BatteryNetworkTimer.Stop();
 
+            //Starting next form and close/hide this one
             Form ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
 
@@ -99,7 +90,8 @@ namespace Helios_ATM
 
             //CancelMsgBox
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
-
+            
+            //Starting next form and close/hide this one
             //Going back to first form (restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form

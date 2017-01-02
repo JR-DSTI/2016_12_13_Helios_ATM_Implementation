@@ -34,10 +34,9 @@ namespace Helios_ATM
 
         private void ATM3_Load(object sender, EventArgs e)
         {
+            //setting the current Batterycharge and Network signal:
             this.BatteryCharge.Value = battery.charge;
             this.BatteryNetworkTimer.Start();
-            //BatteryCharge.Value = battery.charge;
-            //this.timer1.Start();
         }
 
 
@@ -49,8 +48,8 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
 
-            //continue to next form:
-            //this.log(true);
+            //continue to next form:            
+            //Starting next form and close/hide this one
             Form ATM4 = new ATM4(); // Instantiate a Form object.
             ATM4.Show(); //show the new Form
             this.Visible = false;  //Hide the old form
@@ -88,7 +87,7 @@ namespace Helios_ATM
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            //cancel to initial form, maybe not too necessary here
+            //Starting next form and close/hide this one
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
             this.Visible = false;  //Hide the old form
@@ -153,6 +152,7 @@ namespace Helios_ATM
 
         private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
         {
+            //getting the current Batterycharge & discharge and adjust network signal:
             battery.discharge(this.BatteryCharge);
             networkConnection.networkConnectionOK(this.NetworkSignal);
         }

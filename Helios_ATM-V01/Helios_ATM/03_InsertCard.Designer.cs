@@ -38,7 +38,6 @@ namespace Helios_ATM
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
@@ -103,16 +102,6 @@ namespace Helios_ATM
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(215, 194);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "test";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // BatteryNetworkTimer
             // 
             this.BatteryNetworkTimer.Interval = 1000;
@@ -126,7 +115,6 @@ namespace Helios_ATM
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(516, 544);
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
             this.Controls.Add(this.AbortCancelButton);
@@ -146,12 +134,11 @@ namespace Helios_ATM
 
         #endregion
         private System.Windows.Forms.Label InsertCardLabel;
-        private new MetroFramework.Controls.MetroButton AbortCancelButton;
+        private MetroFramework.Controls.MetroButton AbortCancelButton;
         private MetroFramework.Controls.MetroButton CardInsertedButton;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer BatteryNetworkTimer;
     }
 }

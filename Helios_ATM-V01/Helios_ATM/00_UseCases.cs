@@ -40,6 +40,7 @@ namespace Helios_ATM
             useCaseVariables.bCheckBoxNetworkConnectionUnstable = CheckBoxNetworkConnectionUnstable.Checked;
             useCaseVariables.bCheckBoxZeroCash = CheckBoxZeroCash.Checked;
 
+            //Starting next form and close/hide this one
             //start the First form
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
@@ -47,85 +48,61 @@ namespace Helios_ATM
             //hide the old form
             this.Visible = false;  //Hide the old form
 
-
-
-            ////MetroFramework.MetroMessageBox.Show(this, (Pinger("stackoverflow.com", 4)).ToString());
-            //if (Pinger("stackoverflow.com", 5) > 129)
-            //{
-            //    MetroFramework.MetroMessageBox.Show(this, "the connection is lost"); // this = current form        
-            //    //this.WelcomeProgressBar.Value = 0;
-            //    WelcomeTimer.Stop();
-            //    this.timer2.Stop();
-            //}
-            //else
-            //{
-            //    //start the next form
-            //    Form ATM3 = new ATM3(); // Instantiate a Form object.
-            //    ATM3.Show(); //show the new Form
-            //    WelcomeTimer.Stop();
-
-            //    //hide the old form
-            //    this.Visible = false;  //Hide the old form
-            //}
-
         }
         private void ATM0_Load(object sender, EventArgs e)
         {
+            //setting the current Batterycharge
             this.BatteryCharge.Value = battery.charge;
-            //battery.form1visit += 1;
-            //using (StreamWriter sr = new StreamWriter(@"Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Project_Supplementary\2016_12_28_AWS_Log.txt"))
-            //{     
-            //    sr.WriteLine("Battery life: "+battery.charge +"% "+ (DateTime.Now).ToString());
-            //    sr.WriteLine("visit to Main Menu: "+ (battery.form1visit).ToString()+ (DateTime.Now).ToString());
-            //}
-        }
-        //Quick jump to current Form:
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
 
-            if (Pinger("stackoverflow.com", 5) > 29)
-            {
+        }
+
+        ////Quick jump to current Form:
+        //private void metroButton1_Click(object sender, EventArgs e)
+        //{
+
+        //    if (Pinger("stackoverflow.com", 5) > 29)
+        //    {
    
-                MetroFramework.MetroMessageBox.Show(this, "the connection is lost");
-            }
-            else
-            {
+        //        MetroFramework.MetroMessageBox.Show(this, "the connection is lost");
+        //    }
+        //    else
+        //    {
+        //        //Starting next form and close/hide this one
+        //        MetroFramework.Forms.MetroForm ATM6 = new ATM6(); // Instantiate a Form object.
+        //    ATM6.Show(); //show the new Form
+        //    this.timer2.Stop();
 
-            MetroFramework.Forms.MetroForm ATM6 = new ATM6(); // Instantiate a Form object.
-            ATM6.Show(); //show the new Form
-            this.timer2.Stop();
+        //    this.Visible = false;  //Hide the old form
+        //}
+    
 
-            this.Visible = false;  //Hide the old form
-        }
-    }
+        //private void WelcomeProgressBar_Click(object sender, EventArgs e)
+        //{
 
-        private void WelcomeProgressBar_Click(object sender, EventArgs e)
-        {
-
-        }
+        //}
 
 
-        public double Pinger(string host, int echoNum)
-        {
+        //public double Pinger(string host, int echoNum)
+        //{
   
-        long totalTime = 0;
-        int timeOut = 120;
-        for (int i=0; i<echoNum; i++)
-            {
-                Ping pingSender=new Ping();
-                PingReply r = pingSender.Send(host,timeOut);
-                if (r.Status==IPStatus.Success)
-                {
-                    totalTime += r.RoundtripTime;
-                }
-            }
-            return (totalTime / echoNum);
-        }
+        //long totalTime = 0;
+        //int timeOut = 120;
+        //for (int i=0; i<echoNum; i++)
+        //    {
+        //        Ping pingSender=new Ping();
+        //        PingReply r = pingSender.Send(host,timeOut);
+        //        if (r.Status==IPStatus.Success)
+        //        {
+        //            totalTime += r.RoundtripTime;
+        //        }
+        //    }
+        //    return (totalTime / echoNum);
+        //}
 
-        private void BatteryCharge_Click(object sender, EventArgs e)
-        {
+        //private void BatteryCharge_Click(object sender, EventArgs e)
+        //{
             
-        }
+        //}
 
         //public void discharge()
         //{
@@ -144,14 +121,15 @@ namespace Helios_ATM
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            //getting the current Batterycharge & discharge 
             battery.discharge(this.BatteryCharge);
         }
 
-        private void metroButton2_Click(object sender, EventArgs e)
-        {
+        //private void metroButton2_Click(object sender, EventArgs e)
+        //{
 
 
-        }
+        //}
     }
 
 }

@@ -83,7 +83,7 @@
             this.BatteryCharge.Size = new System.Drawing.Size(44, 17);
             this.BatteryCharge.TabIndex = 8;
             this.BatteryCharge.Value = 100;
-            this.BatteryCharge.Click += new System.EventHandler(this.BatteryCharge_Click);
+            //this.BatteryCharge.Click += new System.EventHandler(this.BatteryCharge_Click);
             // 
             // NetworkSignal
             // 

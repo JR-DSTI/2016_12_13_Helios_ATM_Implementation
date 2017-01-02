@@ -39,6 +39,7 @@ namespace Helios_ATM
             //stop the BatteryNetworkTimer
             this.BatteryNetworkTimer.Stop();
 
+            //Starting next form and close/hide this one
             //Going back to first form (=restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
@@ -53,6 +54,7 @@ namespace Helios_ATM
             //stop the BatteryNetworkTimer
             this.BatteryNetworkTimer.Stop();
 
+            //Starting next form and close/hide this one
             //continue to Main form
             Form ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
@@ -77,24 +79,24 @@ namespace Helios_ATM
             //stop the BatteryNetworkTimer
             this.BatteryNetworkTimer.Stop();
 
-            Boolean withdraw = true;
             if (Int32.Parse(Lib.getBalance()) < balance)
             {
                 MessageBox.Show("Sorry, but ur broke dude.");
                 //update s3log:
                 s3log.logOperation(null , "Blocked withdrawal due to unsufficient account balance.");
-
-                withdraw =false;
-
             }
             else
-            {
+            {   
+                //get the balance
                 String strBalance = Lib.getBalance();
                 double newBalance=Int32.Parse(strBalance)- balance;
+
+                //Update database with new balance:
                 Lib.update("1111", false, newBalance);
                 Lib.getBalance();
+
+                //Print the receipt:
                 withdrawPrintReceipt(balance);
-                withdraw = true;
                 s3log.logOperation(null, "Withdrawal success.");
 
             }
@@ -111,9 +113,11 @@ namespace Helios_ATM
 
             if (result == DialogResult.Yes)
             {
+                //s3 logging
                 s3log.logOperation(null, "Receipt printing requested.");
 
                 //Doing Assans AWS Printing magic here
+                //Building the message and sending the mail:
                 String body =headz(WithdrawAmount);
                 String title = "Thank you for using HELIOS Banking";
                 Lib.sendMail(title, body);
@@ -125,11 +129,13 @@ namespace Helios_ATM
                 result = MetroMessageBox.Show(this, "Do you to perform another transaction?", "Return to main menu", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
+                    //s3 logging
                     s3log.logOperation(null, "User requested another transaction.");
 
                     //stop the BatteryNetworkTimer
                     this.BatteryNetworkTimer.Stop();
 
+                    //Starting next form and close/hide this one
                     //Return to main menu for other transaction
                     Form ATM6 = new ATM6(); // Instantiate a Form object.
                     ATM6.Show(); //show the new Form
@@ -145,6 +151,7 @@ namespace Helios_ATM
                     //stop the BatteryNetworkTimer
                     this.BatteryNetworkTimer.Stop();
 
+                    //Starting next form and close/hide this one
                     Form ATM1 = new ATM1(); // Instantiate a Form object.
                     ATM1.Show(); //show the new Form
 
@@ -227,23 +234,23 @@ namespace Helios_ATM
 
         public String headz(int WithdrawAmount)
         {
-  
-        String header = "======================================";
-        String header2 = "                 Receipt";
-        String subject = "You have withdrawn " + WithdrawAmount+ " Pesos";
-        String timeStamp = "Date :" + DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
-        String activity = "Action : Withdraw";
-        String ATMlocation = "Location : Munchen";
-        String AccountNumber = "Account N° : ***********"+Lib.getID().Substring(2,2);
+            //Building the string for the message:
+            String header = "======================================";
+            String header2 = "                 Receipt";
+            String subject = "You have withdrawn " + WithdrawAmount+ " Pesos";
+            String timeStamp = "Date :" + DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+            String activity = "Action : Withdraw";
+            String ATMlocation = "Location : Munchen";
+            String AccountNumber = "Account N° : ***********"+Lib.getID().Substring(2,2);
 
-        return (header + Environment.NewLine + header2 
-            + Environment.NewLine + header 
-            + Environment.NewLine + subject 
-            + Environment.NewLine + timeStamp 
-            + Environment.NewLine + activity
-            + Environment.NewLine + ATMlocation
-            + Environment.NewLine + AccountNumber
-            );
+            return (header + Environment.NewLine + header2 
+                + Environment.NewLine + header 
+                + Environment.NewLine + subject 
+                + Environment.NewLine + timeStamp 
+                + Environment.NewLine + activity
+                + Environment.NewLine + ATMlocation
+                + Environment.NewLine + AccountNumber
+                );
 
         }
 

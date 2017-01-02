@@ -36,7 +36,7 @@ namespace Helios_ATM
 
         private  void button1_Click(object sender, EventArgs e)
         {
-            
+            //Starting next form and close/hide this one
             //Going to withdraw form ()
             Form ATM7a = new ATM7a(); // Instantiate a Form object.
             ATM7a.Show(); //show the new Form
@@ -49,6 +49,7 @@ namespace Helios_ATM
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //Starting next form and close/hide this one
             //Going to withdraw form ()
             Form ATM7a = new ATM7a(); // Instantiate a Form object.
             ATM7a.Show(); //show the new Form
@@ -64,6 +65,7 @@ namespace Helios_ATM
             //CancelMsgBox
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
 
+            //Starting next form and close/hide this one
             //Going back to first form (restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form

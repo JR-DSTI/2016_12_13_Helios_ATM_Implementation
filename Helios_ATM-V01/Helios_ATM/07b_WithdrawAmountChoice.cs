@@ -16,15 +16,10 @@ namespace Helios_ATM
         //necessary to grey out text of PIN Textfield
         private bool waterMarkActive;
         private String strWithdrawAmount="";
-        
-        //here you could insert your Data base link to PIN, PINentries
-        private int PINentries=0;
-        private String correctPIN = "1111";
-
+     
         public ATM7b()
         {
             InitializeComponent();
-            
         }
 
         private void ATM7b_Load(object sender, EventArgs e1)
@@ -62,14 +57,9 @@ namespace Helios_ATM
             };
         }
 
-        private async void CardInserted_Click(object sender, EventArgs e)
+        private void CardInserted_Click(object sender, EventArgs e)
         {
-            //await Task.Delay(500);
 
-            //Form ATM7 = new ATM7(); // Instantiate a Form object.
-            //ATM7.Show(); //show the new Form
-
-            //this.Visible = false;  //Hide the old form
         }
 
         private void ConfirmPINentry_Click_1(object sender, EventArgs e)
@@ -129,6 +119,7 @@ namespace Helios_ATM
             result = MetroMessageBox.Show(this, "Do you to perform another transaction?", "Return to main menu", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
+                //Starting next form and close/hide this one
                 //Return to main menu for other transaction
                 Form ATM6 = new ATM6(); // Instantiate a Form object.
                 ATM6.Show(); //show the new Form
@@ -140,7 +131,7 @@ namespace Helios_ATM
             {
                 AutoClosingMessageBox.Show("Finished current operation. Ejecting card and restarting...", "Restarting", 1500, this);
                 //return to initial screen 
-
+                //Starting next form and close/hide this one
                 Form ATM1 = new ATM1(); // Instantiate a Form object.
                 ATM1.Show(); //show the new Form
 
@@ -169,6 +160,7 @@ namespace Helios_ATM
             //stop the BatteryNetworkTimer
             this.BatteryNetworkTimer.Stop();
 
+            //Starting next form and close/hide this one
             Form ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
 
@@ -193,6 +185,7 @@ namespace Helios_ATM
             //CancelMsgBox
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
 
+            //Starting next form and close/hide this one
             //Going back to first form (restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form

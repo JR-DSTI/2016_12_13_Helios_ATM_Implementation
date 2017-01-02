@@ -69,6 +69,7 @@ namespace Helios_ATM
             {
                 case "1":
                     //Withdraw moneeeeeeey
+                    //Starting next form and close/hide this one
                     Form ATM7 = new ATM7(); // Instantiate a Form object.
                     ATM7.Show(); //show the new Form
                     this.Visible = false;  //Hide the old form
@@ -82,7 +83,8 @@ namespace Helios_ATM
                     
 
                 case "2":
-                    //Change PIN form
+                    //Starting next form and close/hide this one
+                    //Go to PIN form
                     Form ATM8 = new ATM8(); // Instantiate a Form object.
                     ATM8.Show(); //show the new Form
                     this.Visible = false;  //Hide the old form
@@ -95,6 +97,7 @@ namespace Helios_ATM
                     break;
 
                 case "3":
+                    //Starting next form and close/hide this one
                     //Balance Enquiry form
                     Form ATM9 = new ATM9(); // Instantiate a Form object.
                     ATM9.Show(); //show the new Form
@@ -135,6 +138,7 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
 
+            //Starting next form and close/hide this one
             Form ATM4 = new ATM4(); // Instantiate a Form object.
             ATM4.Show(); //show the new Form
 
@@ -156,6 +160,7 @@ namespace Helios_ATM
             //CancelMsgBox
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
 
+            //Starting next form and close/hide this one
             //Going back to first form (restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
@@ -171,7 +176,7 @@ namespace Helios_ATM
 
         private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
         {
-            //discharge battery and check network connection:
+            //getting the current Batterycharge & discharge and adjust network signal:
             battery.discharge(this.BatteryCharge);
             networkConnection.networkConnectionOK(this.NetworkSignal);
 
