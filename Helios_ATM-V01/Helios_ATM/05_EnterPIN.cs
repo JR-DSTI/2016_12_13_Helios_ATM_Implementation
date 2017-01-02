@@ -29,6 +29,10 @@ namespace Helios_ATM
 
         private void ATM5_Load(object sender, EventArgs e1)
         {
+            //setting the current Batterycharge and Network signal:
+            this.BatteryCharge.Value = battery.charge;
+            this.BatteryNetworkTimer.Start();
+
             //Initiating the field and set its values
             this.waterMarkActive = true;
             this.PinEntry.ForeColor = Color.Gray;
@@ -64,6 +68,12 @@ namespace Helios_ATM
             Form ATM7 = new ATM7(); // Instantiate a Form object.
             ATM7.Show(); //show the new Form
             this.Visible = false;  //Hide the old form
+
+            //Log current operation:
+            s3log.logOperation(sender);
+
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
         }
 
         private void ConfirmPINentry_Click_1(object sender, EventArgs e)
@@ -72,11 +82,16 @@ namespace Helios_ATM
             //checking whether PIN is correct:
             PIN = this.PinEntry.Text;
 
-            if (Lib.getBlocked() & !useCaseVariables.bCheckBoxPINEntriesExhausted)
+            //Log current operation & all inputs later
+            s3log.logOperation(sender);
+
+            if (Lib.getBlocked() || useCaseVariables.bCheckBoxPINEntriesExhausted)
             {
                 AutoClosingMessageBox.Show("No attempts left, no money for you, your card is being captured.", "Bad news", 2000, Parent: Form.ActiveForm);
                 PINentries = 3;
-                blocked=true;             
+                blocked=true;     
+                //update s3log:
+                        
                 this.Close();
             }
 
@@ -94,32 +109,46 @@ namespace Helios_ATM
                 if (PINentries<=3 & PIN == correctPIN)
                 {
                     Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
+                    
                     //delayed mesgbx
                     AutoClosingMessageBox.Show("PIN entry successful!", "Success", 2000, Parent: Form.ActiveForm);
 
                     //next screen after messagebox
                     Form ATM6 = new ATM6(); // Instantiate a Form object.
                     ATM6.Show(); //show the new Form
+                    
                     //Resetting the PIN:
                     PIN = "";
                     this.Visible = false;  //Hide the old form
+
+                    //stop the BatteryNetworkTimer
+                    this.BatteryNetworkTimer.Stop();
                 }
                 else if (PINentries < 3 & PIN != correctPIN)
                 {
                     Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
+                    
                     //if incorrect PIN:
                     AutoClosingMessageBox.Show("PIN entry not successful, retry! Left attempts: " + Convert.ToString(3 - PINentries), "Retry!", 2000, Parent: Form.ActiveForm);
+                    
                     //Resetting the PIN:
                     PIN = "";
+
+                    //update s3log:
+
                 }
                 else if (PINentries > 3)
                 {
                     blocked = true;
                     Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
+                   
                     //3 times Wrong PIN entry:
                     AutoClosingMessageBox.Show("Last PIN entry not successful, no attempts left, no money for you, your card is being captured.", "Success", 2000, Parent: Form.ActiveForm);
                     PIN = "";
                     this.Close(); //return;
+
+                    //update s3log:
+
                 };
                  
             }
@@ -151,6 +180,12 @@ namespace Helios_ATM
             ATM4.Show(); //show the new Form
 
             this.Visible = false;  //Hide the old form
+
+            //Log current operation:
+            s3log.logOperation(sender);
+
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
         }
 
         private void PinEntry_TextChanged(object sender, EventArgs e)
@@ -170,6 +205,12 @@ namespace Helios_ATM
             ATM1.Show(); //show the new Form
 
             this.Visible = false;
+
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
+
+            //Log current operation:
+            s3log.logOperation(sender);
         }
 
 
@@ -177,51 +218,71 @@ namespace Helios_ATM
         private void Num1_Click(object sender, EventArgs e)
         {
             pin_update("1");
+            //Log current operation:
+            s3log.logOperation(sender);
         }
 
         private void Num2_Click(object sender, EventArgs e)
         {        
             pin_update("2");
+            //Log current operation:
+            s3log.logOperation(sender);
         }
 
         private void Num3_Click(object sender, EventArgs e)
         {         
             pin_update("3");
+            //Log current operation:
+            s3log.logOperation(sender);
         }
 
         private void Num4_Click(object sender, EventArgs e)
         {       
             pin_update("4");
+            //Log current operation:
+            s3log.logOperation(sender);
         }
 
         private void Num5_Click(object sender, EventArgs e)
         {      
             pin_update("5");
+            //Log current operation:
+            s3log.logOperation(sender);
         }
 
         private void Num6_Click(object sender, EventArgs e)
         {      
             pin_update("6");
+            //Log current operation:
+            s3log.logOperation(sender);
         }
 
         private void Num7_Click(object sender, EventArgs e)
         {      
             pin_update("7");
+            //Log current operation:
+            s3log.logOperation(sender);
         }
 
         private void Num8_Click(object sender, EventArgs e)
         {    
             pin_update("8");
+            //Log current operation:
+            s3log.logOperation(sender);
         }
 
         private void Num9_Click(object sender, EventArgs e)
         { 
             pin_update("9");
+            //Log current operation:
+            s3log.logOperation(sender);
         }
 
         private void Num0_Click(object sender, EventArgs e)
         {
-            pin_update("0");  
+            pin_update("0");
+            //Log current operation:
+            s3log.logOperation(sender);
         }
         
         // refactored function AS
@@ -229,6 +290,7 @@ namespace Helios_ATM
         {
             PIN = PIN + digit;
             this.PinEntry.Text = PIN;
+
         }
 
         //check if log is already inserted
@@ -264,12 +326,24 @@ namespace Helios_ATM
         {
             PIN = "";
             this.PinEntry.Text = PIN;
+
+            //Log current operation:
+            s3log.logOperation(sender);
         }
         //Delete last number of the PIN entry textbox
         private void NumBack_Click(object sender, EventArgs e)
         {
             PIN = PIN.Substring(0, PIN.Length-1);
             this.PinEntry.Text = PIN;
+
+            //Log current operation:
+            s3log.logOperation(sender);
+        }
+
+        private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
+        {
+            battery.discharge(this.BatteryCharge);
+            networkConnection.networkConnectionOK(this.NetworkSignal);
         }
     }
 }

@@ -33,6 +33,7 @@ namespace Helios_ATM
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM7b));
             this.label1 = new System.Windows.Forms.Label();
             this.ConfirmPINentryButton = new MetroFramework.Controls.MetroButton();
@@ -55,6 +56,7 @@ namespace Helios_ATM
             this.PesosLabel1 = new MetroFramework.Controls.MetroLabel();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
+            this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -324,6 +326,10 @@ namespace Helios_ATM
             this.BatteryCharge.TabIndex = 14;
             this.BatteryCharge.Value = 100;
             // 
+            // BatteryNetworkTimer
+            // 
+            this.BatteryNetworkTimer.Interval = 1000;
+            // 
             // ATM7b
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -466,6 +472,7 @@ namespace Helios_ATM
         private MetroFramework.Controls.MetroLabel PesosLabel1;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
+        private Timer BatteryNetworkTimer;
     }
 
 

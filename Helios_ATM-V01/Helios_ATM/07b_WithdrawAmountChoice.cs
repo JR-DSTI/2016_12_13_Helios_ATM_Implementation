@@ -29,6 +29,10 @@ namespace Helios_ATM
 
         private void ATM7b_Load(object sender, EventArgs e1)
         {
+            //update batterycharge and start BatteryNetworkTimer
+            this.BatteryCharge.Value = battery.charge;
+            this.BatteryNetworkTimer.Start();
+
             //Initiating the field and set its values
             this.waterMarkActive = true;
             this.WithdrawAmountTextbox.ForeColor = Color.Gray;

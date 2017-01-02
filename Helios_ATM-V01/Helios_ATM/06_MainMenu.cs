@@ -23,7 +23,10 @@ namespace Helios_ATM
 
         private void ATM6_Load(object sender, EventArgs e1)
         {
-  
+            //update batterycharge and start BatteryNetworkTimer
+            this.BatteryCharge.Value = battery.charge;
+            this.BatteryNetworkTimer.Start();
+
         }
 
         //set the choice of the user and store it for the next confirmation step:
@@ -61,6 +64,7 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
 
+
             switch (sUserChoice)
             {
                 case "1":
@@ -68,6 +72,12 @@ namespace Helios_ATM
                     Form ATM7 = new ATM7(); // Instantiate a Form object.
                     ATM7.Show(); //show the new Form
                     this.Visible = false;  //Hide the old form
+                   
+                    //stop the BatteryNetworkTimer
+                    this.BatteryNetworkTimer.Stop();
+
+                    //update s3log:
+
                     break;
                     
 
@@ -76,6 +86,12 @@ namespace Helios_ATM
                     Form ATM8 = new ATM8(); // Instantiate a Form object.
                     ATM8.Show(); //show the new Form
                     this.Visible = false;  //Hide the old form
+                    
+                    //stop the BatteryNetworkTimer
+                    this.BatteryNetworkTimer.Stop();
+
+                    //update s3log:
+
                     break;
 
                 case "3":
@@ -83,10 +99,22 @@ namespace Helios_ATM
                     Form ATM9 = new ATM9(); // Instantiate a Form object.
                     ATM9.Show(); //show the new Form
                     this.Visible = false;  //Hide the old form
+
+                    //stop the BatteryNetworkTimer
+                    this.BatteryNetworkTimer.Stop();
+
+                    //update s3log:
+
                     break;
 
                 default:
                     MetroMessageBox.Show(this, "Please provide a selection!");
+                    
+                    //stop the BatteryNetworkTimer
+                    this.BatteryNetworkTimer.Stop();
+
+                    //update s3log:
+
                     break;
             }
 
@@ -104,8 +132,14 @@ namespace Helios_ATM
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+
             Form ATM4 = new ATM4(); // Instantiate a Form object.
             ATM4.Show(); //show the new Form
+
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
 
             this.Visible = false;  //Hide the old form
         }
@@ -129,10 +163,18 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
 
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
+
             this.Visible = false;
         }
 
-       
+        private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
+        {
+            //discharge battery and check network connection:
+            battery.discharge(this.BatteryCharge);
+            networkConnection.networkConnectionOK(this.NetworkSignal);
 
+        }
     }
 }

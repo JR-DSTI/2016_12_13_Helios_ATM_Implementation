@@ -30,18 +30,20 @@ namespace Helios_ATM
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM4));
             this.label1 = new System.Windows.Forms.Label();
             this.EnglishButton = new MetroFramework.Controls.MetroButton();
             this.FrenchButton = new MetroFramework.Controls.MetroButton();
             this.MandarinButton = new MetroFramework.Controls.MetroButton();
-            this.button3 = new MetroFramework.Controls.MetroButton();
+            this.OtherLanguages = new MetroFramework.Controls.MetroButton();
             this.PortuguesButton = new MetroFramework.Controls.MetroButton();
             this.SpanishButton = new MetroFramework.Controls.MetroButton();
             this.AbortButton = new MetroFramework.Controls.MetroButton();
             this.CancelButton = new MetroFramework.Controls.MetroButton();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
+            this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -81,6 +83,7 @@ namespace Helios_ATM
             this.FrenchButton.Text = "Francais";
             this.FrenchButton.UseCustomBackColor = true;
             this.FrenchButton.UseSelectable = true;
+            this.FrenchButton.Click += new System.EventHandler(this.FrenchButton_Click);
             // 
             // MandarinButton
             // 
@@ -95,20 +98,22 @@ namespace Helios_ATM
             this.MandarinButton.Text = "富盈";
             this.MandarinButton.UseCustomBackColor = true;
             this.MandarinButton.UseSelectable = true;
+            this.MandarinButton.Click += new System.EventHandler(this.MandarinButton_Click);
             // 
-            // button3
+            // OtherLanguages
             // 
-            this.button3.BackColor = System.Drawing.Color.DarkGray;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.Cursor = System.Windows.Forms.Cursors.No;
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(340, 360);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(142, 37);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "...";
-            this.button3.UseCustomBackColor = true;
-            this.button3.UseSelectable = true;
+            this.OtherLanguages.BackColor = System.Drawing.Color.DarkGray;
+            this.OtherLanguages.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.OtherLanguages.Cursor = System.Windows.Forms.Cursors.No;
+            this.OtherLanguages.Enabled = false;
+            this.OtherLanguages.Location = new System.Drawing.Point(340, 360);
+            this.OtherLanguages.Name = "OtherLanguages";
+            this.OtherLanguages.Size = new System.Drawing.Size(142, 37);
+            this.OtherLanguages.TabIndex = 10;
+            this.OtherLanguages.Text = "...";
+            this.OtherLanguages.UseCustomBackColor = true;
+            this.OtherLanguages.UseSelectable = true;
+            this.OtherLanguages.Click += new System.EventHandler(this.button3_Click);
             // 
             // PortuguesButton
             // 
@@ -123,6 +128,7 @@ namespace Helios_ATM
             this.PortuguesButton.Text = "Português";
             this.PortuguesButton.UseCustomBackColor = true;
             this.PortuguesButton.UseSelectable = true;
+            this.PortuguesButton.Click += new System.EventHandler(this.PortuguesButton_Click);
             // 
             // SpanishButton
             // 
@@ -177,6 +183,11 @@ namespace Helios_ATM
             this.BatteryCharge.TabIndex = 13;
             this.BatteryCharge.Value = 100;
             // 
+            // BatteryNetworkTimer
+            // 
+            this.BatteryNetworkTimer.Interval = 1000;
+            this.BatteryNetworkTimer.Tick += new System.EventHandler(this.BatteryNetworkTimer_Tick);
+            // 
             // ATM4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -189,7 +200,7 @@ namespace Helios_ATM
             this.Controls.Add(this.BatteryCharge);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.AbortButton);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.OtherLanguages);
             this.Controls.Add(this.PortuguesButton);
             this.Controls.Add(this.SpanishButton);
             this.Controls.Add(this.MandarinButton);
@@ -213,11 +224,12 @@ namespace Helios_ATM
         private MetroFramework.Controls.MetroButton EnglishButton;
         private MetroFramework.Controls.MetroButton FrenchButton;
         private MetroFramework.Controls.MetroButton MandarinButton;
-        private MetroFramework.Controls.MetroButton button3;
+        private MetroFramework.Controls.MetroButton OtherLanguages;
         private MetroFramework.Controls.MetroButton PortuguesButton;
         private MetroFramework.Controls.MetroButton SpanishButton;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
+        private System.Windows.Forms.Timer BatteryNetworkTimer;
     }
 }
 

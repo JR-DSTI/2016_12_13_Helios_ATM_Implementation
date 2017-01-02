@@ -18,6 +18,7 @@ namespace Helios_ATM
             InitializeComponent();
             delay_progressbar();
 
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -67,6 +68,20 @@ namespace Helios_ATM
             s3log.logOperation(sender);
 
             this.Visible = false;
+        }
+
+        private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
+        {
+            //discharge battery and check network connection:
+            battery.discharge(this.BatteryCharge);
+            networkConnection.networkConnectionOK(this.NetworkSignal);
+        }
+
+        private void ATM7_Load(object sender, EventArgs e)
+        {
+            //update batterycharge and start BatteryNetworkTimer
+            this.BatteryCharge.Value = battery.charge;
+            this.BatteryNetworkTimer.Start();
         }
     }
 }

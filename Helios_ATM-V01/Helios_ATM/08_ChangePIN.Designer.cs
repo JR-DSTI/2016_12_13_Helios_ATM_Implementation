@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM8));
             this.label1 = new System.Windows.Forms.Label();
             this.AbortButton = new MetroFramework.Controls.MetroButton();
@@ -54,6 +55,7 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
+            this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -361,6 +363,10 @@
             this.BatteryCharge.TabIndex = 23;
             this.BatteryCharge.Value = 100;
             // 
+            // BatteryNetworkTimer
+            // 
+            this.BatteryNetworkTimer.Interval = 1000;
+            // 
             // ATM8
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -419,6 +425,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
+        private System.Windows.Forms.Timer BatteryNetworkTimer;
     }
 }
 

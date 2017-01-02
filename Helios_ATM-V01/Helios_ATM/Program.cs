@@ -91,7 +91,6 @@ namespace Helios_ATM
 
         public static void discharge(MetroFramework.Controls.MetroProgressBar BatteryCharge)
         {
-            BatteryCharge.Value=charge;
 
             //iff the usecase battery source was chosen:
 
@@ -99,6 +98,7 @@ namespace Helios_ATM
             {
                 if (charge > 0)
                 {
+                    //set the Battery Progressbar to current charge:
                     BatteryCharge.Value -= decrement;
                     charge = BatteryCharge.Value;
                 }
@@ -109,8 +109,11 @@ namespace Helios_ATM
                     Environment.Exit(0);
                 }
             }
-           
-           
+
+            //set the Battery Progressbar to current charge:
+            //BatteryCharge.Value = charge;
+
+
         }
     }
 

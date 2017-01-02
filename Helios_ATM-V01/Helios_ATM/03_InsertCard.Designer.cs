@@ -39,6 +39,7 @@ namespace Helios_ATM
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -112,6 +113,11 @@ namespace Helios_ATM
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // BatteryNetworkTimer
+            // 
+            this.BatteryNetworkTimer.Interval = 1000;
+            this.BatteryNetworkTimer.Tick += new System.EventHandler(this.BatteryNetworkTimer_Tick);
+            // 
             // ATM3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -146,6 +152,7 @@ namespace Helios_ATM
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer BatteryNetworkTimer;
     }
 }
 

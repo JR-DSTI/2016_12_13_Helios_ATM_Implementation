@@ -38,6 +38,8 @@
             this.AbortButton = new MetroFramework.Controls.MetroButton();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
+            this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // CreditCardButton
@@ -112,6 +114,15 @@
             this.BatteryCharge.TabIndex = 14;
             this.BatteryCharge.Value = 100;
             // 
+            // BatteryNetworkTimer
+            // 
+            this.BatteryNetworkTimer.Interval = 1000;
+            this.BatteryNetworkTimer.Tick += new System.EventHandler(this.BatteryNetworkTimer_Tick);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            // 
             // ATM7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -131,6 +142,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ATM7";
+            this.Load += new System.EventHandler(this.ATM7_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,6 +157,8 @@
         private MetroFramework.Controls.MetroButton DebitCardButton;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
+        private System.Windows.Forms.Timer BatteryNetworkTimer;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

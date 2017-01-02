@@ -19,7 +19,9 @@ namespace Helios_ATM
 
         private void ATM9_Load(object sender, EventArgs e)
         {
-
+            //update batterycharge and start BatteryNetworkTimer
+            this.BatteryCharge.Value = battery.charge;
+            this.BatteryNetworkTimer.Start();
         }
 
         private async void CardInserted_Click(object sender, EventArgs e)

@@ -22,7 +22,8 @@ namespace Helios_ATM
 
         private void ATM4_Load(object sender, EventArgs e)
         {
-
+            this.BatteryCharge.Value = battery.charge;
+            this.BatteryNetworkTimer.Start();
         }
 
         private async void CardInserted_Click(object sender, EventArgs e)
@@ -36,9 +37,13 @@ namespace Helios_ATM
             Form ATM5 = new ATM5(); // Instantiate a Form object.
             ATM5.Show(); //show the new Form
             this.Visible = false;  //Hide the old form
+            
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
+
         }
 
-        
+
 
 
 
@@ -55,6 +60,9 @@ namespace Helios_ATM
             s3log.logOperation(sender);
 
             this.Visible = false;
+            
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
         }
 
         private void metroButton2_Click(object sender, EventArgs e)
@@ -67,9 +75,42 @@ namespace Helios_ATM
             s3log.logOperation(sender);
 
             this.Visible = false;
+
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
         }
 
         private void SpanishButton_Click(object sender, EventArgs e)
+        {
+            //Log current operation:
+            s3log.logOperation(sender);
+        }
+
+        private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
+        {
+            battery.discharge(this.BatteryCharge);
+            networkConnection.networkConnectionOK(this.NetworkSignal);
+        }
+
+        private void FrenchButton_Click(object sender, EventArgs e)
+        {
+            //Log current operation:
+            s3log.logOperation(sender);
+        }
+
+        private void PortuguesButton_Click(object sender, EventArgs e)
+        {
+            //Log current operation:
+            s3log.logOperation(sender);
+        }
+
+        private void MandarinButton_Click(object sender, EventArgs e)
+        {
+            //Log current operation:
+            s3log.logOperation(sender);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
         {
             //Log current operation:
             s3log.logOperation(sender);

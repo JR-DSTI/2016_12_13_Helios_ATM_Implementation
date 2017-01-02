@@ -34,8 +34,10 @@ namespace Helios_ATM
 
         private void ATM3_Load(object sender, EventArgs e)
         {
-            BatteryCharge.Value = battery.charge;
-            this.timer1.Start();
+            this.BatteryCharge.Value = battery.charge;
+            this.BatteryNetworkTimer.Start();
+            //BatteryCharge.Value = battery.charge;
+            //this.timer1.Start();
         }
 
 
@@ -48,37 +50,37 @@ namespace Helios_ATM
             s3log.logOperation(sender);
 
             //continue to next form:
-            this.log(true);
+            //this.log(true);
             Form ATM4 = new ATM4(); // Instantiate a Form object.
             ATM4.Show(); //show the new Form
             this.Visible = false;  //Hide the old form
-
-
-        }
-
-
-
-        public void getBalance(String tablename = "ATM", String myAccountId = "0001")
-        {
-            //Creation of a new Client
-            AmazonDynamoDBClient dbc = new AmazonDynamoDBClient();
-
-            //Load into a table called ATM thx to a DB client
-            Table LoadProduct = Table.LoadTable(dbc, tablename);
-            MetroFramework.MetroMessageBox.Show(this,"\n*** Executing RetrieveAccount() ***");
-
-            // We define the Attributes to fetch (here Balance)
-            GetItemOperationConfig config = new GetItemOperationConfig
-            {
-                AttributesToGet = new List<string> { "Balance" },
-                ConsistentRead = true
-            };
-
-            //from the table, get the item described in the config
-            Document document = LoadProduct.GetItem(myAccountId, config);
-            //Checker(document);
+            this.BatteryNetworkTimer.Stop();
 
         }
+
+
+
+        //public void getBalance(String tablename = "ATM", String myAccountId = "0001")
+        //{
+        //    //Creation of a new Client
+        //    AmazonDynamoDBClient dbc = new AmazonDynamoDBClient();
+
+        //    //Load into a table called ATM thx to a DB client
+        //    Table LoadProduct = Table.LoadTable(dbc, tablename);
+        //    MetroFramework.MetroMessageBox.Show(this,"\n*** Executing RetrieveAccount() ***");
+
+        //    // We define the Attributes to fetch (here Balance)
+        //    GetItemOperationConfig config = new GetItemOperationConfig
+        //    {
+        //        AttributesToGet = new List<string> { "Balance" },
+        //        ConsistentRead = true
+        //    };
+
+        //    //from the table, get the item described in the config
+        //    Document document = LoadProduct.GetItem(myAccountId, config);
+        //    //Checker(document);
+
+        //}
 
 
 
@@ -89,9 +91,10 @@ namespace Helios_ATM
             //cancel to initial form, maybe not too necessary here
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
-            this.log(false);
             this.Visible = false;  //Hide the old form
+
             //Log current operation:
+            //this.log(false);
             s3log.logOperation(sender);
 
         }
@@ -100,21 +103,21 @@ namespace Helios_ATM
         {
 
         }
-        public void discharge()
-        {
-            if (BatteryCharge.Value > 1)
-            {
-                BatteryCharge.Value -= battery.decrement;
-                battery.charge = BatteryCharge.Value;
-            }
-            else
-            {
-                Environment.Exit(0);
-            }
-        }
+        //public void discharge()
+        //{
+        //    if (BatteryCharge.Value > 1)
+        //    {
+        //        BatteryCharge.Value -= battery.decrement;
+        //        battery.charge = BatteryCharge.Value;
+        //    }
+        //    else
+        //    {
+        //        Environment.Exit(0);
+        //    }
+        //}
         private void timer1_Tick(object sender, EventArgs e)
         {
-            discharge();
+            //discharge();
         }
 
 
@@ -146,6 +149,12 @@ namespace Helios_ATM
             //Variables.strLog = Variables.strLog + "\n" + "visit to Main Menu: " + (battery.form1visit).ToString() + " " + (DateTime.Now).ToString();
             //MetroFramework.MetroMessageBox.Show(this, Variables.strLog);
 
+        }
+
+        private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
+        {
+            battery.discharge(this.BatteryCharge);
+            networkConnection.networkConnectionOK(this.NetworkSignal);
         }
     }
 }
