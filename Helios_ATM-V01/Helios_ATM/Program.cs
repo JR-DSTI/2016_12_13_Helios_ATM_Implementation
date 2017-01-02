@@ -71,7 +71,7 @@ namespace Helios_ATM
         public static bool bCheckBoxPINEntriesExhausted;
         public static bool bCheckBoxNetworkConnectionUnstable;
         public static bool bCheckBoxPowerSourceBattery;
-
+        public static bool bCheckBoxZeroCash;
     }
 
     // //static class which holds the public battery charge properties, functions for decreasing

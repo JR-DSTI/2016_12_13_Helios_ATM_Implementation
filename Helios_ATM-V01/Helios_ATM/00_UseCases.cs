@@ -34,7 +34,7 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
 
-            //useCaseVariables.strNotificationAddress = EmailTextBox.Text;
+            useCaseVariables.strNotificationAddress = EmailTextBox.Text;
             useCaseVariables.bCheckBoxPowerSourceBattery = CheckBoxPowerSourceBattery.Checked;
             useCaseVariables.bCheckBoxPINEntriesExhausted = CheckBoxPINEntriesExhausted.Checked;
             useCaseVariables.bCheckBoxNetworkConnectionUnstable = CheckBoxNetworkConnectionUnstable.Checked;

@@ -43,6 +43,8 @@
             this.CheckBoxPINEntriesExhausted = new MetroFramework.Controls.MetroCheckBox();
             this.UseCaseLabel = new MetroFramework.Controls.MetroLabel();
             this.CheckBoxNetworkConnectionUnstable = new MetroFramework.Controls.MetroCheckBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.EmailTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,6 +151,23 @@
             this.CheckBoxNetworkConnectionUnstable.Text = "Unstable network connection.";
             this.CheckBoxNetworkConnectionUnstable.UseSelectable = true;
             // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel1.Location = new System.Drawing.Point(23, 400);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(365, 25);
+            this.metroLabel1.TabIndex = 17;
+            this.metroLabel1.Text = "Choose the E-Mail recipient for notifications:";
+            // 
+            // EmailTextBox
+            // 
+            this.EmailTextBox.Location = new System.Drawing.Point(110, 439);
+            this.EmailTextBox.Name = "EmailTextBox";
+            this.EmailTextBox.Size = new System.Drawing.Size(278, 22);
+            this.EmailTextBox.TabIndex = 18;
+            // 
             // ATM0
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -157,6 +176,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(516, 544);
             this.ControlBox = false;
+            this.Controls.Add(this.EmailTextBox);
+            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.CheckBoxNetworkConnectionUnstable);
             this.Controls.Add(this.UseCaseLabel);
             this.Controls.Add(this.CheckBoxPINEntriesExhausted);
@@ -193,6 +214,8 @@
         private MetroFramework.Controls.MetroCheckBox CheckBoxPINEntriesExhausted;
         private MetroFramework.Controls.MetroLabel UseCaseLabel;
         private MetroFramework.Controls.MetroCheckBox CheckBoxNetworkConnectionUnstable;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private System.Windows.Forms.TextBox EmailTextBox;
     }
 }
 
