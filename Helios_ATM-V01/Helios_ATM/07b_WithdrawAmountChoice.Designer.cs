@@ -329,6 +329,7 @@ namespace Helios_ATM
             // BatteryNetworkTimer
             // 
             this.BatteryNetworkTimer.Interval = 1000;
+            this.BatteryNetworkTimer.Tick += new System.EventHandler(this.BatteryNetworkTimer_Tick);
             // 
             // ATM7b
             // 

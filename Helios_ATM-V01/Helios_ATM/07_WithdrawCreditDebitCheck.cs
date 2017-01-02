@@ -17,8 +17,6 @@ namespace Helios_ATM
         {
             InitializeComponent();
             delay_progressbar();
-
-            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -29,7 +27,7 @@ namespace Helios_ATM
         private async void delay_progressbar(){
             this.WelcomeTimer.Start();
             this.WelcomeProgressBar.Visible = true;
-            await Task.Delay(2000);
+            await Task.Delay(1000);
             //Lib.getBankName();
             Lib.RetrieveAccount();
             //Lib.getBalance();
@@ -44,6 +42,9 @@ namespace Helios_ATM
             ATM7a.Show(); //show the new Form
 
             this.Visible = false;
+
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -53,6 +54,9 @@ namespace Helios_ATM
             ATM7a.Show(); //show the new Form
 
             this.Visible = false;
+
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -66,6 +70,9 @@ namespace Helios_ATM
 
             //Log current operation:
             s3log.logOperation(sender);
+
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
 
             this.Visible = false;
         }

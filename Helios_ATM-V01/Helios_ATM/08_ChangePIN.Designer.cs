@@ -300,9 +300,9 @@
             // 
             // ConfirmPINentryButton
             // 
-            this.ConfirmPINentryButton.Location = new System.Drawing.Point(106, 427);
+            this.ConfirmPINentryButton.Location = new System.Drawing.Point(106, 434);
             this.ConfirmPINentryButton.Name = "ConfirmPINentryButton";
-            this.ConfirmPINentryButton.Size = new System.Drawing.Size(73, 75);
+            this.ConfirmPINentryButton.Size = new System.Drawing.Size(73, 68);
             this.ConfirmPINentryButton.TabIndex = 18;
             this.ConfirmPINentryButton.Text = "Confirm";
             this.ConfirmPINentryButton.UseSelectable = true;
@@ -366,6 +366,7 @@
             // BatteryNetworkTimer
             // 
             this.BatteryNetworkTimer.Interval = 1000;
+            this.BatteryNetworkTimer.Tick += new System.EventHandler(this.BatteryNetworkTimer_Tick);
             // 
             // ATM8
             // 

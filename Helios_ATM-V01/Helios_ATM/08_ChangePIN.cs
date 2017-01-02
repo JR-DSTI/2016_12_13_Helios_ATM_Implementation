@@ -57,7 +57,10 @@ namespace Helios_ATM
         {
             //Log current operation:
             s3log.logOperation(sender);
-            
+
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
+
             //CancelMsgBox
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
 
@@ -163,6 +166,9 @@ namespace Helios_ATM
         {
             //Log current operation:
             s3log.logOperation(sender);
+
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
 
             if (ConfirmNewPinEntry.Enabled == true)
             {
@@ -287,9 +293,19 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
 
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
+
             Form ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
             this.Visible = false;  //Hide the old form
+        }
+
+        private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
+        {
+            //discharge battery and check network connection:
+            battery.discharge(this.BatteryCharge);
+            networkConnection.networkConnectionOK(this.NetworkSignal);
         }
     }
 }

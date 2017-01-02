@@ -36,15 +36,23 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
 
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
+
             //Going back to first form (=restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
 
             this.Visible = false;
+
+            
         }
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
+
             //continue to Main form
             Form ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
@@ -65,8 +73,9 @@ namespace Helios_ATM
 
 
         public void check_and_pay(int balance)
-        
         {
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
 
             Boolean withdraw = true;
             if (Int32.Parse(Lib.getBalance()) < balance)
@@ -96,8 +105,6 @@ namespace Helios_ATM
             if (result == DialogResult.Yes)
             {
                 //Doing Assans AWS Printing magic here
-
-
                 String body=headz(WithdrawAmount);
                 String title = "Thank you for using HELIOS Banking";
                 Lib.sendMail(title, body);
@@ -223,5 +230,11 @@ namespace Helios_ATM
 
         }
 
+        private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
+        {
+            //discharge battery and check network connection:
+            battery.discharge(this.BatteryCharge);
+            networkConnection.networkConnectionOK(this.NetworkSignal);
+        }
     }
 }

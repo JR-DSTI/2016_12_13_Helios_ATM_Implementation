@@ -24,21 +24,24 @@ namespace Helios_ATM
             this.BatteryNetworkTimer.Start();
         }
 
-        private async void CardInserted_Click(object sender, EventArgs e)
-        {
-            await Task.Delay(500);
+        //private async void CardInserted_Click(object sender, EventArgs e)
+        //{
+        //    await Task.Delay(500);
 
-            Form ATM4 = new ATM4(); // Instantiate a Form object.
-            ATM4.Show(); //show the new Form
+        //    Form ATM4 = new ATM4(); // Instantiate a Form object.
+        //    ATM4.Show(); //show the new Form
 
-            this.Visible = false;  //Hide the old form
-        }
+        //    this.Visible = false;  //Hide the old form
+        //}
 
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
             //Log current operation:
             s3log.logOperation(sender);
+
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
 
             Form ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
@@ -63,8 +66,12 @@ namespace Helios_ATM
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+
             //Set default value for other account
             SavingsLabel.Text ="XX,XXX.XX";
+
             //Insert here the code to get current checkings amount
             CheckingsLabel.Text= string.Format("{0:##,###.00}", Convert.ToDecimal(Lib.getCheckingBalance()));
 
@@ -72,8 +79,12 @@ namespace Helios_ATM
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
+            //Log current operation:
+            s3log.logOperation(sender);
+
             //Set default value for other account
             CheckingsLabel.Text =  "XX,XXX.XX";
+
             //Insert here the code to get current savings amount
             SavingsLabel.Text = string.Format("{0:##,###.00}", Convert.ToDecimal(Lib.getSavingsBalance()));
         }
@@ -83,6 +94,9 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
             
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
+
             //CancelMsgBox
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
 
@@ -91,6 +105,13 @@ namespace Helios_ATM
             ATM1.Show(); //show the new Form
 
             this.Visible = false;
+        }
+
+        private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
+        {
+            //discharge battery and check network connection:
+            battery.discharge(this.BatteryCharge);
+            networkConnection.networkConnectionOK(this.NetworkSignal);
         }
     }
 }

@@ -77,6 +77,9 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
 
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
+
             //checking whether PIN is correct:
             strWithdrawAmount = this.WithdrawAmountTextbox.Text;
 
@@ -109,15 +112,16 @@ namespace Helios_ATM
         {
             //Dispense WithdrawAmount
             MetroMessageBox.Show(this, "Requested amount of " + WithdrawAmount + " Pesos is available in slot now");
-
-
+            
             //Ask & send receipt
-
             var result = MetroMessageBox.Show(this, "Do you want to print a receipt?", "Receipt", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
                 //Doing Assans AWS Printing magic here
+                String body = headz(WithdrawAmount);
+                String title = "Thank you for using HELIOS Banking";
+                Lib.sendMail(title, body);
                 AutoClosingMessageBox.Show("Finished AWS printing magic.", "Info", 1500, this);
             }
 
@@ -162,6 +166,9 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
 
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
+
             Form ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
 
@@ -179,7 +186,10 @@ namespace Helios_ATM
         {
             //Log current operation:
             s3log.logOperation(sender);
-            
+
+            //stop the BatteryNetworkTimer
+            this.BatteryNetworkTimer.Stop();
+
             //CancelMsgBox
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
 
@@ -190,6 +200,27 @@ namespace Helios_ATM
             this.Visible = false;
         }
 
+        public String headz(int WithdrawAmount)
+        {
+
+            String header = "======================================";
+            String header2 = "                 Receipt";
+            String subject = "You have withdrawn " + WithdrawAmount + " Pesos";
+            String timeStamp = "Date :" + DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss");
+            String activity = "Action : Withdraw";
+            String ATMlocation = "Location : Munchen";
+            String AccountNumber = "Account N° : ***********" + Lib.getID().Substring(2, 2);
+
+            return (header + Environment.NewLine + header2
+                + Environment.NewLine + header
+                + Environment.NewLine + subject
+                + Environment.NewLine + timeStamp
+                + Environment.NewLine + activity
+                + Environment.NewLine + ATMlocation
+                + Environment.NewLine + AccountNumber
+                );
+
+        }
 
         //Button clicks to insert PIN over the form (didnt make a function for that yet, would be improvement though)
         private void Num1_Click(object sender, EventArgs e)
@@ -264,6 +295,13 @@ namespace Helios_ATM
         {
             strWithdrawAmount = strWithdrawAmount.Substring(0, strWithdrawAmount.Length-1);
             this.WithdrawAmountTextbox.Text = strWithdrawAmount;
+        }
+
+        private void BatteryNetworkTimer_Tick(object sender, EventArgs e)
+        {
+            //discharge battery and check network connection:
+            battery.discharge(this.BatteryCharge);
+            networkConnection.networkConnectionOK(this.NetworkSignal);
         }
     }
 }
