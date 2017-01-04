@@ -1,0 +1,386 @@
+
+========================
+Date and time: 04/01/2017 11:30:23
+Form: ATM0
+Operation: Button EnterHereButton
+Battery life: 100% 
+# of form visits: 1
+Ping: 31
+========================
+Date and time: 04/01/2017 11:30:25
+Form: ATM1
+Operation: Button EnterHereButton
+Battery life: 100% 
+# of form visits: 1
+Ping: 26
+========================
+Date and time: 04/01/2017 11:30:29
+Form: ATM3
+Operation: Button CardInsertedButton
+Battery life: 100% 
+# of form visits: 1
+Ping: 30
+========================
+Date and time: 04/01/2017 11:30:36
+Form: ATM4
+Operation: Button EnglishButton
+Battery life: 100% 
+# of form visits: 1
+Ping: 32
+========================
+Date and time: 04/01/2017 11:31:10
+Form: ATM5
+Operation: Button Num3
+Battery life: 100% 
+# of form visits: 1
+Ping: 30
+========================
+Date and time: 04/01/2017 11:31:10
+Form: ATM5
+Operation: Button Num3
+Battery life: 100% 
+# of form visits: 2
+Ping: 30
+========================
+Date and time: 04/01/2017 11:31:11
+Form: ATM5
+Operation: Button Num1
+Battery life: 100% 
+# of form visits: 3
+Ping: 29
+========================
+Date and time: 04/01/2017 11:31:12
+Form: ATM5
+Operation: Button Num3
+Battery life: 100% 
+# of form visits: 4
+Ping: 30
+========================
+Date and time: 04/01/2017 11:31:13
+Form: ATM5
+Operation: Button ConfirmPINentryButton
+Battery life: 100% 
+# of form visits: 5
+Ping: 23
+========================
+Date and time: 04/01/2017 11:31:58
+Form: 
+Operation: Logtext: PIN entry success.
+Battery life: 100% 
+# of form visits: 1
+Ping: 32
+========================
+Date and time: 04/01/2017 11:32:14
+Form: ATM6
+Operation: Button WithdrawCashButton
+Battery life: 100% 
+# of form visits: 1
+Ping: 31
+========================
+Date and time: 04/01/2017 11:32:16
+Form: ATM6
+Operation: Button ConfirmMenuSelectionButton
+Battery life: 100% 
+# of form visits: 2
+Ping: 33
+========================
+Date and time: 04/01/2017 11:32:54
+Form: ATM7a
+Operation: Button Withdraw500Button
+Battery life: 100% 
+# of form visits: 1
+Ping: 24
+========================
+Date and time: 04/01/2017 11:34:38
+Form: 
+Operation: Logtext: Blocked withdrawal due to unsufficient account balance.
+Battery life: 100% 
+# of form visits: 2
+Ping: 28
+========================
+Date and time: 04/01/2017 11:35:08
+Form: 
+Operation: Button AbortButton
+Battery life: 100% 
+# of form visits: 3
+Ping: 31
+========================
+Date and time: 04/01/2017 11:35:09
+Form: ATM1
+Operation: Button EnterHereButton
+Battery life: 100% 
+# of form visits: 2
+Ping: 25
+========================
+Date and time: 04/01/2017 11:35:13
+Form: ATM3
+Operation: Button CardInsertedButton
+Battery life: 100% 
+# of form visits: 2
+Ping: 33
+========================
+Date and time: 04/01/2017 11:35:33
+Form: ATM4
+Operation: Button EnglishButton
+Battery life: 100% 
+# of form visits: 2
+Ping: 24
+========================
+Date and time: 04/01/2017 11:35:37
+Form: ATM5
+Operation: Button ConfirmPINentryButton
+Battery life: 100% 
+# of form visits: 6
+Ping: 46
+========================
+Date and time: 04/01/2017 11:35:59
+Form: 
+Operation: Logtext: PIN entry fail, left attempts: 2
+Battery life: 100% 
+# of form visits: 4
+Ping: 38
+========================
+Date and time: 04/01/2017 11:36:06
+Form: ATM5
+Operation: Button Num3
+Battery life: 100% 
+# of form visits: 7
+Ping: 24
+========================
+Date and time: 04/01/2017 11:36:06
+Form: ATM5
+Operation: Button Num3
+Battery life: 100% 
+# of form visits: 8
+Ping: 36
+========================
+Date and time: 04/01/2017 11:36:07
+Form: ATM5
+Operation: Button Num1
+Battery life: 100% 
+# of form visits: 9
+Ping: 34
+========================
+Date and time: 04/01/2017 11:36:08
+Form: ATM5
+Operation: Button Num3
+Battery life: 100% 
+# of form visits: 10
+Ping: 33
+========================
+Date and time: 04/01/2017 11:36:09
+Form: ATM5
+Operation: Button ConfirmPINentryButton
+Battery life: 100% 
+# of form visits: 11
+Ping: 33
+========================
+Date and time: 04/01/2017 11:36:38
+Form: 
+Operation: Logtext: PIN entry success.
+Battery life: 100% 
+# of form visits: 5
+Ping: 73
+========================
+Date and time: 04/01/2017 11:36:42
+Form: ATM6
+Operation: Button ChangePINButton
+Battery life: 100% 
+# of form visits: 3
+Ping: 36
+========================
+Date and time: 04/01/2017 11:36:44
+Form: ATM6
+Operation: Button ConfirmMenuSelectionButton
+Battery life: 100% 
+# of form visits: 4
+Ping: 35
+========================
+Date and time: 04/01/2017 11:36:53
+Form: ATM8
+Operation: Button ConfirmPINentryButton
+Battery life: 100% 
+# of form visits: 1
+Ping: 23
+========================
+Date and time: 04/01/2017 11:36:58
+Form: ATM8
+Operation: Button ConfirmPINentryButton
+Battery life: 100% 
+# of form visits: 2
+Ping: 35
+========================
+Date and time: 04/01/2017 11:37:11
+Form: ATM8
+Operation: Button ConfirmPINentryButton
+Battery life: 100% 
+# of form visits: 3
+Ping: 28
+========================
+Date and time: 04/01/2017 11:37:26
+Form: ATM8
+Operation: Button AbortButton
+Battery life: 100% 
+# of form visits: 4
+Ping: 25
+========================
+Date and time: 04/01/2017 11:37:29
+Form: ATM1
+Operation: Button EnterHereButton
+Battery life: 100% 
+# of form visits: 3
+Ping: 32
+========================
+Date and time: 04/01/2017 11:37:36
+Form: ATM3
+Operation: Button CardInsertedButton
+Battery life: 100% 
+# of form visits: 3
+Ping: 31
+========================
+Date and time: 04/01/2017 11:37:46
+Form: ATM4
+Operation: Button EnglishButton
+Battery life: 100% 
+# of form visits: 3
+Ping: 33
+========================
+Date and time: 04/01/2017 11:37:52
+Form: ATM5
+Operation: Button Num3
+Battery life: 100% 
+# of form visits: 12
+Ping: 34
+========================
+Date and time: 04/01/2017 11:37:53
+Form: ATM5
+Operation: Button Num3
+Battery life: 100% 
+# of form visits: 13
+Ping: 35
+========================
+Date and time: 04/01/2017 11:37:54
+Form: ATM5
+Operation: Button Num3
+Battery life: 100% 
+# of form visits: 14
+Ping: 32
+========================
+Date and time: 04/01/2017 11:37:59
+Form: ATM5
+Operation: Button Num3
+Battery life: 100% 
+# of form visits: 15
+Ping: 33
+========================
+Date and time: 04/01/2017 11:38:00
+Form: ATM5
+Operation: Button ConfirmPINentryButton
+Battery life: 100% 
+# of form visits: 16
+Ping: 36
+========================
+Date and time: 04/01/2017 11:38:21
+Form: 
+Operation: Logtext: PIN entry fail, left attempts: 2
+Battery life: 100% 
+# of form visits: 6
+Ping: 39
+========================
+Date and time: 04/01/2017 11:38:31
+Form: ATM5
+Operation: Button Num3
+Battery life: 100% 
+# of form visits: 17
+Ping: 32
+========================
+Date and time: 04/01/2017 11:38:31
+Form: ATM5
+Operation: Button Num3
+Battery life: 100% 
+# of form visits: 18
+Ping: 26
+========================
+Date and time: 04/01/2017 11:38:32
+Form: ATM5
+Operation: Button Num1
+Battery life: 100% 
+# of form visits: 19
+Ping: 34
+========================
+Date and time: 04/01/2017 11:38:33
+Form: ATM5
+Operation: Button Num3
+Battery life: 100% 
+# of form visits: 20
+Ping: 37
+========================
+Date and time: 04/01/2017 11:38:34
+Form: ATM5
+Operation: Button ConfirmPINentryButton
+Battery life: 100% 
+# of form visits: 21
+Ping: 33
+========================
+Date and time: 04/01/2017 11:38:55
+Form: 
+Operation: Logtext: PIN entry success.
+Battery life: 100% 
+# of form visits: 7
+Ping: 53
+========================
+Date and time: 04/01/2017 11:38:59
+Form: ATM6
+Operation: Button ChangePINButton
+Battery life: 100% 
+# of form visits: 5
+Ping: 31
+========================
+Date and time: 04/01/2017 11:39:00
+Form: ATM6
+Operation: Button ConfirmMenuSelectionButton
+Battery life: 100% 
+# of form visits: 6
+Ping: 39
+========================
+Date and time: 04/01/2017 11:39:10
+Form: ATM8
+Operation: Button ConfirmPINentryButton
+Battery life: 100% 
+# of form visits: 5
+Ping: 26
+========================
+Date and time: 04/01/2017 11:39:15
+Form: ATM8
+Operation: Button ConfirmPINentryButton
+Battery life: 100% 
+# of form visits: 6
+Ping: 33
+========================
+Date and time: 04/01/2017 11:39:25
+Form: ATM8
+Operation: Button ConfirmPINentryButton
+Battery life: 100% 
+# of form visits: 7
+Ping: 27
+========================
+Date and time: 04/01/2017 11:39:51
+Form: ATM1
+Operation: Button AbortButton
+Battery life: 100% 
+# of form visits: 4
+Ping: 68
+========================
+Date and time: 04/01/2017 11:39:53
+Form: ATM1
+Operation: Button EnterHereButton
+Battery life: 100% 
+# of form visits: 5
+Ping: 43
+========================
+Date and time: 04/01/2017 11:39:59
+Form: ATM3
+Operation: Button CardInsertedButton
+Battery life: 100% 
+# of form visits: 4
+Ping: 33

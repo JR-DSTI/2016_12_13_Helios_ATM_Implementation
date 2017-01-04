@@ -20,7 +20,7 @@ namespace Helios_ATM
         
         //here you could insert your Data base link to PIN, PINentries
         private int PINentries=0;
-        private String correctPIN = "1111";
+        private String correctPIN = Lib.getCode("ATM",useCaseVariables.useCase);
 
         public ATM5()
         {
@@ -79,18 +79,20 @@ namespace Helios_ATM
 
         private void ConfirmPINentry_Click_1(object sender, EventArgs e)
         {
-            Boolean blocked = false;
+            //Boolean blocked = false;
             //checking whether PIN is correct:
             PIN = this.PinEntry.Text;
 
             //Log current operation & all inputs later
             s3log.logOperation(sender);
+            
 
-            if (Lib.getBlocked() || useCaseVariables.bCheckBoxPINEntriesExhausted)
+            //if ( useCaseVariables.bCheckBoxPINEntriesExhausted)
+            if (Lib.getBlocked("ATM",useCaseVariables.useCase))
             {
                 AutoClosingMessageBox.Show("No attempts left, no money for you, your card is being captured.", "Bad news", 2000, Parent: Form.ActiveForm);
                 PINentries = 3;
-                blocked=true;
+                //blocked=true;
                 
                 //update s3log:
                 s3log.logOperation(null, "PIN entries blocked.");
@@ -101,7 +103,7 @@ namespace Helios_ATM
             //if not CHAR then continue
             else if (!PIN.Any(char.IsLetter)) //Continue if PIN contains only numeric
             {
-                blocked = false;
+                //blocked = false;
                 //increasing the pin tries 1
                 PINentries = PINentries + 1;
                
@@ -109,7 +111,18 @@ namespace Helios_ATM
                 //Checking if pin is correct and tries <=3
                 if (PINentries<=3 & PIN == correctPIN)
                 {
-                    Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
+                    //Lib.update("ATM","0002",PINentries, blocked, Int32.Parse(Lib.getBalance()));
+                    Lib.Newupdate(useCaseVariables.useCase, 
+                                  0, 
+                                  Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")),
+                                  "Credit Agricole",
+                                  false, 
+                                  Lib.getNummer("ATM", useCaseVariables.useCase),
+                                  Int32.Parse(Lib.getCheckingBalance("ATM",useCaseVariables.useCase)), 
+                                  Lib.getCode("ATM",useCaseVariables.useCase), 
+                                  Lib.getName("ATM", useCaseVariables.useCase), 
+                                  Lib.getSavingsBalance("ATM",useCaseVariables.useCase), Int32.Parse(Lib.getTrials()));
+                    
                     
                     //delayed mesgbx
                     AutoClosingMessageBox.Show("PIN entry successful!", "Success", 2000, Parent: Form.ActiveForm);
@@ -131,8 +144,18 @@ namespace Helios_ATM
                 }
                 else if (PINentries < 3 & PIN != correctPIN)
                 {
-                    Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
-                    
+                    //Lib.update("ATM", "0002", PINentries, blocked, Int32.Parse(Lib.getBalance()));
+                    Lib.Newupdate(useCaseVariables.useCase,
+                                  0,
+                                  Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")),
+                                  "Credit Agricole",
+                                  false,
+                                  Lib.getNummer("ATM", useCaseVariables.useCase),
+                                  Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                                  Lib.getCode("ATM", useCaseVariables.useCase),
+                                  Lib.getName("ATM", useCaseVariables.useCase),
+                                  Lib.getSavingsBalance("ATM", useCaseVariables.useCase), Int32.Parse(Lib.getTrials()) + 1);
+
                     //if incorrect PIN:
                     AutoClosingMessageBox.Show("PIN entry not successful, retry! Left attempts: " + Convert.ToString(3 - PINentries), "Retry!", 2000, Parent: Form.ActiveForm);
                     s3log.logOperation(null, "PIN entry fail, left attempts: " + Convert.ToString(3 - PINentries));
@@ -146,12 +169,13 @@ namespace Helios_ATM
                 else if (PINentries > 3)
                 {
                     //set PIN blocked variables:
-                    blocked = true;
+                    //blocked = true;
                     useCaseVariables.bCheckBoxPINEntriesExhausted = true;
 
                     //Update the database:
-                    Lib.update(PINentries.ToString(), blocked, Int32.Parse(Lib.getBalance()));
-                   
+                    Lib.Newupdate(useCaseVariables.useCase, 0, Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")), "Credit Agricole", true, "34535553535", 0, "1111", "Jonas Rathke", "0", Int32.Parse(Lib.getTrials()) + 1);
+
+
                     //3 times Wrong PIN entry:
                     AutoClosingMessageBox.Show("Last PIN entry not successful, no attempts left, no money for you, your card is being captured.", "Success", 2000, Parent: Form.ActiveForm);
                     

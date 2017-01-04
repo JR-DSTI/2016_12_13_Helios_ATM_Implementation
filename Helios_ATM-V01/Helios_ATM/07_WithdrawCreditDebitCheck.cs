@@ -29,7 +29,7 @@ namespace Helios_ATM
             this.WelcomeProgressBar.Visible = true;
             await Task.Delay(1000);
             //Lib.getBankName();
-            Lib.RetrieveAccount();
+            Lib.RetrieveAccount(useCaseVariables.useCase,"ATM");
             //Lib.getBalance();
         }
 

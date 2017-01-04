@@ -51,8 +51,16 @@ namespace Helios_ATM
         }
         private void ATM0_Load(object sender, EventArgs e)
         {
+           // Lib.afunction();
+            
             //setting the current Batterycharge
             this.BatteryCharge.Value = battery.charge;
+            this.comboBox1.Items.Add("zero Cash On Account");        
+            this.comboBox1.Items.Add("No more Pin entries left");
+            
+            this.comboBox1.Items.Add("Unstable Network Connection");
+            this.comboBox1.Items.Add("Classic Usage: Jonas R.");
+            this.comboBox1.Items.Add("Power Source:Battery");
 
         }
 
@@ -62,7 +70,7 @@ namespace Helios_ATM
 
         //    if (Pinger("stackoverflow.com", 5) > 29)
         //    {
-   
+
         //        MetroFramework.MetroMessageBox.Show(this, "the connection is lost");
         //    }
         //    else
@@ -74,7 +82,7 @@ namespace Helios_ATM
 
         //    this.Visible = false;  //Hide the old form
         //}
-    
+
 
         //private void WelcomeProgressBar_Click(object sender, EventArgs e)
         //{
@@ -84,7 +92,7 @@ namespace Helios_ATM
 
         //public double Pinger(string host, int echoNum)
         //{
-  
+
         //long totalTime = 0;
         //int timeOut = 120;
         //for (int i=0; i<echoNum; i++)
@@ -101,7 +109,7 @@ namespace Helios_ATM
 
         //private void BatteryCharge_Click(object sender, EventArgs e)
         //{
-            
+
         //}
 
         //public void discharge()
@@ -123,6 +131,40 @@ namespace Helios_ATM
         {
             //getting the current Batterycharge & discharge 
             battery.discharge(this.BatteryCharge);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show((comboBox1.SelectedIndex).ToString());
+
+            switch (comboBox1.SelectedIndex)
+                 {
+                case 0:
+                    useCaseVariables.useCase = "0004";
+                    break;
+
+                case 1:
+                    useCaseVariables.useCase = "0003";
+                    break;
+                case 2:
+                    useCaseVariables.useCase = "0002";
+                    break;
+
+                case 3:
+                    useCaseVariables.useCase = "0002";
+                    break;
+                case 4:
+                    useCaseVariables.useCase = "0002";
+                    break;
+                default:
+                    useCaseVariables.useCase = "0002";
+                    break;
+            }
+        }
+
+        private void phoneFormatLabel_Click(object sender, EventArgs e)
+        {
+
         }
 
         //private void metroButton2_Click(object sender, EventArgs e)

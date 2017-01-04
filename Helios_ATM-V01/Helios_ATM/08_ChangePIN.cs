@@ -21,7 +21,7 @@ namespace Helios_ATM
         //here you could insert your Data base link to PIN, PINentries
         private int PINentries = 0;
         //here can the database get the correct PIN
-        private String correctPIN="1111";
+        private String correctPIN=Lib.getCode("ATM",useCaseVariables.useCase);
 
         public ATM8()
         {
@@ -169,8 +169,24 @@ namespace Helios_ATM
                 if (newPIN == newPIN2)
                 {
                     AutoClosingMessageBox.Show("PIN successful changed.","Success", 1000, this);
+
                     correctPIN = newPIN2;
-                    
+
+
+                    Lib.Newupdate(useCaseVariables.useCase, 0,
+                    Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 20,
+                    Lib.getBankName("ATM", useCaseVariables.useCase),
+                    false,
+                    Lib.getNummer("ATM", useCaseVariables.useCase),
+                    Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                    correctPIN,
+                    Lib.getName("ATM", useCaseVariables.useCase),
+                    Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                    0);
+
+
+
+
                     //Starting next form and close/hide this one
                     Form ATM6 = new ATM6(); // Instantiate a Form object.
                     ATM6.Show(); //show the new Form

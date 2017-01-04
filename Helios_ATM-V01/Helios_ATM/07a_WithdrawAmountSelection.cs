@@ -74,32 +74,44 @@ namespace Helios_ATM
         // the update of the bank account in the Amazon Dynamo DB is left to be implemented
 
 
-        public void check_and_pay(int balance)
+        public Boolean check_and_pay(int balance,String mycase,String code)
         {
             //stop the BatteryNetworkTimer
             this.BatteryNetworkTimer.Stop();
 
-            if (Int32.Parse(Lib.getBalance()) < balance)
+            if (Int32.Parse(Lib.getBalance(mycase, "ATM")) < balance)
             {
                 MessageBox.Show("Sorry, but ur broke dude.");
                 //update s3log:
                 s3log.logOperation(null , "Blocked withdrawal due to unsufficient account balance.");
+                return false;
             }
             else
             {   
                 //get the balance
-                String strBalance = Lib.getBalance();
+                String strBalance = Lib.getBalance(mycase, "ATM");
                 double newBalance=Int32.Parse(strBalance)- balance;
 
                 //Update database with new balance:
-                Lib.update("1111", false, newBalance);
-                Lib.getBalance();
+                Lib.Newupdate(mycase, 
+                                0, 
+                                Int32.Parse(Lib.getBalance(mycase,"ATM")), 
+                                "Credit Agricole", 
+                                Lib.getBlocked("ATM",mycase), "9393993", 
+                                Int32.Parse(Lib.getCheckingBalance("ATM",useCaseVariables.useCase)),
+                                Lib.getCode("ATM",mycase), 
+                                Lib.getName("ATM",mycase),
+                                Lib.getSavingsBalance("ATM", mycase), 
+                                0);
+                //Lib.update("ATM","0002",0, false, newBalance,"1111"); 
+                //Lib.getBalance(mycase, "ATM");
 
                 //Print the receipt:
                 withdrawPrintReceipt(balance);
                 s3log.logOperation(null, "Withdrawal success.");
-
+                return true;
             }
+
         }
         private void withdrawPrintReceipt(int WithdrawAmount)
         {
@@ -167,24 +179,69 @@ namespace Helios_ATM
         {
             //Log current operation:
             s3log.logOperation(sender);
+            string s = Lib.getATMCash("AccountATM","0001");
+            Lib.NotEnoughCash(500, s);
+            Boolean flag=check_and_pay(500, useCaseVariables.useCase,Lib.getCode("ATM",useCaseVariables.useCase));
 
-            check_and_pay(500);
+            if (flag==true){
+                Lib.Newupdate(useCaseVariables.useCase, 0,
+                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 500,
+                Lib.getBankName("ATM", useCaseVariables.useCase),
+                false,
+                Lib.getNummer("ATM", useCaseVariables.useCase),
+                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                Lib.getCode("ATM", useCaseVariables.useCase),
+                Lib.getName("ATM", useCaseVariables.useCase),
+                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                0);
+
+                Lib.updateATM(Int32.Parse(s) - 500);
+                }
         }
 
         private void Withdraw5_Click(object sender, EventArgs e)
         {
             //Log current operation:
             s3log.logOperation(sender);
-
-            check_and_pay(5);   
+            string s = Lib.getATMCash("AccountATM", "0001");
+            Lib.NotEnoughCash(5, s);
+            Boolean flag = check_and_pay(5, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+            if (flag == true)
+            {
+                Lib.Newupdate(useCaseVariables.useCase, 0,
+                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 5,
+                Lib.getBankName("ATM", useCaseVariables.useCase),
+                false,
+                Lib.getNummer("ATM", useCaseVariables.useCase),
+                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                Lib.getCode("ATM", useCaseVariables.useCase),
+                Lib.getName("ATM", useCaseVariables.useCase),
+                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                0);
+                Lib.updateATM(Int32.Parse(s) - 5);
+            }
         }
-
         private void Withdraw200_Click(object sender, EventArgs e)
         {
             //Log current operation:
             s3log.logOperation(sender);
-
-            check_and_pay(200);        
+            string s = Lib.getATMCash("AccountATM", "0001");
+            Lib.NotEnoughCash(200, s);
+            Boolean flag=check_and_pay(200, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+            if (flag == true)
+            {
+                Lib.Newupdate(useCaseVariables.useCase, 0,
+                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 200,
+                Lib.getBankName("ATM", useCaseVariables.useCase),
+                false,
+                Lib.getNummer("ATM", useCaseVariables.useCase),
+                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                Lib.getCode("ATM", useCaseVariables.useCase),
+                Lib.getName("ATM", useCaseVariables.useCase),
+                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                0);
+                Lib.updateATM(Int32.Parse(s) - 200);
+            }
         }
 
         private void Withdraw100_Click(object sender, EventArgs e)
@@ -192,32 +249,93 @@ namespace Helios_ATM
 
             //Log current operation:
             s3log.logOperation(sender);
+            string s = Lib.getATMCash("AccountATM", "0001");
 
-            check_and_pay(100);       
+            Lib.NotEnoughCash(100, s);
+            Boolean flag=check_and_pay(100, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+            if (flag == true)
+            {
+                Lib.Newupdate(useCaseVariables.useCase, 0,
+                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 100,
+                Lib.getBankName("ATM", useCaseVariables.useCase),
+                false,
+                Lib.getNummer("ATM", useCaseVariables.useCase),
+                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                Lib.getCode("ATM", useCaseVariables.useCase),
+                Lib.getName("ATM", useCaseVariables.useCase),
+                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                0);
+                Lib.updateATM(Int32.Parse(s) - 100);
+            }
         }
 
         private void Withdraw50_Click(object sender, EventArgs e)
         {
             //Log current operation:
             s3log.logOperation(sender);
-
-            check_and_pay(50);         
+            string s = Lib.getATMCash("AccountATM", "0001");
+            Lib.NotEnoughCash(50, s);
+            Boolean flag=check_and_pay(50, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+            if (flag == true)
+            {
+                Lib.Newupdate(useCaseVariables.useCase, 0,
+                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 50,
+                Lib.getBankName("ATM", useCaseVariables.useCase),
+                false,
+                Lib.getNummer("ATM", useCaseVariables.useCase),
+                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                Lib.getCode("ATM", useCaseVariables.useCase),
+                Lib.getName("ATM", useCaseVariables.useCase),
+                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                0);
+                Lib.updateATM(Int32.Parse(s) - 50);
+            }
         }
 
         private void Withdraw20_Click(object sender, EventArgs e)
         {
             //Log current operation:
             s3log.logOperation(sender);
-
-            check_and_pay(20);      
+            string s = Lib.getATMCash("AccountATM", "0001");
+            Lib.NotEnoughCash(20, s);
+            Boolean flag=check_and_pay(20, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+            if (flag == true)
+            {
+                Lib.Newupdate(useCaseVariables.useCase, 0,
+                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 20,
+                Lib.getBankName("ATM", useCaseVariables.useCase),
+                false,
+                Lib.getNummer("ATM", useCaseVariables.useCase),
+                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                Lib.getCode("ATM", useCaseVariables.useCase),
+                Lib.getName("ATM", useCaseVariables.useCase),
+                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                0);
+                Lib.updateATM(Int32.Parse(s) - 20);
+            }
         }
 
         private void Withdraw10_Click(object sender, EventArgs e)
         {
             //Log current operation:
             s3log.logOperation(sender);
-
-            check_and_pay(10);
+            string s = Lib.getATMCash("AccountATM", "0001");
+            Lib.NotEnoughCash(10, s);
+            Boolean flag = check_and_pay(10, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+            if (flag == true)
+            {
+                Lib.Newupdate(useCaseVariables.useCase, 0,
+                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 10,
+                Lib.getBankName("ATM", useCaseVariables.useCase),
+                false,
+                Lib.getNummer("ATM", useCaseVariables.useCase),
+                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                Lib.getCode("ATM", useCaseVariables.useCase),
+                Lib.getName("ATM", useCaseVariables.useCase),
+                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                0);
+                Lib.updateATM(Int32.Parse(s) - 10);
+            }
         }
 
         private void WithdrawOther_Click(object sender, EventArgs e)

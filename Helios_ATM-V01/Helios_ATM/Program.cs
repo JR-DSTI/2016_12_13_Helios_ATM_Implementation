@@ -69,11 +69,13 @@ namespace Helios_ATM
     public class useCaseVariables
     {
         public static string strNotificationAddress;
-
         public static bool bCheckBoxPINEntriesExhausted;
         public static bool bCheckBoxNetworkConnectionUnstable;
         public static bool bCheckBoxPowerSourceBattery;
         public static bool bCheckBoxZeroCash;
+
+        public static String useCase;
+ 
     }
 
     // //static class which holds the public battery charge properties, functions for decreasing

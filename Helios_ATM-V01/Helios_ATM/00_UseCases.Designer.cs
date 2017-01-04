@@ -46,15 +46,16 @@
             this.SMSlabel = new MetroFramework.Controls.MetroLabel();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.phoneFormatLabel = new MetroFramework.Controls.MetroLabel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // EnterHereButton
             // 
-            this.EnterHereButton.Location = new System.Drawing.Point(164, 510);
-            this.EnterHereButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.EnterHereButton.Location = new System.Drawing.Point(198, 435);
+            this.EnterHereButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EnterHereButton.Name = "EnterHereButton";
-            this.EnterHereButton.Size = new System.Drawing.Size(171, 23);
+            this.EnterHereButton.Size = new System.Drawing.Size(128, 19);
             this.EnterHereButton.TabIndex = 0;
             this.EnterHereButton.Text = "ENTER HERE";
             this.EnterHereButton.UseSelectable = true;
@@ -69,29 +70,29 @@
             // 
             this.HeliosLabel.AutoSize = true;
             this.HeliosLabel.Font = new System.Drawing.Font("Microsoft JhengHei UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HeliosLabel.Location = new System.Drawing.Point(125, 9);
+            this.HeliosLabel.Location = new System.Drawing.Point(94, 7);
+            this.HeliosLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.HeliosLabel.Name = "HeliosLabel";
-            this.HeliosLabel.Size = new System.Drawing.Size(242, 77);
+            this.HeliosLabel.Size = new System.Drawing.Size(194, 61);
             this.HeliosLabel.TabIndex = 4;
             this.HeliosLabel.Text = "HELIOS";
             // 
             // BatteryCharge
             // 
-            this.BatteryCharge.Location = new System.Drawing.Point(7, 15);
-            this.BatteryCharge.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BatteryCharge.Location = new System.Drawing.Point(5, 12);
+            this.BatteryCharge.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BatteryCharge.Name = "BatteryCharge";
-            this.BatteryCharge.Size = new System.Drawing.Size(44, 17);
+            this.BatteryCharge.Size = new System.Drawing.Size(33, 14);
             this.BatteryCharge.TabIndex = 8;
             this.BatteryCharge.Value = 100;
-            //this.BatteryCharge.Click += new System.EventHandler(this.BatteryCharge_Click);
             // 
             // NetworkSignal
             // 
-            this.NetworkSignal.Location = new System.Drawing.Point(456, 15);
-            this.NetworkSignal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NetworkSignal.Location = new System.Drawing.Point(476, 12);
+            this.NetworkSignal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NetworkSignal.Maximum = 100;
             this.NetworkSignal.Name = "NetworkSignal";
-            this.NetworkSignal.Size = new System.Drawing.Size(45, 41);
+            this.NetworkSignal.Size = new System.Drawing.Size(34, 33);
             this.NetworkSignal.TabIndex = 10;
             this.NetworkSignal.Theme = MetroFramework.MetroThemeStyle.Light;
             this.NetworkSignal.UseSelectable = true;
@@ -105,9 +106,10 @@
             // CheckBoxZeroCash
             // 
             this.CheckBoxZeroCash.AutoSize = true;
-            this.CheckBoxZeroCash.Location = new System.Drawing.Point(218, 169);
+            this.CheckBoxZeroCash.Location = new System.Drawing.Point(5, 135);
+            this.CheckBoxZeroCash.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CheckBoxZeroCash.Name = "CheckBoxZeroCash";
-            this.CheckBoxZeroCash.Size = new System.Drawing.Size(149, 17);
+            this.CheckBoxZeroCash.Size = new System.Drawing.Size(137, 15);
             this.CheckBoxZeroCash.TabIndex = 11;
             this.CheckBoxZeroCash.Text = "Zero cash on account";
             this.CheckBoxZeroCash.UseSelectable = true;
@@ -115,9 +117,10 @@
             // CheckBoxPowerSourceBattery
             // 
             this.CheckBoxPowerSourceBattery.AutoSize = true;
-            this.CheckBoxPowerSourceBattery.Location = new System.Drawing.Point(218, 214);
+            this.CheckBoxPowerSourceBattery.Location = new System.Drawing.Point(5, 172);
+            this.CheckBoxPowerSourceBattery.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CheckBoxPowerSourceBattery.Name = "CheckBoxPowerSourceBattery";
-            this.CheckBoxPowerSourceBattery.Size = new System.Drawing.Size(151, 17);
+            this.CheckBoxPowerSourceBattery.Size = new System.Drawing.Size(137, 15);
             this.CheckBoxPowerSourceBattery.TabIndex = 12;
             this.CheckBoxPowerSourceBattery.Text = "Power source: battery";
             this.CheckBoxPowerSourceBattery.UseSelectable = true;
@@ -125,9 +128,10 @@
             // CheckBoxPINEntriesExhausted
             // 
             this.CheckBoxPINEntriesExhausted.AutoSize = true;
-            this.CheckBoxPINEntriesExhausted.Location = new System.Drawing.Point(218, 259);
+            this.CheckBoxPINEntriesExhausted.Location = new System.Drawing.Point(5, 208);
+            this.CheckBoxPINEntriesExhausted.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CheckBoxPINEntriesExhausted.Name = "CheckBoxPINEntriesExhausted";
-            this.CheckBoxPINEntriesExhausted.Size = new System.Drawing.Size(169, 17);
+            this.CheckBoxPINEntriesExhausted.Size = new System.Drawing.Size(153, 15);
             this.CheckBoxPINEntriesExhausted.TabIndex = 13;
             this.CheckBoxPINEntriesExhausted.Text = "No more PIN entries left.";
             this.CheckBoxPINEntriesExhausted.UseSelectable = true;
@@ -136,18 +140,20 @@
             // 
             this.UseCaseLabel.AutoSize = true;
             this.UseCaseLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.UseCaseLabel.Location = new System.Drawing.Point(35, 97);
+            this.UseCaseLabel.Location = new System.Drawing.Point(26, 79);
+            this.UseCaseLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.UseCaseLabel.Name = "UseCaseLabel";
-            this.UseCaseLabel.Size = new System.Drawing.Size(429, 25);
+            this.UseCaseLabel.Size = new System.Drawing.Size(407, 25);
             this.UseCaseLabel.TabIndex = 14;
             this.UseCaseLabel.Text = "Choose the use case for the upcoming ATM screens:";
             // 
             // CheckBoxNetworkConnectionUnstable
             // 
             this.CheckBoxNetworkConnectionUnstable.AutoSize = true;
-            this.CheckBoxNetworkConnectionUnstable.Location = new System.Drawing.Point(218, 304);
+            this.CheckBoxNetworkConnectionUnstable.Location = new System.Drawing.Point(5, 245);
+            this.CheckBoxNetworkConnectionUnstable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CheckBoxNetworkConnectionUnstable.Name = "CheckBoxNetworkConnectionUnstable";
-            this.CheckBoxNetworkConnectionUnstable.Size = new System.Drawing.Size(195, 17);
+            this.CheckBoxNetworkConnectionUnstable.Size = new System.Drawing.Size(181, 15);
             this.CheckBoxNetworkConnectionUnstable.TabIndex = 15;
             this.CheckBoxNetworkConnectionUnstable.Text = "Unstable network connection.";
             this.CheckBoxNetworkConnectionUnstable.UseSelectable = true;
@@ -156,37 +162,52 @@
             // 
             this.SMSlabel.AutoSize = true;
             this.SMSlabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.SMSlabel.Location = new System.Drawing.Point(23, 400);
+            this.SMSlabel.Location = new System.Drawing.Point(26, 328);
+            this.SMSlabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SMSlabel.Name = "SMSlabel";
-            this.SMSlabel.Size = new System.Drawing.Size(476, 25);
+            this.SMSlabel.Size = new System.Drawing.Size(455, 25);
             this.SMSlabel.TabIndex = 17;
             this.SMSlabel.Text = "Enter a phone number for notifications (charges do apply):";
             // 
             // EmailTextBox
             // 
-            this.EmailTextBox.Location = new System.Drawing.Point(218, 439);
+            this.EmailTextBox.Location = new System.Drawing.Point(198, 358);
+            this.EmailTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EmailTextBox.Name = "EmailTextBox";
-            this.EmailTextBox.Size = new System.Drawing.Size(170, 22);
+            this.EmailTextBox.Size = new System.Drawing.Size(128, 20);
             this.EmailTextBox.TabIndex = 18;
             // 
             // phoneFormatLabel
             // 
             this.phoneFormatLabel.AutoSize = true;
             this.phoneFormatLabel.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.phoneFormatLabel.Location = new System.Drawing.Point(121, 464);
+            this.phoneFormatLabel.Location = new System.Drawing.Point(100, 380);
+            this.phoneFormatLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.phoneFormatLabel.Name = "phoneFormatLabel";
-            this.phoneFormatLabel.Size = new System.Drawing.Size(360, 17);
+            this.phoneFormatLabel.Size = new System.Drawing.Size(316, 15);
             this.phoneFormatLabel.TabIndex = 19;
-            this.phoneFormatLabel.Text = "Number format with country code: 00[country code]123454345";
+            this.phoneFormatLabel.Text = "Number format with country code: +[country code]123454345";
+            this.phoneFormatLabel.Click += new System.EventHandler(this.phoneFormatLabel_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.ItemHeight = 13;
+            this.comboBox1.Location = new System.Drawing.Point(176, 135);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(191, 21);
+            this.comboBox1.TabIndex = 20;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // ATM0
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(516, 544);
+            this.ClientSize = new System.Drawing.Size(527, 485);
             this.ControlBox = false;
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.phoneFormatLabel);
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.SMSlabel);
@@ -202,9 +223,9 @@
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ATM0";
-            this.Padding = new System.Windows.Forms.Padding(20, 74, 20, 20);
+            this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Load += new System.EventHandler(this.ATM0_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -229,6 +250,7 @@
         private MetroFramework.Controls.MetroLabel SMSlabel;
         private System.Windows.Forms.TextBox EmailTextBox;
         private MetroFramework.Controls.MetroLabel phoneFormatLabel;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

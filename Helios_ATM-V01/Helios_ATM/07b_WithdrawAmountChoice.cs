@@ -76,9 +76,28 @@ namespace Helios_ATM
             //if not CHAR then continue
             if (!strWithdrawAmount.Any(char.IsLetter)) //Continue if PIN contains only numeric
             {
-                if (Convert.ToInt32(strWithdrawAmount) <= 500)
+                int conversion = Convert.ToInt32(strWithdrawAmount);
+                if (conversion <= 500)
                 {
-                    withdrawPrintReceipt(Convert.ToInt32(strWithdrawAmount));
+                    string s = Lib.getATMCash("AccountATM", "0001");
+                    Lib.NotEnoughCash(conversion, s);
+                    Helios_ATM.ATM7a a = new Helios_ATM.ATM7a();
+                    Boolean flag =a.check_and_pay(conversion, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+                    if (flag==true)
+                    {
+                        Lib.Newupdate(useCaseVariables.useCase, 0, 
+                            Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - conversion, 
+                            Lib.getBankName("ATM", useCaseVariables.useCase), 
+                            false, 
+                            Lib.getNummer("ATM", useCaseVariables.useCase), 
+                            Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                            Lib.getCode("ATM", useCaseVariables.useCase), 
+                            Lib.getName("ATM", useCaseVariables.useCase), 
+                            Lib.getSavingsBalance("ATM",useCaseVariables.useCase), 
+                            0);
+
+                        withdrawPrintReceipt(conversion);
+                    }
                 }
                 else
                 {

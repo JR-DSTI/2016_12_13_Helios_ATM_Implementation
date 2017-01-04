@@ -68,17 +68,19 @@ namespace Helios_ATM
             this.EnterAmountLabel.Cursor = System.Windows.Forms.Cursors.PanSouth;
             this.EnterAmountLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.EnterAmountLabel.Font = new System.Drawing.Font("Microsoft JhengHei UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnterAmountLabel.Location = new System.Drawing.Point(79, 12);
+            this.EnterAmountLabel.Location = new System.Drawing.Point(59, 10);
+            this.EnterAmountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.EnterAmountLabel.Name = "EnterAmountLabel";
-            this.EnterAmountLabel.Size = new System.Drawing.Size(361, 42);
+            this.EnterAmountLabel.Size = new System.Drawing.Size(293, 35);
             this.EnterAmountLabel.TabIndex = 4;
             this.EnterAmountLabel.Text = "Enter desired amount.";
             // 
             // ConfirmPINentryButton
             // 
-            this.ConfirmPINentryButton.Location = new System.Drawing.Point(420, 435);
+            this.ConfirmPINentryButton.Location = new System.Drawing.Point(315, 353);
+            this.ConfirmPINentryButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ConfirmPINentryButton.Name = "ConfirmPINentryButton";
-            this.ConfirmPINentryButton.Size = new System.Drawing.Size(73, 75);
+            this.ConfirmPINentryButton.Size = new System.Drawing.Size(55, 61);
             this.ConfirmPINentryButton.TabIndex = 7;
             this.ConfirmPINentryButton.Text = "Confirm";
             this.ConfirmPINentryButton.UseSelectable = true;
@@ -88,10 +90,11 @@ namespace Helios_ATM
             // 
             this.WithdrawAmountTextbox.AcceptsReturn = true;
             this.WithdrawAmountTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WithdrawAmountTextbox.Location = new System.Drawing.Point(170, 63);
+            this.WithdrawAmountTextbox.Location = new System.Drawing.Point(128, 51);
+            this.WithdrawAmountTextbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.WithdrawAmountTextbox.MaxLength = 8;
             this.WithdrawAmountTextbox.Name = "WithdrawAmountTextbox";
-            this.WithdrawAmountTextbox.Size = new System.Drawing.Size(191, 41);
+            this.WithdrawAmountTextbox.Size = new System.Drawing.Size(144, 35);
             this.WithdrawAmountTextbox.TabIndex = 8;
             this.WithdrawAmountTextbox.Text = "XX,XXX.XX";
             this.WithdrawAmountTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -100,9 +103,10 @@ namespace Helios_ATM
             // 
             // CancelButtonButton
             // 
-            this.CancelButtonButton.Location = new System.Drawing.Point(23, 409);
+            this.CancelButtonButton.Location = new System.Drawing.Point(17, 332);
+            this.CancelButtonButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CancelButtonButton.Name = "CancelButtonButton";
-            this.CancelButtonButton.Size = new System.Drawing.Size(77, 30);
+            this.CancelButtonButton.Size = new System.Drawing.Size(58, 24);
             this.CancelButtonButton.TabIndex = 9;
             this.CancelButtonButton.Text = "Cancel";
             this.CancelButtonButton.UseSelectable = true;
@@ -124,23 +128,25 @@ namespace Helios_ATM
             this.metroPanel1.Controls.Add(this.Num7);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(106, 116);
+            this.metroPanel1.HorizontalScrollbarSize = 8;
+            this.metroPanel1.Location = new System.Drawing.Point(80, 94);
+            this.metroPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(308, 400);
+            this.metroPanel1.Size = new System.Drawing.Size(231, 325);
             this.metroPanel1.TabIndex = 10;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
+            this.metroPanel1.VerticalScrollbarSize = 8;
             // 
             // NumDeleteAll
             // 
             this.NumDeleteAll.DisplayFocus = true;
             this.NumDeleteAll.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.NumDeleteAll.Highlight = true;
-            this.NumDeleteAll.Location = new System.Drawing.Point(16, 319);
+            this.NumDeleteAll.Location = new System.Drawing.Point(12, 259);
+            this.NumDeleteAll.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NumDeleteAll.Name = "NumDeleteAll";
-            this.NumDeleteAll.Size = new System.Drawing.Size(75, 75);
+            this.NumDeleteAll.Size = new System.Drawing.Size(56, 61);
             this.NumDeleteAll.TabIndex = 12;
             this.NumDeleteAll.Text = "DEL";
             this.NumDeleteAll.UseSelectable = true;
@@ -151,9 +157,10 @@ namespace Helios_ATM
             this.NumBack.DisplayFocus = true;
             this.NumBack.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.NumBack.Highlight = true;
-            this.NumBack.Location = new System.Drawing.Point(217, 319);
+            this.NumBack.Location = new System.Drawing.Point(163, 259);
+            this.NumBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NumBack.Name = "NumBack";
-            this.NumBack.Size = new System.Drawing.Size(75, 75);
+            this.NumBack.Size = new System.Drawing.Size(56, 61);
             this.NumBack.TabIndex = 11;
             this.NumBack.Text = "<-";
             this.NumBack.UseSelectable = true;
@@ -164,9 +171,10 @@ namespace Helios_ATM
             this.Num3.DisplayFocus = true;
             this.Num3.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Num3.Highlight = true;
-            this.Num3.Location = new System.Drawing.Point(217, 214);
+            this.Num3.Location = new System.Drawing.Point(163, 174);
+            this.Num3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Num3.Name = "Num3";
-            this.Num3.Size = new System.Drawing.Size(75, 75);
+            this.Num3.Size = new System.Drawing.Size(56, 61);
             this.Num3.TabIndex = 10;
             this.Num3.Text = "3";
             this.Num3.UseSelectable = true;
@@ -177,9 +185,10 @@ namespace Helios_ATM
             this.Num0.DisplayFocus = true;
             this.Num0.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Num0.Highlight = true;
-            this.Num0.Location = new System.Drawing.Point(117, 319);
+            this.Num0.Location = new System.Drawing.Point(88, 259);
+            this.Num0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Num0.Name = "Num0";
-            this.Num0.Size = new System.Drawing.Size(75, 75);
+            this.Num0.Size = new System.Drawing.Size(56, 61);
             this.Num0.TabIndex = 9;
             this.Num0.Text = "0";
             this.Num0.UseSelectable = true;
@@ -190,9 +199,10 @@ namespace Helios_ATM
             this.Num2.DisplayFocus = true;
             this.Num2.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Num2.Highlight = true;
-            this.Num2.Location = new System.Drawing.Point(117, 214);
+            this.Num2.Location = new System.Drawing.Point(88, 174);
+            this.Num2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Num2.Name = "Num2";
-            this.Num2.Size = new System.Drawing.Size(75, 75);
+            this.Num2.Size = new System.Drawing.Size(56, 61);
             this.Num2.TabIndex = 9;
             this.Num2.Text = "2";
             this.Num2.UseSelectable = true;
@@ -202,9 +212,10 @@ namespace Helios_ATM
             // 
             this.Num1.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Num1.Highlight = true;
-            this.Num1.Location = new System.Drawing.Point(16, 214);
+            this.Num1.Location = new System.Drawing.Point(12, 174);
+            this.Num1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Num1.Name = "Num1";
-            this.Num1.Size = new System.Drawing.Size(75, 75);
+            this.Num1.Size = new System.Drawing.Size(56, 61);
             this.Num1.TabIndex = 8;
             this.Num1.Text = "1";
             this.Num1.UseSelectable = true;
@@ -215,9 +226,10 @@ namespace Helios_ATM
             this.Num6.DisplayFocus = true;
             this.Num6.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Num6.Highlight = true;
-            this.Num6.Location = new System.Drawing.Point(217, 113);
+            this.Num6.Location = new System.Drawing.Point(163, 92);
+            this.Num6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Num6.Name = "Num6";
-            this.Num6.Size = new System.Drawing.Size(75, 75);
+            this.Num6.Size = new System.Drawing.Size(56, 61);
             this.Num6.TabIndex = 7;
             this.Num6.Text = "6";
             this.Num6.UseSelectable = true;
@@ -228,9 +240,10 @@ namespace Helios_ATM
             this.Num5.DisplayFocus = true;
             this.Num5.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Num5.Highlight = true;
-            this.Num5.Location = new System.Drawing.Point(117, 113);
+            this.Num5.Location = new System.Drawing.Point(88, 92);
+            this.Num5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Num5.Name = "Num5";
-            this.Num5.Size = new System.Drawing.Size(75, 75);
+            this.Num5.Size = new System.Drawing.Size(56, 61);
             this.Num5.TabIndex = 6;
             this.Num5.Text = "5";
             this.Num5.UseSelectable = true;
@@ -241,9 +254,10 @@ namespace Helios_ATM
             this.Num4.DisplayFocus = true;
             this.Num4.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Num4.Highlight = true;
-            this.Num4.Location = new System.Drawing.Point(16, 113);
+            this.Num4.Location = new System.Drawing.Point(12, 92);
+            this.Num4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Num4.Name = "Num4";
-            this.Num4.Size = new System.Drawing.Size(75, 75);
+            this.Num4.Size = new System.Drawing.Size(56, 61);
             this.Num4.TabIndex = 5;
             this.Num4.Text = "4";
             this.Num4.UseSelectable = true;
@@ -254,9 +268,10 @@ namespace Helios_ATM
             this.Num9.DisplayFocus = true;
             this.Num9.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Num9.Highlight = true;
-            this.Num9.Location = new System.Drawing.Point(217, 14);
+            this.Num9.Location = new System.Drawing.Point(163, 11);
+            this.Num9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Num9.Name = "Num9";
-            this.Num9.Size = new System.Drawing.Size(75, 75);
+            this.Num9.Size = new System.Drawing.Size(56, 61);
             this.Num9.TabIndex = 4;
             this.Num9.Text = "9";
             this.Num9.UseSelectable = true;
@@ -267,9 +282,10 @@ namespace Helios_ATM
             this.Num8.DisplayFocus = true;
             this.Num8.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Num8.Highlight = true;
-            this.Num8.Location = new System.Drawing.Point(117, 14);
+            this.Num8.Location = new System.Drawing.Point(88, 11);
+            this.Num8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Num8.Name = "Num8";
-            this.Num8.Size = new System.Drawing.Size(75, 75);
+            this.Num8.Size = new System.Drawing.Size(56, 61);
             this.Num8.TabIndex = 3;
             this.Num8.Text = "8";
             this.Num8.UseSelectable = true;
@@ -280,9 +296,10 @@ namespace Helios_ATM
             this.Num7.DisplayFocus = true;
             this.Num7.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Num7.Highlight = true;
-            this.Num7.Location = new System.Drawing.Point(16, 14);
+            this.Num7.Location = new System.Drawing.Point(12, 11);
+            this.Num7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Num7.Name = "Num7";
-            this.Num7.Size = new System.Drawing.Size(75, 75);
+            this.Num7.Size = new System.Drawing.Size(56, 61);
             this.Num7.TabIndex = 2;
             this.Num7.Text = "7";
             this.Num7.UseSelectable = true;
@@ -290,9 +307,10 @@ namespace Helios_ATM
             // 
             // AbortButton
             // 
-            this.AbortButton.Location = new System.Drawing.Point(23, 445);
+            this.AbortButton.Location = new System.Drawing.Point(17, 362);
+            this.AbortButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AbortButton.Name = "AbortButton";
-            this.AbortButton.Size = new System.Drawing.Size(77, 68);
+            this.AbortButton.Size = new System.Drawing.Size(58, 55);
             this.AbortButton.TabIndex = 12;
             this.AbortButton.Text = "Abort and\r\neject card";
             this.AbortButton.UseSelectable = true;
@@ -302,27 +320,30 @@ namespace Helios_ATM
             // 
             this.PesosLabel1.AutoSize = true;
             this.PesosLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.PesosLabel1.Location = new System.Drawing.Point(383, 74);
+            this.PesosLabel1.Location = new System.Drawing.Point(287, 60);
+            this.PesosLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PesosLabel1.Name = "PesosLabel1";
-            this.PesosLabel1.Size = new System.Drawing.Size(57, 25);
+            this.PesosLabel1.Size = new System.Drawing.Size(54, 25);
             this.PesosLabel1.TabIndex = 13;
             this.PesosLabel1.Text = "Pesos";
             // 
             // NetworkSignal
             // 
-            this.NetworkSignal.Location = new System.Drawing.Point(481, 12);
+            this.NetworkSignal.Location = new System.Drawing.Point(361, 10);
+            this.NetworkSignal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NetworkSignal.Maximum = 100;
             this.NetworkSignal.Name = "NetworkSignal";
-            this.NetworkSignal.Size = new System.Drawing.Size(27, 29);
+            this.NetworkSignal.Size = new System.Drawing.Size(20, 24);
             this.NetworkSignal.TabIndex = 15;
             this.NetworkSignal.UseSelectable = true;
             this.NetworkSignal.Value = 100;
             // 
             // BatteryCharge
             // 
-            this.BatteryCharge.Location = new System.Drawing.Point(8, 12);
+            this.BatteryCharge.Location = new System.Drawing.Point(6, 10);
+            this.BatteryCharge.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BatteryCharge.Name = "BatteryCharge";
-            this.BatteryCharge.Size = new System.Drawing.Size(44, 17);
+            this.BatteryCharge.Size = new System.Drawing.Size(33, 14);
             this.BatteryCharge.TabIndex = 14;
             this.BatteryCharge.Value = 100;
             // 
@@ -333,11 +354,11 @@ namespace Helios_ATM
             // 
             // ATM7b
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(516, 544);
+            this.ClientSize = new System.Drawing.Size(387, 442);
             this.ControlBox = false;
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
@@ -351,7 +372,9 @@ namespace Helios_ATM
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ATM7b";
+            this.Padding = new System.Windows.Forms.Padding(15, 49, 15, 16);
             this.Load += new System.EventHandler(this.ATM7b_Load);
             this.metroPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

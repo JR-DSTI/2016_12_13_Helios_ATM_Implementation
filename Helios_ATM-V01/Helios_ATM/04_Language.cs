@@ -59,9 +59,13 @@ namespace Helios_ATM
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
 
-            //Log current operation:
+            //Log current operation: (to be repeated)
             s3log.logOperation(sender);
-
+            string s = s3log.strLog;
+            var sb = new StringBuilder();
+            sb.Append(s);
+            File.WriteAllText("afile.txt", sb.ToString());
+            s3log.uploadtoS3("afile.txt");
             this.Visible = false;
             
             //stop the BatteryNetworkTimer

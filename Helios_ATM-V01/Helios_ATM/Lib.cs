@@ -29,6 +29,11 @@ using System.Threading;
 using System.Net.NetworkInformation;
 using System.Windows;
 
+using System;
+using System.IO;
+using Amazon.S3;
+using Amazon.S3.Transfer;
+
 
 //using Amazon.SimpleEmail;
 
@@ -40,7 +45,7 @@ namespace Helios_ATM
         // all the functions "get" retrieve a field of the table
 
         //get the Balance of a given account based on a table name and an account id
-        public static String getBalance(String tablename = "ATM", String myAccountId = "0002")
+        public static String getBalance(String myAccountId,String tablename = "ATM")
         {
             //Creation of a new Client
             AmazonDynamoDBClient dbc = new AmazonDynamoDBClient();
@@ -85,6 +90,32 @@ namespace Helios_ATM
             return strPrintDocument(document);
 
         }
+
+
+
+
+        public static String getNummer(String tablename = "ATM", String myAccountId = "0002")
+        {
+            //Creation of a new Client
+            AmazonDynamoDBClient dbc = new AmazonDynamoDBClient();
+
+            //Load into a table called ATM thx to a DB client
+            Table LoadProduct = Table.LoadTable(dbc, tablename);
+            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+
+            // We define the Attributes to fetch (here Balance)
+            GetItemOperationConfig config = new GetItemOperationConfig
+            {
+                AttributesToGet = new List<string> { "CARD NUMBER" },
+                ConsistentRead = true
+            };
+
+            //from the table, get the item described in the config & return print result of PrintDoc function
+            Document document = LoadProduct.GetItem(myAccountId, config);
+            return strPrintDocument(document);
+
+        }
+
 
 
         //get the CheckingBalance of a given account based on a table name and an account id
@@ -174,7 +205,7 @@ namespace Helios_ATM
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
             {
-                AttributesToGet = new List<string> { "Blocked" },
+                AttributesToGet = new List<String> { "Blocked" },
                 ConsistentRead = true
             };
 
@@ -233,7 +264,7 @@ namespace Helios_ATM
         }
 
         //Retrieve the details of a given account based on a table name and an account id
-        public static String RetrieveAccount(String tablename = "ATM", String myAccountId = "0002")
+        public static String RetrieveAccount( String myAccountId,String tablename = "ATM")
         {
             //Creation of a new Client
             AmazonDynamoDBClient dbc = new AmazonDynamoDBClient();
@@ -281,43 +312,157 @@ namespace Helios_ATM
         }
 
 
-        //function update
-        //function itself
-        public static void update(String Pinentry, Boolean blocked, Double Balance = 0, String Code = "1111")
+
+
+
+
+
+
+
+
+
+        public static String getATMCash(String tablename = "ATM", String myAccountId = "0005")
+        {
+            //Creation of a new Client
+            AmazonDynamoDBClient dbc = new AmazonDynamoDBClient();
+
+            //Load into a table called ATM thx to a DB client
+            Table LoadProduct = Table.LoadTable(dbc, tablename);
+            AutoClosingMessageBox.Show("\n*** Finding bank's name ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+
+            // We define the Attributes to fetch (here Balance)
+            GetItemOperationConfig config = new GetItemOperationConfig
+            {
+                AttributesToGet = new List<string> { "ATMcash" },
+                ConsistentRead = true
+            };
+
+            //from the table, get the item described in the config
+            Document document = LoadProduct.GetItem(myAccountId, config);
+            return strPrintDocument(document);
+            //Checker(document);
+
+        }
+
+
+
+     
+        //deprecated
+        public static void update(String tablename = "ATM", String ID = "0002", int Pinentry = 0, Boolean blocked = false, Double Balance = 0, String Code = "1111")
         {
             var client = new AmazonDynamoDBClient();
             var request = new PutItemRequest()
             {
-                TableName = "ATM",
+                TableName = tablename,
                 ExpressionAttributeNames = new Dictionary<string, string>
                 {{"#id","ID"}},
 
                 ExpressionAttributeValues = new Dictionary<string, AttributeValue>
-                {{ ":value", new AttributeValue{ S="0002"}}},
+                {{ ":value", new AttributeValue{S="0002"}}},
 
                 ConditionExpression = "#id=:value",
-                Item = CreateItemData(Pinentry, blocked, Balance, Code)
+                Item = CreateItemData(ID, Pinentry, blocked, Balance, Code)
+            };
+            client.PutItem(request);
+        }
+
+        //deprecated
+        public static void updateATM(String tablename = "AccountATM", String ID = "0002", int ATMcash = 0)
+        {
+            var client = new AmazonDynamoDBClient();
+            var request = new PutItemRequest()
+            {
+                TableName = tablename,
+                ExpressionAttributeNames = new Dictionary<string, string>
+                {{"#id","ID"}},
+
+                ExpressionAttributeValues = new Dictionary<string, AttributeValue>
+                {{ ":value", new AttributeValue{ S=ID}}},
+
+                ConditionExpression = "#id=:value",
+                Item = CreateItemData("0005", 0, false, 0, "")
 
             };
             client.PutItem(request);
         }
-        // helper function create items
-        public static Dictionary<string, AttributeValue> CreateItemData(String Pinentry, Boolean blocked, Double Balance = 2000, String Code = "1111")
+
+        //deprecated
+        public static Dictionary<string, AttributeValue> CreateItemDataATM(String ID, double ATMcash)
         {
             var itemData = new Dictionary<string, AttributeValue>
-            {{"ID", new AttributeValue{S="0002"} },
+            {{"ID", new AttributeValue{S=ID} },
+            {"ATMcash", new AttributeValue{N=ATMcash.ToString()}}};
+
+            return itemData;
+        }
+
+        //deprecated
+
+        public static Dictionary<String, AttributeValue> CreateItemData(String ID, int Pinentry, Boolean blocked, Double Balance = 2000, String Code = "1111")
+        {
+            var itemData = new Dictionary<String, AttributeValue>
+            {{"ID", new AttributeValue{S=ID} },
             {"Balance", new AttributeValue{N=Balance.ToString()}},
             {"BankName", new AttributeValue{S="Credit Agricole"}},
             {"Blocked", new AttributeValue{BOOL=blocked}},
             {"Name", new AttributeValue{S="Jonas Rathke"}},
-            {"Trials", new AttributeValue{N=Pinentry}},
+            {"Trials", new AttributeValue{N=Pinentry.ToString()}},
             {"Code", new AttributeValue{S=Code}},
             {"CheckingBalance", new AttributeValue{S="2000"}},
-            {"SavingsBalance", new AttributeValue{S="4567"}}
+            {"SavingsBalance", new AttributeValue{S="4567"}},
+            {"ATMcash", new AttributeValue{N="0"}},
+            {"CARD NUMBER", new AttributeValue{S="0"}}
             };
 
             return itemData;
         }
+
+
+
+        public static void updateATM(int AmountATM)
+        {
+            AmazonDynamoDBClient client = new AmazonDynamoDBClient();
+
+        string tableName = "AccountATM";
+        Table essaiTable = Table.LoadTable(client, tableName);
+        var entry = new Document();
+        entry["ID"]="0001";
+        entry["ATMcash"] = AmountATM.ToString();
+        essaiTable.PutItem(entry);
+        }
+
+        public static void Newupdate(String id,int atMcash, int balance, String bankName,Boolean blocked, String nummer,int checkingBalance,String code, String name, String savingsBalance, int trials)
+        {
+            AmazonDynamoDBClient client = new AmazonDynamoDBClient();
+
+            string tableName = "ATM";
+            Table essaiTable = Table.LoadTable(client, tableName);
+            var entry = new Document();
+            entry["ID"] = id;
+            entry["ATMcash"] = atMcash.ToString();
+            entry["Balance"] = balance.ToString();
+            entry["BankName"] = bankName;
+            entry["Blocked"] = blocked;
+            entry["CARD NUMBER"] = nummer;
+            entry["CheckingBalance"] = checkingBalance;
+            entry["Code"] = code;
+            entry["Name"] = name;
+            entry["SavingsBalance"] = savingsBalance;
+            entry["Trials"] = trials ;
+
+            essaiTable.PutItem(entry);
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
         //function send email (=receipt)
@@ -388,7 +533,7 @@ namespace Helios_ATM
             else
             {
                 AutoClosingMessageBox.Show("\n*** RetrieveBalance: Account unknown... *** \n Please contact your bank! \n Please enter a key", "Data retrieval", 10000, Parent: Form.ActiveForm);
-                Console.ReadKey();
+                //Console.ReadKey();
             }
         }
 
@@ -412,7 +557,7 @@ namespace Helios_ATM
                     stringValue = string.Join(",", (from primitive in value.AsPrimitiveList().Entries select primitive.Value).ToArray());
                 }
                 val = (updatedDocument[attribute]).AsBoolean();
-                AutoClosingMessageBox.Show(attribute + " - " + val, "Info", 1000, Parent: Form.ActiveForm);
+                AutoClosingMessageBox.Show(attribute + " : " + val, "Info", 1000, Parent: Form.ActiveForm);
 
 
             }
@@ -446,6 +591,14 @@ namespace Helios_ATM
                 AutoClosingMessageBox.Show(attribute + " - " + val, "Info", 1000, Parent: Form.ActiveForm);
             }
             return val;
+        }
+
+        public static void NotEnoughCash(double amount, String s)
+        {
+            if (amount> Int32.Parse(s)) {
+               MessageBox.Show("the ATM doesn't have enough cash");
+               Environment.Exit(0);
+            }
         }
 
 
@@ -552,8 +705,40 @@ namespace Helios_ATM
             return true;
         }
 
+
+
+   public static void uploadtoS3(String filePath)
+    {
+        string existingBucketName = "dstiawsml";
+        string keyName = "logsATM";
+              try
+                {
+                    TransferUtility fileTransferUtility = new
+                    TransferUtility(new AmazonS3Client(Amazon.RegionEndpoint.USEast1));
+
+
+                    // Upload data from a type of System.IO.Stream.
+                    using (FileStream fileToUpload =
+                        new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                    {
+                        fileTransferUtility.Upload(fileToUpload,
+                                                   existingBucketName, keyName);
+                    }
+                    Console.WriteLine("Upload  completed");
+
+                  
+                }
+                catch (AmazonS3Exception s3Exception)
+                {
+                    Console.WriteLine(s3Exception.Message,
+                                      s3Exception.InnerException);
+                }
+            }
+        }
     }
 
-   
-}
+
+
+
+
 
