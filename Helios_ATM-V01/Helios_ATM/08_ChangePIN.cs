@@ -51,6 +51,9 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
 
+            
+            
+
             //stop the BatteryNetworkTimer
             this.BatteryNetworkTimer.Stop();
 

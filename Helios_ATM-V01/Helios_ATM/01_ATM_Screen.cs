@@ -35,12 +35,26 @@ namespace Helios_ATM
             //this.WelcomeProgressBar.Visible = true;
             this.InitializeLabel.Visible = true;
             this.metroProgressBarENTER.Visible = true;
+            
+            //"await" needs the async in the function declaration and equals "Sleep"
+            await Task.Delay(400);
+
+            //showing current status:
+            this.InitializeLabel.Text="Logging operations.";
 
             //Log current operation:
             s3log.logOperation(sender);
 
             //"await" needs the async in the function declaration and equals "Sleep"
-            await Task.Delay(2000);
+            await Task.Delay(1200);
+
+            //showing current status:
+            this.InitializeLabel.Text = "Entering ATM";
+
+            //"await" needs the async in the function declaration and equals "Sleep"
+            await Task.Delay(400);
+
+            
 
             //Starting next form and close/hide this one
             //start the next form

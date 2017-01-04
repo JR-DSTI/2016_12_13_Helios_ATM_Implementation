@@ -1,22 +1,22 @@
 
 ========================
-Date and time: 04.01.2017 17:07:24
+Date and time: 04.01.2017 18:49:29
 Form: ATM0
 Operation: Button EnterHereButton
 Battery life: 100% 
 # of form visits: 1
-Ping: 29
+Ping: 24
 ========================
-Date and time: 04.01.2017 17:07:25
+Date and time: 04.01.2017 18:49:31
 Form: ATM1
 Operation: Button EnterHereButton
 Battery life: 100% 
 # of form visits: 1
-Ping: 35
+Ping: 22
 ========================
-Date and time: 04.01.2017 17:07:29
+Date and time: 04.01.2017 18:49:40
 Form: ATM3
 Operation: Button CardInsertedButton
 Battery life: 100% 
 # of form visits: 1
-Ping: 51
+Ping: 22

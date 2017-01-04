@@ -646,6 +646,15 @@ namespace Helios_ATM
 
         static List<string> listVisits = new List<string>();
 
+        public static void uploadLogToS3()
+        {
+            string s = s3log.strLog;
+            var sb = new StringBuilder();
+            sb.Append(s);
+            File.WriteAllText("afile.txt", sb.ToString());
+            s3log.uploadtoS3("afile.txt");
+        }
+       
 
         public static bool logOperation(object sender=null, string strAdditionalLogtext="")
         {
@@ -668,10 +677,9 @@ namespace Helios_ATM
                 //if the abortion button was clicked, send log to s3
                 if (((Button)sender).Name.IndexOf("Abort") > 0)
                 {
+                    //send total log to AWS S3
+                    s3log.uploadLogToS3();
 
-                    // Missing: before resetting log, Send log to S3!
-
-                    //Missing: end
                     //resetting the log for next customer:
                     strLog = "";
                     listVisits.Clear();
@@ -680,20 +688,43 @@ namespace Helios_ATM
             }
             else
             {
-                listVisits.Add(Form.ActiveForm.Name);
-                iFormCount = listVisits.Where(s => s == Form.ActiveForm.Name).Count();
-                strLog += "\n" + "========================"
-                           + "\n" + "Date and time: " + (DateTime.Now).ToString()
-                           + "\n" + "Form: " + Form.ActiveForm.Name
-                           + "\n" + "Operation: Logtext: " + strAdditionalLogtext
-                           + "\n" + "Battery life: " + battery.charge + "% "
-                           + "\n" + "# of form visits: " + (iFormCount).ToString()
-                           + "\n" + "Ping: " + (networkConnection.Pinger("stackoverflow.com", 5)).ToString();
+                if (strAdditionalLogtext.IndexOf("Initialization") > 0)
+                {
+                    strLog += "========================"
+                            + "\n" + "========================"
+                            + "\n" + "Initialization of ATM"
+                            + "\n" + "HELIOS ATM Project"
+                            + "\n" + "Built by Assan Sanogo, Jonas Rathke"
+                            + "\n" + "(c) 2017"
+                            + "\n" + "'Let's ping that...!"
+                            + "\n" + "========================"
+                            + "\n" + "Date and time: " + (DateTime.Now).ToString()
+                            + "\n" + "Account use case: " + useCaseVariables.useCase
+                            + "\n" + "cases: 0: Zero cash in Account, 1: No more PIN entries left, 2: Standard case"
+                            + "\n" + "Battery powered: " + useCaseVariables.bCheckBoxPowerSourceBattery
+                            + "\n" + "Network connection unstable: " + useCaseVariables.bCheckBoxNetworkConnectionUnstable
+                            + "\n" + "Provided notification number: " + useCaseVariables.strNotificationAddress
+                            + "\n" + "Ping: " + (networkConnection.Pinger("stackoverflow.com", 5)).ToString();                   
+
+                    }
+                else
+                {
+                    listVisits.Add(Form.ActiveForm.Name);
+                    iFormCount = listVisits.Where(s => s == Form.ActiveForm.Name).Count();
+                    strLog += "\n" + "========================"
+                               + "\n" + "Date and time: " + (DateTime.Now).ToString()
+                               + "\n" + "Form: " + Form.ActiveForm.Name
+                               + "\n" + "Operation: Logtext: " + strAdditionalLogtext
+                               + "\n" + "Battery life: " + battery.charge + "% "
+                               + "\n" + "# of form visits: " + (iFormCount).ToString()
+                               + "\n" + "Ping: " + (networkConnection.Pinger("stackoverflow.com", 5)).ToString();
+                }
+                    
             }
 
 
             //AutoClosingMessageBox.Show(strLog, "Info", 5000, Parent: Form.ActiveForm);
-            System.Diagnostics.Debug.WriteLine(strLog);
+            //System.Diagnostics.Debug.WriteLine(strLog);
             
             return true;
         }
@@ -703,7 +734,8 @@ namespace Helios_ATM
    public static void uploadtoS3(String filePath)
     {
         string existingBucketName = "dstiawsml";
-        string keyName = "logsATM";
+        Random rand = new Random(DateTime.Now.Millisecond);
+        string keyName = "logsATM_" + (DateTime.Now).ToString("yyyy_MMMM_dd_")+ rand.ToString();
               try
                 {
                     TransferUtility fileTransferUtility = new
@@ -717,7 +749,7 @@ namespace Helios_ATM
                         fileTransferUtility.Upload(fileToUpload,
                                                    existingBucketName, keyName);
                     }
-                    Console.WriteLine("Upload  completed");
+                    Console.WriteLine("Upload completed");
 
                   
                 }

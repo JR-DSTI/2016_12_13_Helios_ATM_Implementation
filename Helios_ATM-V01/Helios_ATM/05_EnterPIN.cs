@@ -251,6 +251,9 @@ namespace Helios_ATM
 
             //Log current operation:
             s3log.logOperation(sender);
+
+            
+            
         }
 
 

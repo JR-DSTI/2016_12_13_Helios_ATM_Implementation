@@ -40,6 +40,7 @@
             this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.metroProgressBarENTER = new MetroFramework.Controls.MetroProgressBar();
+            this.ProgressLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CreditCardButton
@@ -112,10 +113,22 @@
             // 
             // metroProgressBarENTER
             // 
+            this.metroProgressBarENTER.HideProgressText = false;
             this.metroProgressBarENTER.Location = new System.Drawing.Point(139, 354);
             this.metroProgressBarENTER.Name = "metroProgressBarENTER";
             this.metroProgressBarENTER.Size = new System.Drawing.Size(221, 22);
             this.metroProgressBarENTER.TabIndex = 16;
+            // 
+            // ProgressLabel
+            // 
+            this.ProgressLabel.AutoSize = true;
+            this.ProgressLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ProgressLabel.Location = new System.Drawing.Point(360, 356);
+            this.ProgressLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ProgressLabel.Name = "ProgressLabel";
+            this.ProgressLabel.Size = new System.Drawing.Size(81, 17);
+            this.ProgressLabel.TabIndex = 17;
+            this.ProgressLabel.Text = "Initializing...";
             // 
             // ATM7
             // 
@@ -132,6 +145,7 @@
             this.Controls.Add(this.DebitCardButton);
             this.Controls.Add(this.CheckForCardTypelabel1);
             this.Controls.Add(this.CreditCardButton);
+            this.Controls.Add(this.ProgressLabel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -153,6 +167,7 @@
         private System.Windows.Forms.Timer BatteryNetworkTimer;
         private System.Windows.Forms.Timer timer1;
         private MetroFramework.Controls.MetroProgressBar metroProgressBarENTER;
+        private System.Windows.Forms.Label ProgressLabel;
     }
 }
 

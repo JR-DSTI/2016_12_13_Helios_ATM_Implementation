@@ -29,9 +29,8 @@ namespace Helios_ATM
 
         private  void button1_Click(object sender, EventArgs e)
         {
-            
-
             //Log current operation:
+            s3log.logOperation(null, "Initialization");
             s3log.logOperation(sender);
 
             useCaseVariables.strNotificationAddress = EmailTextBox.Text;
@@ -139,17 +138,17 @@ namespace Helios_ATM
 
             switch (comboBoxUseCases.SelectedIndex)
                  {
-                case 0:
+                case 0: //"Zero cash in Account"
                     useCaseVariables.useCase = "0004";
                     useCaseVariables.bCheckBoxZeroCash = true;
                     break;
 
-                case 1:
+                case 1://"No more PIN entries left"
                     useCaseVariables.useCase = "0003";
                     useCaseVariables.bCheckBoxPINEntriesExhausted = true;
                     break;
 
-                case 2:
+                case 2:// "Standard case: Jonas R."
                     useCaseVariables.useCase = "0002";
                     break;
 

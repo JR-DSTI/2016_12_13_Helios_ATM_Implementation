@@ -115,7 +115,8 @@
             // InitializeLabel
             // 
             this.InitializeLabel.AutoSize = true;
-            this.InitializeLabel.Location = new System.Drawing.Point(147, 320);
+            this.InitializeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.InitializeLabel.Location = new System.Drawing.Point(358, 322);
             this.InitializeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.InitializeLabel.Name = "InitializeLabel";
             this.InitializeLabel.Size = new System.Drawing.Size(81, 17);
@@ -129,6 +130,7 @@
             // 
             // metroProgressBarENTER
             // 
+            this.metroProgressBarENTER.HideProgressText = false;
             this.metroProgressBarENTER.Location = new System.Drawing.Point(138, 319);
             this.metroProgressBarENTER.Name = "metroProgressBarENTER";
             this.metroProgressBarENTER.Size = new System.Drawing.Size(221, 22);
@@ -143,7 +145,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(516, 544);
             this.ControlBox = false;
-            this.Controls.Add(this.InitializeLabel);
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
             this.Controls.Add(this.metroButton1);
@@ -151,6 +152,7 @@
             this.Controls.Add(this.HeliosLabel);
             this.Controls.Add(this.EnterHereButton);
             this.Controls.Add(this.metroProgressBarENTER);
+            this.Controls.Add(this.InitializeLabel);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

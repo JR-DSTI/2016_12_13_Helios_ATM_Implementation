@@ -84,30 +84,38 @@ namespace Helios_ATM
     {
         public static int decrement = 1;
         public static int charge = 100;
+        static int iCountBattery = 0;
+
         public static int decr()
         {
             return 2;
         }
 
-
-
         public static void discharge(MetroFramework.Controls.MetroProgressBar BatteryCharge)
         {
-
             //iff the usecase battery source was chosen:
-
             if (useCaseVariables.bCheckBoxPowerSourceBattery)
             {
                 if (charge > 0)
                 {
-                    //set the Battery Progressbar to current charge:
-                    BatteryCharge.Value -= decrement;
-                    charge = BatteryCharge.Value;
+                    iCountBattery += 1;
+                    if (iCountBattery == 1) { BatteryCharge.Value = 100; }
+                    //set the Battery Progressbar to current charge: 
+                    //12h to decrease battery equals 12h×60min×60s=43,200 seconds
+                    //the timer ticks every second
+                    if (iCountBattery % 432 ==0) //432 since the progress bar has value 100; total battery time is 43,200 seconds => 43,200 seconds/100=432
+                    {
+                        BatteryCharge.Value -= decrement;
+                        //MessageBox.Show("stop and change"); 
+                        //update new battery value
+                        charge = BatteryCharge.Value;
+                    }
+                    
                 }
                 else
                 {
-                    AutoClosingMessageBox.Show("The ATM is running out of power. Disconnecting...", "Low energy", 1500, Form.ActiveForm);
-                    //charge = 100;
+                    AutoClosingMessageBox.Show("The ATM is running out of power. Disconnecting... \nATM is down for maintenance due to lack of energy supply", "Low energy", 1500, Form.ActiveForm);
+                    //exit the environment
                     Environment.Exit(0);
                 }
             }
@@ -141,17 +149,22 @@ namespace Helios_ATM
                 }
                 catch(Exception ex)
                 {
-                    AutoClosingMessageBox.Show("Problem. \n Error message: " + ex.Message, "ERROR", 5000, Parent: Form.ActiveForm);
+                    AutoClosingMessageBox.Show("Problem. \nError message: " + ex.Message, "ERROR", 2000, Parent: Form.ActiveForm);
                     totalTime = 0;
-                    AutoClosingMessageBox.Show("Internal problems with the ATM. ((no network connection))", "Info", 1000, Parent: Form.ActiveForm);
-                    AutoClosingMessageBox.Show("Returning to initial screen.", "Info", 1000, Parent: Form.ActiveForm);
-                    //cancel to initial form, maybe not too necessary here
-                    Form ATM1 = new ATM1(); // Instantiate a Form object.
-                    ATM1.Show(); //show the new Form
+                    AutoClosingMessageBox.Show("Hardware problems with the ATM. \nATM is down for maintenance due to lack of cash", "Error info", 1000, Parent: Form.ActiveForm);
+
+                    ////cancel to initial form, maybe not too necessary here
+                    //AutoClosingMessageBox.Show("Returning to initial screen.", "Info", 1000, Parent: Form.ActiveForm);
+                    //Form ATM1 = new ATM1(); // Instantiate a Form object.
+                    //ATM1.Show(); //show the new Form
+                    //Form.ActiveForm.Visible = false;  //Hide the old form
+
                     //Form.ActiveForm.log(false);
-                    Form.ActiveForm.Visible = false;  //Hide the old form
-                                           //Log current operation:
-                    //s3log.logOperation(sender);
+                    //Log current operation:
+                    s3log.logOperation(null,"No or bad network connection. Logging is delayed here. Not sure when this log will arrive!");
+
+                    //exit the environment
+                    Environment.Exit(0);
 
                     return (totalTime / echoNum);
 
@@ -170,10 +183,11 @@ namespace Helios_ATM
                 if (Pinger("stackoverflow.com", 5) > 100)
                 {
                     MetroFramework.MetroMessageBox.Show(Form.ActiveForm, "The connection is lost"); // this = current form        
+                    AutoClosingMessageBox.Show("Hardware problems with the ATM. \nATM is down for maintenance due to lack of cash", "Error info", 1000, Parent: Form.ActiveForm);
+                    //exit the environment
+                    Environment.Exit(0);
+
                     return false;
-                    //this.WelcomeProgressBar.Value = 0;
-                    //WelcomeTimer.Stop();
-                    //this.timer2.Stop();
                 }
                 else
                 {

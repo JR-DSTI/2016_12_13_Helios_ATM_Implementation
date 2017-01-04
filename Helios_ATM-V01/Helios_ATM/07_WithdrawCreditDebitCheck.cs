@@ -25,12 +25,17 @@ namespace Helios_ATM
         }
 
         private async void delay_progressbar(){
-            //this.WelcomeTimer.Start();
+            //Show infos to user:
             this.metroProgressBarENTER.Visible = true;
+            this.ProgressLabel.Text = "Initializing data retrieval...";
             await Task.Delay(1000);
-            //Lib.getBankName();
+           
+            //retrieve account details:
             Lib.RetrieveAccount(useCaseVariables.useCase,"ATM");
-            //Lib.getBalance();
+
+            //Show infos to user:
+            this.ProgressLabel.Text = "Data retrieval success!";
+            await Task.Delay(200);
         }
 
 
@@ -62,6 +67,8 @@ namespace Helios_ATM
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            this.ProgressLabel.Text = "Logging operation...";
+
             //CancelMsgBox
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
 
@@ -72,6 +79,9 @@ namespace Helios_ATM
 
             //Log current operation:
             s3log.logOperation(sender);
+
+            
+            
 
             //stop the BatteryNetworkTimer
             this.BatteryNetworkTimer.Stop();
@@ -88,15 +98,15 @@ namespace Helios_ATM
 
         private void ATM7_Load(object sender, EventArgs e)
         {
+            //initialize the label to Init state
+            this.ProgressLabel.Text = "Initializing card check...";
+
+            //starting the timer
             this.timer1.Start();
 
             //update batterycharge and start BatteryNetworkTimer
             this.BatteryCharge.Value = battery.charge;
             this.BatteryNetworkTimer.Start();
-
-
         }
-
-        
     }
 }

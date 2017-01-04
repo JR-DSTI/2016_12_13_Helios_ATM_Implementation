@@ -47,11 +47,7 @@ namespace Helios_ATM
 
             //Log current operation:
             s3log.logOperation(sender);
-            string s=s3log.strLog;
-            var sb = new StringBuilder();
-            sb.Append(s);
-            File.WriteAllText("afile.txt", sb.ToString());
-            s3log.uploadtoS3("afile.txt");
+            
             //MessageBox.Show(s);
 
             //continue to next form:            

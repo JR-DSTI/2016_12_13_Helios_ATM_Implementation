@@ -195,14 +195,17 @@ namespace Helios_ATM
         //Return to initial form
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            //Log current operation:
-            s3log.logOperation(sender);
-
             //stop the BatteryNetworkTimer
             this.BatteryNetworkTimer.Stop();
 
             //CancelMsgBox
             AutoClosingMessageBox.Show("Cancelled current operation. Ejecting card and restarting...", "Aborting", 1500, this);
+
+            //Log current operation:
+            s3log.logOperation(sender);
+
+            
+            
 
             //Starting next form and close/hide this one
             //Going back to first form (restart)
