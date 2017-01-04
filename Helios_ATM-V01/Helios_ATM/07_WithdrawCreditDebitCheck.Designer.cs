@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM7));
             this.CreditCardButton = new MetroFramework.Controls.MetroButton();
             this.WelcomeTimer = new System.Windows.Forms.Timer(this.components);
-            this.WelcomeProgressBar = new System.Windows.Forms.ProgressBar();
             this.CheckForCardTypelabel1 = new System.Windows.Forms.Label();
             this.DebitCardButton = new MetroFramework.Controls.MetroButton();
             this.AbortButton = new MetroFramework.Controls.MetroButton();
@@ -40,6 +39,7 @@
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
             this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.metroProgressBarENTER = new MetroFramework.Controls.MetroProgressBar();
             this.SuspendLayout();
             // 
             // CreditCardButton
@@ -51,20 +51,6 @@
             this.CreditCardButton.Text = "Credit Card";
             this.CreditCardButton.UseSelectable = true;
             this.CreditCardButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // WelcomeTimer
-            // 
-            this.WelcomeTimer.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // WelcomeProgressBar
-            // 
-            this.WelcomeProgressBar.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.WelcomeProgressBar.Location = new System.Drawing.Point(139, 273);
-            this.WelcomeProgressBar.Name = "WelcomeProgressBar";
-            this.WelcomeProgressBar.Size = new System.Drawing.Size(219, 61);
-            this.WelcomeProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.WelcomeProgressBar.TabIndex = 3;
-            this.WelcomeProgressBar.Visible = false;
             // 
             // CheckForCardTypelabel1
             // 
@@ -121,7 +107,15 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
+            // 
+            // metroProgressBarENTER
+            // 
+            this.metroProgressBarENTER.Location = new System.Drawing.Point(139, 354);
+            this.metroProgressBarENTER.Name = "metroProgressBarENTER";
+            this.metroProgressBarENTER.Size = new System.Drawing.Size(221, 22);
+            this.metroProgressBarENTER.TabIndex = 16;
             // 
             // ATM7
             // 
@@ -131,12 +125,12 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(516, 544);
             this.ControlBox = false;
+            this.Controls.Add(this.metroProgressBarENTER);
             this.Controls.Add(this.NetworkSignal);
             this.Controls.Add(this.BatteryCharge);
             this.Controls.Add(this.AbortButton);
             this.Controls.Add(this.DebitCardButton);
             this.Controls.Add(this.CheckForCardTypelabel1);
-            this.Controls.Add(this.WelcomeProgressBar);
             this.Controls.Add(this.CreditCardButton);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -150,7 +144,6 @@
 
         #endregion
         private System.Windows.Forms.Timer WelcomeTimer;
-        private System.Windows.Forms.ProgressBar WelcomeProgressBar;
         private System.Windows.Forms.Label CheckForCardTypelabel1;
         private MetroFramework.Controls.MetroButton AbortButton;
         private MetroFramework.Controls.MetroButton CreditCardButton;
@@ -159,6 +152,7 @@
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
         private System.Windows.Forms.Timer BatteryNetworkTimer;
         private System.Windows.Forms.Timer timer1;
+        private MetroFramework.Controls.MetroProgressBar metroProgressBarENTER;
     }
 }
 

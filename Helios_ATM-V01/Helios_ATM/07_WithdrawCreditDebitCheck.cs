@@ -19,14 +19,14 @@ namespace Helios_ATM
             delay_progressbar();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick_1(object sender, EventArgs e)
         {
-            this.WelcomeProgressBar.Increment(1);  // this = is the current form
+            this.metroProgressBarENTER.Increment(1);
         }
 
         private async void delay_progressbar(){
-            this.WelcomeTimer.Start();
-            this.WelcomeProgressBar.Visible = true;
+            //this.WelcomeTimer.Start();
+            this.metroProgressBarENTER.Visible = true;
             await Task.Delay(1000);
             //Lib.getBankName();
             Lib.RetrieveAccount(useCaseVariables.useCase,"ATM");
@@ -88,9 +88,15 @@ namespace Helios_ATM
 
         private void ATM7_Load(object sender, EventArgs e)
         {
+            this.timer1.Start();
+
             //update batterycharge and start BatteryNetworkTimer
             this.BatteryCharge.Value = battery.charge;
             this.BatteryNetworkTimer.Start();
+
+
         }
+
+        
     }
 }

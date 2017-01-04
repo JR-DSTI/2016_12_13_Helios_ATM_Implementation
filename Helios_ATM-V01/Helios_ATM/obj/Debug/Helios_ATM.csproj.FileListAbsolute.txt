@@ -95,7 +95,6 @@ C:\Users\assan\Documents\Helios_ATM-V01 ZIP\Helios_ATM-V01 ZIP\Helios_ATM\obj\De
 C:\Users\assan\Documents\Helios_ATM-V01 ZIP\Helios_ATM-V01 ZIP\Helios_ATM\obj\Debug\Helios_ATM.Properties.Resources.resources
 C:\Users\assan\Documents\Helios_ATM-V01 ZIP\Helios_ATM-V01 ZIP\Helios_ATM\obj\Debug\Helios_ATM.csproj.GenerateResource.Cache
 C:\Users\assan\Documents\Helios_ATM-V01 ZIP\Helios_ATM-V01 ZIP\Helios_ATM\bin\Debug\ManagedWifi.dll
-Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM-V01\Helios_ATM\obj\Debug\Helios_ATM.csprojResolveAssemblyReference.cache
 Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM-V01\Helios_ATM\obj\Debug\Helios_ATM.ATM0.resources
 Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM-V01\Helios_ATM\obj\Debug\Helios_ATM.ATM7b.resources
 Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM-V01\Helios_ATM\obj\Debug\Helios_ATM.ATM7a.resources

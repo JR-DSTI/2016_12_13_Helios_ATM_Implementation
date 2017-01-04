@@ -52,7 +52,7 @@ namespace Helios_ATM
             sb.Append(s);
             File.WriteAllText("afile.txt", sb.ToString());
             s3log.uploadtoS3("afile.txt");
-            MessageBox.Show(s);
+            //MessageBox.Show(s);
 
             //continue to next form:            
             //Starting next form and close/hide this one
@@ -86,11 +86,7 @@ namespace Helios_ATM
         //    //Checker(document);
 
         //}
-
-
-
-
-
+        
         private void CancelButton_Click(object sender, EventArgs e)
         {
             //Starting next form and close/hide this one

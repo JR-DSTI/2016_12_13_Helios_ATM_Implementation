@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ATM1));
             this.EnterHereButton = new MetroFramework.Controls.MetroButton();
             this.WelcomeTimer = new System.Windows.Forms.Timer(this.components);
-            this.WelcomeProgressBar = new System.Windows.Forms.ProgressBar();
             this.HeliosLabel = new System.Windows.Forms.Label();
             this.WelcomeLabel = new System.Windows.Forms.Label();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
@@ -40,8 +39,8 @@
             this.BatteryCharge = new MetroFramework.Controls.MetroProgressBar();
             this.NetworkSignal = new MetroFramework.Controls.MetroProgressSpinner();
             this.InitializeLabel = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.BatteryNetworkTimer = new System.Windows.Forms.Timer(this.components);
+            this.metroProgressBarENTER = new MetroFramework.Controls.MetroProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,18 +57,8 @@
             // 
             // WelcomeTimer
             // 
-            this.WelcomeTimer.Interval = 1000;
+            this.WelcomeTimer.Interval = 10;
             this.WelcomeTimer.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // WelcomeProgressBar
-            // 
-            this.WelcomeProgressBar.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.WelcomeProgressBar.Location = new System.Drawing.Point(140, 272);
-            this.WelcomeProgressBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.WelcomeProgressBar.Name = "WelcomeProgressBar";
-            this.WelcomeProgressBar.Size = new System.Drawing.Size(219, 16);
-            this.WelcomeProgressBar.TabIndex = 3;
-            this.WelcomeProgressBar.Visible = false;
             // 
             // HeliosLabel
             // 
@@ -126,7 +115,7 @@
             // InitializeLabel
             // 
             this.InitializeLabel.AutoSize = true;
-            this.InitializeLabel.Location = new System.Drawing.Point(140, 250);
+            this.InitializeLabel.Location = new System.Drawing.Point(147, 320);
             this.InitializeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.InitializeLabel.Name = "InitializeLabel";
             this.InitializeLabel.Size = new System.Drawing.Size(81, 17);
@@ -137,6 +126,14 @@
             // 
             this.BatteryNetworkTimer.Interval = 1000;
             this.BatteryNetworkTimer.Tick += new System.EventHandler(this.BatteryNetworkTimer_Tick);
+            // 
+            // metroProgressBarENTER
+            // 
+            this.metroProgressBarENTER.Location = new System.Drawing.Point(138, 319);
+            this.metroProgressBarENTER.Name = "metroProgressBarENTER";
+            this.metroProgressBarENTER.Size = new System.Drawing.Size(221, 22);
+            this.metroProgressBarENTER.TabIndex = 12;
+            this.metroProgressBarENTER.Visible = false;
             // 
             // ATM1
             // 
@@ -152,8 +149,8 @@
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.WelcomeLabel);
             this.Controls.Add(this.HeliosLabel);
-            this.Controls.Add(this.WelcomeProgressBar);
             this.Controls.Add(this.EnterHereButton);
+            this.Controls.Add(this.metroProgressBarENTER);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -169,7 +166,6 @@
 
         #endregion
         private System.Windows.Forms.Timer WelcomeTimer;
-        private System.Windows.Forms.ProgressBar WelcomeProgressBar;
         private System.Windows.Forms.Label HeliosLabel;
         private System.Windows.Forms.Label WelcomeLabel;
         private MetroFramework.Controls.MetroButton metroButton1;
@@ -178,8 +174,8 @@
         private MetroFramework.Controls.MetroProgressBar BatteryCharge;
         private MetroFramework.Controls.MetroProgressSpinner NetworkSignal;
         private System.Windows.Forms.Label InitializeLabel;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer BatteryNetworkTimer;
+        private MetroFramework.Controls.MetroProgressBar metroProgressBarENTER;
     }
 }
 

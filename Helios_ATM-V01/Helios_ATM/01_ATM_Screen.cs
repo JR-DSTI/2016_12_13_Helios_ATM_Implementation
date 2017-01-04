@@ -24,16 +24,17 @@ namespace Helios_ATM
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.WelcomeProgressBar.Increment(10);  
+            this.metroProgressBarENTER.Increment(1);
         }
 
         private async void button1_Click(object sender, EventArgs e)
         {
             //timer to extend waiting and system setup :
             this.WelcomeTimer.Start();
-            this.timer1.Start();
-            this.WelcomeProgressBar.Visible = true;
+
+            //this.WelcomeProgressBar.Visible = true;
             this.InitializeLabel.Visible = true;
+            this.metroProgressBarENTER.Visible = true;
 
             //Log current operation:
             s3log.logOperation(sender);
@@ -84,6 +85,11 @@ namespace Helios_ATM
         private void metroButton2_Click(object sender, EventArgs e)
         {
 
+
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
 
         }
     }

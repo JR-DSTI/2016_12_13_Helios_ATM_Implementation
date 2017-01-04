@@ -81,7 +81,7 @@ namespace Helios_ATM
 
             if (Int32.Parse(Lib.getBalance(mycase, "ATM")) < balance)
             {
-                MessageBox.Show("Sorry, but ur broke dude.");
+                AutoClosingMessageBox.Show("Sorry, but ur broke dude.", "Poor broke dude", 1000, Parent: Form.ActiveForm);
                 //update s3log:
                 s3log.logOperation(null , "Blocked withdrawal due to unsufficient account balance.");
                 return false;

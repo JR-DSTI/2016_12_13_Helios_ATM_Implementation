@@ -36,10 +36,8 @@ namespace Helios_ATM
 
             useCaseVariables.strNotificationAddress = EmailTextBox.Text;
             useCaseVariables.bCheckBoxPowerSourceBattery = CheckBoxPowerSourceBattery.Checked;
-            useCaseVariables.bCheckBoxPINEntriesExhausted = CheckBoxPINEntriesExhausted.Checked;
             useCaseVariables.bCheckBoxNetworkConnectionUnstable = CheckBoxNetworkConnectionUnstable.Checked;
-            useCaseVariables.bCheckBoxZeroCash = CheckBoxZeroCash.Checked;
-
+            
             //Starting next form and close/hide this one
             //start the First form
             Form ATM1 = new ATM1(); // Instantiate a Form object.
@@ -55,15 +53,17 @@ namespace Helios_ATM
             
             //setting the current Batterycharge
             this.BatteryCharge.Value = battery.charge;
-            this.comboBox1.Items.Add("zero Cash On Account");        
-            this.comboBox1.Items.Add("No more Pin entries left");
-            
-            this.comboBox1.Items.Add("Unstable Network Connection");
-            this.comboBox1.Items.Add("Classic Usage: Jonas R.");
-            this.comboBox1.Items.Add("Power Source:Battery");
 
+            //add Items to the combobox:
+            this.comboBoxUseCases.Items.Add("Zero cash in Account");        
+            this.comboBoxUseCases.Items.Add("No more PIN entries left");
+            //this.comboBoxUseCases.Items.Add("Unstable Network Connection");
+            this.comboBoxUseCases.Items.Add("Standard case: Jonas R.");
+            //this.comboBoxUseCases.Items.Add("Power Source:Battery");
+            //Select the default case:
+            this.comboBoxUseCases.SelectedIndex=2;
         }
-
+        
         ////Quick jump to current Form:
         //private void metroButton1_Click(object sender, EventArgs e)
         //{
@@ -135,27 +135,32 @@ namespace Helios_ATM
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show((comboBox1.SelectedIndex).ToString());
+            //MessageBox.Show((comboBox1.SelectedIndex).ToString());
 
-            switch (comboBox1.SelectedIndex)
+            switch (comboBoxUseCases.SelectedIndex)
                  {
                 case 0:
                     useCaseVariables.useCase = "0004";
+                    useCaseVariables.bCheckBoxZeroCash = true;
                     break;
 
                 case 1:
                     useCaseVariables.useCase = "0003";
+                    useCaseVariables.bCheckBoxPINEntriesExhausted = true;
                     break;
+
                 case 2:
                     useCaseVariables.useCase = "0002";
                     break;
 
-                case 3:
-                    useCaseVariables.useCase = "0002";
-                    break;
-                case 4:
-                    useCaseVariables.useCase = "0002";
-                    break;
+                //case 3:
+                //    useCaseVariables.useCase = "0002";
+                //    break;
+
+                //case 4:
+                //    useCaseVariables.useCase = "0002";
+                //    break;
+
                 default:
                     useCaseVariables.useCase = "0002";
                     break;

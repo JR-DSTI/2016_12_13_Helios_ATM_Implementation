@@ -6,35 +6,28 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Configuration;
 using System.Reflection;
-
-
-using Amazon;
-using Amazon.Runtime;
-
-using Amazon.S3;
-using Amazon.S3.Transfer;
-using Amazon.S3.Model;
-
-//using Amazon.SimpleNotificationService;
-//using Amazon.SimpleNotificationService.Model;
-
-using Amazon.DynamoDBv2;
-using Amazon.DynamoDBv2.DocumentModel;
-using Amazon.DynamoDBv2.Model;
 using System.Windows.Forms;
 using System.Management;
-
-
 using System.Threading;
 using System.Net.NetworkInformation;
 using System.Windows;
+//using System;
+//using System.IO;
+//using Amazon.S3;
+//using Amazon.S3.Transfer;
 
-using System;
-using System.IO;
+//amazon use:
+using Amazon;
+using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Transfer;
+using Amazon.S3.Model;
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DocumentModel;
+using Amazon.DynamoDBv2.Model;
 
-
+//using Amazon.SimpleNotificationService;
+//using Amazon.SimpleNotificationService.Model;
 //using Amazon.SimpleEmail;
 
 namespace Helios_ATM
@@ -52,7 +45,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+            //AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -76,7 +69,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+            //AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -101,7 +94,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+            //AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -126,7 +119,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+            //AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -150,7 +143,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+            //AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
 
             // We define the Attributes to fetch (here Balance)
@@ -175,7 +168,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+            //AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
 
             // We define the Attributes to fetch (here Balance)
@@ -200,7 +193,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+            //AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -224,7 +217,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Finding your info ***", "Data check", 1000, Parent: Form.ActiveForm);
+            //AutoClosingMessageBox.Show("\n*** Finding your info ***", "Data check", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -248,7 +241,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Finding your info ***", "Data check", 1000, Parent: Form.ActiveForm);
+            //AutoClosingMessageBox.Show("\n*** Finding your info ***", "Data check", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -271,7 +264,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Retrieving Account Details ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+            //AutoClosingMessageBox.Show("\n*** Retrieving Account Details ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -295,7 +288,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Finding bank's name ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+            //AutoClosingMessageBox.Show("\n*** Finding bank's name ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -328,7 +321,7 @@ namespace Helios_ATM
 
             //Load into a table called ATM thx to a DB client
             Table LoadProduct = Table.LoadTable(dbc, tablename);
-            AutoClosingMessageBox.Show("\n*** Finding bank's name ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+            //AutoClosingMessageBox.Show("\n*** Finding bank's name ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
 
             // We define the Attributes to fetch (here Balance)
             GetItemOperationConfig config = new GetItemOperationConfig
@@ -500,14 +493,14 @@ namespace Helios_ATM
                     // Code below to actually Send the email. 
                     try
                     {
-                        AutoClosingMessageBox.Show("Sending your receipt..", "Email delivery", 1000, Parent: Form.ActiveForm);
+                        AutoClosingMessageBox.Show("Sending your receipt..", "Notification delivery", 1000, Parent: Form.ActiveForm);
                         client.Send(FROM, TO, SUBJECT, BODY);
-                        AutoClosingMessageBox.Show("\n Email sent!", "Success", 1000, Parent: Form.ActiveForm);
+                        AutoClosingMessageBox.Show("\n Notification sent!", "Success", 1000, Parent: Form.ActiveForm);
 
                     }
                     catch (Exception ex)
                     {
-                        AutoClosingMessageBox.Show("The email was not sent! \n Error message: " + ex.Message, "ERROR", 10000, Parent: Form.ActiveForm);
+                        AutoClosingMessageBox.Show("The notification was not sent! \n Error message: " + ex.Message, "ERROR", 10000, Parent: Form.ActiveForm);
                     }
                 }
             }
@@ -526,7 +519,7 @@ namespace Helios_ATM
             //if the the query succeeds
             if (document.Count() > 0)
             {
-                AutoClosingMessageBox.Show("\n RetrieveBalance: Balance retrieved...", "Data retrieval", 1000, Parent: Form.ActiveForm);
+                //AutoClosingMessageBox.Show("\n RetrieveBalance: Balance retrieved...", "Data retrieval", 1000, Parent: Form.ActiveForm);
                 PrintDocument(document);
             }
             //if the query fails
@@ -557,7 +550,7 @@ namespace Helios_ATM
                     stringValue = string.Join(",", (from primitive in value.AsPrimitiveList().Entries select primitive.Value).ToArray());
                 }
                 val = (updatedDocument[attribute]).AsBoolean();
-                AutoClosingMessageBox.Show(attribute + " : " + val, "Info", 1000, Parent: Form.ActiveForm);
+                //AutoClosingMessageBox.Show(attribute + " : " + val, "Info", 1000, Parent: Form.ActiveForm);
 
 
             }
@@ -585,10 +578,10 @@ namespace Helios_ATM
                 }
 
 
-                AutoClosingMessageBox.Show(attribute + " - " + stringValue, "Info", 1000, Parent: Form.ActiveForm);
+                //AutoClosingMessageBox.Show(attribute + " - " + stringValue, "Info", 1000, Parent: Form.ActiveForm);
                 val = (updatedDocument[attribute]).ToString();
                 //express MessageBox.Show(val.ToString());
-                AutoClosingMessageBox.Show(attribute + " - " + val, "Info", 1000, Parent: Form.ActiveForm);
+                //AutoClosingMessageBox.Show(attribute + " - " + val, "Info", 1000, Parent: Form.ActiveForm);
             }
             return val;
         }
@@ -596,8 +589,8 @@ namespace Helios_ATM
         public static void NotEnoughCash(double amount, String s)
         {
             if (amount> Int32.Parse(s)) {
-               MessageBox.Show("the ATM doesn't have enough cash");
-               Environment.Exit(0);
+                AutoClosingMessageBox.Show("This ATM doesn't have enough cash. Move your booty to the next one. Ask people for the way :-)", "No sufficient cash", 1000, Parent: Form.ActiveForm);
+                Environment.Exit(0);
             }
         }
 

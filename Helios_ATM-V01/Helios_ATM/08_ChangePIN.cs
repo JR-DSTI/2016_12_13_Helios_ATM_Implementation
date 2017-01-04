@@ -172,7 +172,6 @@ namespace Helios_ATM
 
                     correctPIN = newPIN2;
 
-
                     Lib.Newupdate(useCaseVariables.useCase, 0,
                     Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 20,
                     Lib.getBankName("ATM", useCaseVariables.useCase),
@@ -183,10 +182,7 @@ namespace Helios_ATM
                     Lib.getName("ATM", useCaseVariables.useCase),
                     Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
                     0);
-
-
-
-
+                    
                     //Starting next form and close/hide this one
                     Form ATM6 = new ATM6(); // Instantiate a Form object.
                     ATM6.Show(); //show the new Form
@@ -199,6 +195,8 @@ namespace Helios_ATM
                     NewPinEntry.Enabled = true;
                     ConfirmNewPinEntry.Text = "";
                     NewPinEntry.Text = "";
+                    newPIN2 = "";
+                    newPIN = "";
                 }
             }
 
@@ -212,7 +210,7 @@ namespace Helios_ATM
                 }
                 else
                 {
-                    AutoClosingMessageBox.Show("Incorrect PIN. Please try again.","Incorrect PIN", 1000, this);
+                    AutoClosingMessageBox.Show("Incorrect PIN length. Please try again with more than 4 but less than 9 digits.","Incorrect PIN length", 1000, this);
                     NewPinEntry.Text = "";
                 }
             }
