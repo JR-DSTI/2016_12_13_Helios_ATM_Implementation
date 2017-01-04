@@ -97,6 +97,7 @@ namespace Helios_ATM
                 //update s3log:
                 s3log.logOperation(null, "PIN entries blocked.");
 
+                s3log.logOperation(null, "Abort.");
                 this.Close();
             }
             
@@ -181,6 +182,7 @@ namespace Helios_ATM
                     
                     //update s3log:
                     s3log.logOperation(null, "Third PIN entry failure. PIN blocked.");
+                    s3log.logOperation(null, "Abort.");
 
                     //reset PIN and return
                     PIN = "";

@@ -29,14 +29,14 @@ namespace Helios_ATM
 
         private  void button1_Click(object sender, EventArgs e)
         {
+            useCaseVariables.strNotificationAddress = EmailTextBox.Text;
+            useCaseVariables.bCheckBoxPowerSourceBattery = CheckBoxPowerSourceBattery.Checked;
+            useCaseVariables.bCheckBoxNetworkConnectionUnstable = CheckBoxNetworkConnectionUnstable.Checked;
+
             //Log current operation:
             s3log.logOperation(null, "Initialization");
             s3log.logOperation(sender);
 
-            useCaseVariables.strNotificationAddress = EmailTextBox.Text;
-            useCaseVariables.bCheckBoxPowerSourceBattery = CheckBoxPowerSourceBattery.Checked;
-            useCaseVariables.bCheckBoxNetworkConnectionUnstable = CheckBoxNetworkConnectionUnstable.Checked;
-            
             //Starting next form and close/hide this one
             //start the First form
             Form ATM1 = new ATM1(); // Instantiate a Form object.

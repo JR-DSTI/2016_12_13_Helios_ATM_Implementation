@@ -675,7 +675,7 @@ namespace Helios_ATM
                             + "\n" + "Ping: " + (networkConnection.Pinger("stackoverflow.com", 5)).ToString();
                 
                 //if the abortion button was clicked, send log to s3
-                if (((Button)sender).Name.IndexOf("Abort") > 0)
+                if (((Button)sender).Name.IndexOf("Abort") > -1)
                 {
                     //send total log to AWS S3
                     s3log.uploadLogToS3();
@@ -688,7 +688,7 @@ namespace Helios_ATM
             }
             else
             {
-                if (strAdditionalLogtext.IndexOf("Initialization") > 0)
+                if (strAdditionalLogtext.IndexOf("Initialization") >-1)
                 {
                     strLog += "========================"
                             + "\n" + "========================"
@@ -696,7 +696,7 @@ namespace Helios_ATM
                             + "\n" + "HELIOS ATM Project"
                             + "\n" + "Built by Assan Sanogo, Jonas Rathke"
                             + "\n" + "(c) 2017"
-                            + "\n" + "'Let's ping that...!"
+                            + "\n" + "'Let's ping that...!'"
                             + "\n" + "========================"
                             + "\n" + "Date and time: " + (DateTime.Now).ToString()
                             + "\n" + "Account use case: " + useCaseVariables.useCase
@@ -704,7 +704,8 @@ namespace Helios_ATM
                             + "\n" + "Battery powered: " + useCaseVariables.bCheckBoxPowerSourceBattery
                             + "\n" + "Network connection unstable: " + useCaseVariables.bCheckBoxNetworkConnectionUnstable
                             + "\n" + "Provided notification number: " + useCaseVariables.strNotificationAddress
-                            + "\n" + "Ping: " + (networkConnection.Pinger("stackoverflow.com", 5)).ToString();                   
+                            + "\n" + "Ping: " + (networkConnection.Pinger("stackoverflow.com", 5)).ToString()
+                            + "\n" + "========================";                   
 
                     }
                 else
@@ -735,29 +736,29 @@ namespace Helios_ATM
     {
         string existingBucketName = "dstiawsml";
         Random rand = new Random(DateTime.Now.Millisecond);
-        string keyName = "logsATM_" + (DateTime.Now).ToString("yyyy_MMMM_dd_")+ rand.ToString();
-              try
-                {
-                    TransferUtility fileTransferUtility = new
-                    TransferUtility(new AmazonS3Client(Amazon.RegionEndpoint.USEast1));
+        string keyName = "logHeliosATM_" + (DateTime.Now).ToString("yyyy_MM_dd_hh_mm_ss")+ rand.Next().ToString();
+        try
+        {
+            TransferUtility fileTransferUtility = new
+            TransferUtility(new AmazonS3Client(Amazon.RegionEndpoint.USEast1));
 
 
-                    // Upload data from a type of System.IO.Stream.
-                    using (FileStream fileToUpload =
-                        new FileStream(filePath, FileMode.Open, FileAccess.Read))
-                    {
-                        fileTransferUtility.Upload(fileToUpload,
-                                                   existingBucketName, keyName);
-                    }
-                    Console.WriteLine("Upload completed");
+            // Upload data from a type of System.IO.Stream.
+            using (FileStream fileToUpload =
+                new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                fileTransferUtility.Upload(fileToUpload,
+                                            existingBucketName, keyName);
+            }
+            Console.WriteLine("Upload completed");
 
                   
-                }
-                catch (AmazonS3Exception s3Exception)
-                {
-                    Console.WriteLine(s3Exception.Message,
-                                      s3Exception.InnerException);
-                }
+        }
+        catch (AmazonS3Exception s3Exception)
+        {
+            Console.WriteLine(s3Exception.Message,
+                                s3Exception.InnerException);
+        }
             }
         }
     }

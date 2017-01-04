@@ -1,22 +1,44 @@
-
 ========================
-Date and time: 04.01.2017 18:49:29
+========================
+Initialization of ATM
+HELIOS ATM Project
+Built by Assan Sanogo, Jonas Rathke
+(c) 2017
+'Let's ping that...!'
+========================
+Date and time: 04.01.2017 20:31:08
+Account use case: 0003
+cases: 0: Zero cash in Account, 1: No more PIN entries left, 2: Standard case
+Battery powered: True
+Network connection unstable: True
+Provided notification number: 111123432
+Ping: 23
+========================
+========================
+Date and time: 04.01.2017 20:31:08
 Form: ATM0
 Operation: Button EnterHereButton
 Battery life: 100% 
 # of form visits: 1
-Ping: 24
+Ping: 22
 ========================
-Date and time: 04.01.2017 18:49:31
+Date and time: 04.01.2017 20:31:11
 Form: ATM1
 Operation: Button EnterHereButton
 Battery life: 100% 
 # of form visits: 1
 Ping: 22
 ========================
-Date and time: 04.01.2017 18:49:40
+Date and time: 04.01.2017 20:31:15
 Form: ATM3
 Operation: Button CardInsertedButton
 Battery life: 100% 
 # of form visits: 1
 Ping: 22
+========================
+Date and time: 04.01.2017 20:31:18
+Form: ATM1
+Operation: Button AbortButton
+Battery life: 100% 
+# of form visits: 2
+Ping: 23
