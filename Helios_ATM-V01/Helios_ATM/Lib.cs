@@ -909,11 +909,17 @@ namespace Helios_ATM
 
         public static void uploadLogToS3()
         {
+            //building string to upload
             string s = s3log.strLog;
             var sb = new StringBuilder();
             sb.Append(s);
+
+            //write into local file:
             File.WriteAllText("afile.txt", sb.ToString());
             s3log.uploadtoS3("afile.txt");
+
+            //delete local file after uploading
+            File.Delete("afile.txt");
         }
        
 
