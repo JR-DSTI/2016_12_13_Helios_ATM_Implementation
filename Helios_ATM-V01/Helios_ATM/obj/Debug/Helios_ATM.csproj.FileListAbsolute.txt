@@ -195,3 +195,7 @@ C:\Users\assan\Downloads\2016_12_13_helios_atm_implementation\helios_atm-v01\Hel
 C:\Users\assan\Downloads\2016_12_13_helios_atm_implementation\helios_atm-v01\Helios_ATM\bin\Debug\AWSSDK.SimpleNotificationService.dll
 C:\Users\assan\Downloads\2016_12_13_helios_atm_implementation\helios_atm-v01\Helios_ATM\bin\Debug\AWSSDK.SimpleNotificationService.pdb
 C:\Users\assan\Downloads\2016_12_13_helios_atm_implementation\helios_atm-v01\Helios_ATM\bin\Debug\AWSSDK.SimpleNotificationService.xml
+Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM-V01\Helios_ATM\bin\Debug\AWSSDK.SimpleNotificationService.dll
+Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM-V01\Helios_ATM\bin\Debug\AWSSDK.SimpleNotificationService.pdb
+Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM-V01\Helios_ATM\bin\Debug\AWSSDK.SimpleNotificationService.xml
+Y:\Documents\GitHub\2016_12_13_Helios_ATM_Implementation\Helios_ATM-V01\Helios_ATM\obj\Debug\Helios_ATM.testshit.resources

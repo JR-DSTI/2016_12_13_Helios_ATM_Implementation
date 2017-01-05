@@ -256,8 +256,10 @@ namespace Helios_ATM
 
             if (Boolean.Parse(Lib.getKilled()))
             {
-                MessageBox.Show("the ATM has been remotely shut down");
+                //Alert:
+                AutoClosingMessageBox.Show("ATM has been remotely shut down. /nYes, over the air!", "KILLSWITCH", 1000, Parent: Form.ActiveForm);
 
+                //exit the forms:
                 Environment.Exit(0);
 
                 //resetting the Kill for future uses
@@ -684,7 +686,7 @@ namespace Helios_ATM
 
 
 
-        public static void sendText(int amount, string a = "+4915778943689")
+        public static void sendText(int amount, string a ="")
         {
             AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient();
             SetSMSAttributesRequest s = new SetSMSAttributesRequest();
@@ -693,16 +695,27 @@ namespace Helios_ATM
 
             snsClient.SetSMSAttributes(s);
 
+            //Set the correct number:
+            a = useCaseVariables.strNotificationAddress;
 
+            try {
+                PublishResponse resp = snsClient.Publish(new PublishRequest
+                {
+                    Message = "Thank you for using HELIOS Banking" +
+               Environment.NewLine + "Operation successful " +
+               DateTime.Now.ToString() +
+               Environment.NewLine +
+               "Amount(Pesos)" +
+               amount.ToString() + Environment.NewLine + "This is future banking sh***. Be glad you are on it :-)",
+                    PhoneNumber = a
+                });
+            }
+            catch (Exception ex)
+            {
+                AutoClosingMessageBox.Show("Problem. \n Message could not be sent." , "ERROR", 1000, Parent: Form.ActiveForm);
+                AutoClosingMessageBox.Show("Problem. \n Error message: " + ex.Message, "ERROR", 2000, Parent: Form.ActiveForm);
+            }
 
-            PublishResponse resp= snsClient.Publish(new PublishRequest {
-                Message = "Thank you for using HELIOS Banking"+
-                Environment.NewLine+"Operation successful " +
-                DateTime.Now.ToString()+
-                Environment.NewLine+
-                "Amount(Pesos)"+ 
-                amount.ToString(),
-                PhoneNumber = a });
 
         }
 
