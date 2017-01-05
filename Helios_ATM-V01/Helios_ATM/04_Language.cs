@@ -59,13 +59,11 @@ namespace Helios_ATM
             //Going back to first form (=restart)
             Form ATM1 = new ATM1(); // Instantiate a Form object.
             ATM1.Show(); //show the new Form
+            this.Visible = false;
 
             //Log current operation: (to be repeated)
             s3log.logOperation(sender);
-
             
-            
-
             //stop the BatteryNetworkTimer
             this.BatteryNetworkTimer.Stop();
         }
