@@ -34,6 +34,7 @@ namespace Helios_ATM
 
         private void ATM3_Load(object sender, EventArgs e)
         {
+            Lib.stfu();
             //setting the current Batterycharge and Network signal:
             this.BatteryCharge.Value = battery.charge;
             this.BatteryNetworkTimer.Start();

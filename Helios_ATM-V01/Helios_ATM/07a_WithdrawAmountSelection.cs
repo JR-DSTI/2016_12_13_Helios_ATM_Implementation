@@ -21,6 +21,7 @@ namespace Helios_ATM
 
         private void ATM7a_Load(object sender, EventArgs e)
         {
+            Lib.stfu();
             //update batterycharge and start BatteryNetworkTimer
             this.BatteryCharge.Value = battery.charge;
             this.BatteryNetworkTimer.Start();
@@ -96,11 +97,11 @@ namespace Helios_ATM
                 double newBalance=Int32.Parse(strBalance)- balance;
 
                 //Update database with new balance:
-                Lib.Newupdate(mycase, 
-                                0, 
-                                Int32.Parse(Lib.getBalance(mycase,"ATM")), 
-                                "Credit Agricole", 
-                                Lib.getBlocked("ATM",mycase), "9393993", 
+                Lib.Newupdate(mycase,
+                                0,
+                                Int32.Parse(Lib.getBalance(mycase, "ATM")),
+                                Lib.getBankName("ATM",mycase), 
+                                Lib.getBlocked("ATM",mycase), Lib.getCode("ATM",mycase), 
                                 Int32.Parse(Lib.getCheckingBalance("ATM",useCaseVariables.useCase)),
                                 Lib.getCode("ATM",mycase), 
                                 Lib.getName("ATM",mycase),
@@ -131,11 +132,15 @@ namespace Helios_ATM
                 //s3 logging
                 s3log.logOperation(null, "Receipt printing requested.");
 
+               
+                
                 //Doing Assans AWS Printing magic here
                 //Building the message and sending the mail:
-                String body =headz(WithdrawAmount);
-                String title = "Thank you for using HELIOS Banking";
-                Lib.sendMail(title, body);
+                //String body =headz(WithdrawAmount);
+                //String title = "Thank you for using HELIOS Banking";
+
+                Lib.sendText(WithdrawAmount,useCaseVariables.strNotificationAddress);
+                //Lib.sendMail(title, body);
                 AutoClosingMessageBox.Show("Finished AWS printing magic." , "Info", 1500, this);
 
             }
@@ -183,24 +188,37 @@ namespace Helios_ATM
             //Log current operation:
             s3log.logOperation(sender);
             string s = Lib.getATMCash("AccountATM","0001");
-            Lib.NotEnoughCash(500, s);
-            Boolean flag=check_and_pay(500, useCaseVariables.useCase,Lib.getCode("ATM",useCaseVariables.useCase));
-
-            if (flag==true){
-                Lib.Newupdate(useCaseVariables.useCase, 0,
-                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 500,
-                Lib.getBankName("ATM", useCaseVariables.useCase),
-                false,
-                Lib.getNummer("ATM", useCaseVariables.useCase),
-                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
-                Lib.getCode("ATM", useCaseVariables.useCase),
-                Lib.getName("ATM", useCaseVariables.useCase),
-                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
-                0);
-
-                Lib.updateATM(Int32.Parse(s) - 500);
+            Lib.NotEnoughCash(500, s); 
+                Lib l = new Lib();
+                if (l.ScanTable(500) )
+                    {
+                     Lib.updateTransactions(DateTime.Now.ToString("yyyyMMddHHmmss")
+                    ,500,DateTime.Now,Lib.getName("ATM",useCaseVariables.useCase)
+                    );
+                    Boolean flag = check_and_pay(500, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+                    if (flag == true)
+                    {
+                        Lib.Newupdate(useCaseVariables.useCase, 0,
+                        Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 500,
+                        Lib.getBankName("ATM", useCaseVariables.useCase),
+                        false,
+                        Lib.getNummer("ATM", useCaseVariables.useCase),
+                        Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                        Lib.getCode("ATM", useCaseVariables.useCase),
+                        Lib.getName("ATM", useCaseVariables.useCase),
+                        Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                        0);
+                        Lib.updateATM(Int32.Parse(s) - 500);
                 }
-        }
+            }
+            else
+                {        
+                    ATM1 a = new ATM1();
+                    a.Show();
+                    this.Close();
+                }
+            }
+        
 
         private void Withdraw5_Click(object sender, EventArgs e)
         {
@@ -208,20 +226,33 @@ namespace Helios_ATM
             s3log.logOperation(sender);
             string s = Lib.getATMCash("AccountATM", "0001");
             Lib.NotEnoughCash(5, s);
-            Boolean flag = check_and_pay(5, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
-            if (flag == true)
+            Lib l = new Lib();
+            if (l.ScanTable(5))
             {
-                Lib.Newupdate(useCaseVariables.useCase, 0,
-                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 5,
-                Lib.getBankName("ATM", useCaseVariables.useCase),
-                false,
-                Lib.getNummer("ATM", useCaseVariables.useCase),
-                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
-                Lib.getCode("ATM", useCaseVariables.useCase),
-                Lib.getName("ATM", useCaseVariables.useCase),
-                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
-                0);
-                Lib.updateATM(Int32.Parse(s) - 5);
+                Lib.updateTransactions(DateTime.Now.ToString("yyyyMMddHHmmss")
+               , 5, DateTime.Now, Lib.getName("ATM", useCaseVariables.useCase)
+               );
+                Boolean flag = check_and_pay(5, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+                if (flag == true)
+                {
+                    Lib.Newupdate(useCaseVariables.useCase, 0,
+                    Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 5,
+                    Lib.getBankName("ATM", useCaseVariables.useCase),
+                    false,
+                    Lib.getNummer("ATM", useCaseVariables.useCase),
+                    Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                    Lib.getCode("ATM", useCaseVariables.useCase),
+                    Lib.getName("ATM", useCaseVariables.useCase),
+                    Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                    0);
+                    Lib.updateATM(Int32.Parse(s) - 5);
+                }
+            }
+            else
+            {
+                ATM1 a = new ATM1();
+                a.Show();
+                this.Close();
             }
         }
         private void Withdraw200_Click(object sender, EventArgs e)
@@ -230,45 +261,69 @@ namespace Helios_ATM
             s3log.logOperation(sender);
             string s = Lib.getATMCash("AccountATM", "0001");
             Lib.NotEnoughCash(200, s);
-            Boolean flag=check_and_pay(200, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
-            if (flag == true)
+            Lib l = new Lib();
+            if (l.ScanTable(200))
             {
-                Lib.Newupdate(useCaseVariables.useCase, 0,
-                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 200,
-                Lib.getBankName("ATM", useCaseVariables.useCase),
-                false,
-                Lib.getNummer("ATM", useCaseVariables.useCase),
-                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
-                Lib.getCode("ATM", useCaseVariables.useCase),
-                Lib.getName("ATM", useCaseVariables.useCase),
-                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
-                0);
-                Lib.updateATM(Int32.Parse(s) - 200);
+                Lib.updateTransactions(DateTime.Now.ToString("yyyyMMddHHmmss")
+               , 200, DateTime.Now, Lib.getName("ATM", useCaseVariables.useCase)
+               );
+                Boolean flag = check_and_pay(200, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+                if (flag == true)
+                {
+                    Lib.Newupdate(useCaseVariables.useCase, 0,
+                    Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 200,
+                    Lib.getBankName("ATM", useCaseVariables.useCase),
+                    false,
+                    Lib.getNummer("ATM", useCaseVariables.useCase),
+                    Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                    Lib.getCode("ATM", useCaseVariables.useCase),
+                    Lib.getName("ATM", useCaseVariables.useCase),
+                    Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                    0);
+                    Lib.updateATM(Int32.Parse(s) - 200);
+                }
+            }
+            else
+            {
+                ATM1 a = new ATM1();
+                a.Show();
+                this.Close();
             }
         }
 
         private void Withdraw100_Click(object sender, EventArgs e)
         {
-
             //Log current operation:
             s3log.logOperation(sender);
             string s = Lib.getATMCash("AccountATM", "0001");
-
             Lib.NotEnoughCash(100, s);
-            Boolean flag=check_and_pay(100, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
-            if (flag == true)
+            Lib l = new Lib();
+            if (l.ScanTable(100))
             {
-                Lib.Newupdate(useCaseVariables.useCase, 0,
-                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 100,
-                Lib.getBankName("ATM", useCaseVariables.useCase),
-                false,
-                Lib.getNummer("ATM", useCaseVariables.useCase),
-                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
-                Lib.getCode("ATM", useCaseVariables.useCase),
-                Lib.getName("ATM", useCaseVariables.useCase),
-                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
-                0);
-                Lib.updateATM(Int32.Parse(s) - 100);
+                Lib.updateTransactions(DateTime.Now.ToString("yyyyMMddHHmmss")
+               , 100, DateTime.Now, Lib.getName("ATM", useCaseVariables.useCase)
+               );
+                Boolean flag = check_and_pay(100, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+                if (flag == true)
+                {
+                    Lib.Newupdate(useCaseVariables.useCase, 0,
+                    Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 100,
+                    Lib.getBankName("ATM", useCaseVariables.useCase),
+                    false,
+                    Lib.getNummer("ATM", useCaseVariables.useCase),
+                    Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                    Lib.getCode("ATM", useCaseVariables.useCase),
+                    Lib.getName("ATM", useCaseVariables.useCase),
+                    Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                    0);
+                    Lib.updateATM(Int32.Parse(s) - 100);
+                }
+            }
+            else
+            {
+                ATM1 a = new ATM1();
+                a.Show();
+                this.Close();
             }
         }
 
@@ -278,20 +333,33 @@ namespace Helios_ATM
             s3log.logOperation(sender);
             string s = Lib.getATMCash("AccountATM", "0001");
             Lib.NotEnoughCash(50, s);
-            Boolean flag=check_and_pay(50, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
-            if (flag == true)
+            Lib l = new Lib();
+            if (l.ScanTable(50))
             {
-                Lib.Newupdate(useCaseVariables.useCase, 0,
-                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 50,
-                Lib.getBankName("ATM", useCaseVariables.useCase),
-                false,
-                Lib.getNummer("ATM", useCaseVariables.useCase),
-                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
-                Lib.getCode("ATM", useCaseVariables.useCase),
-                Lib.getName("ATM", useCaseVariables.useCase),
-                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
-                0);
-                Lib.updateATM(Int32.Parse(s) - 50);
+                Lib.updateTransactions(DateTime.Now.ToString("yyyyMMddHHmmss")
+               , 50, DateTime.Now, Lib.getName("ATM", useCaseVariables.useCase)
+               );
+                Boolean flag = check_and_pay(50, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+                if (flag == true)
+                {
+                    Lib.Newupdate(useCaseVariables.useCase, 0,
+                    Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 50,
+                    Lib.getBankName("ATM", useCaseVariables.useCase),
+                    false,
+                    Lib.getNummer("ATM", useCaseVariables.useCase),
+                    Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                    Lib.getCode("ATM", useCaseVariables.useCase),
+                    Lib.getName("ATM", useCaseVariables.useCase),
+                    Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                    0);
+                    Lib.updateATM(Int32.Parse(s) - 50);
+                }
+            }
+            else
+            {
+                ATM1 a = new ATM1();
+                a.Show();
+                this.Close();
             }
         }
 
@@ -301,43 +369,68 @@ namespace Helios_ATM
             s3log.logOperation(sender);
             string s = Lib.getATMCash("AccountATM", "0001");
             Lib.NotEnoughCash(20, s);
-            Boolean flag=check_and_pay(20, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
-            if (flag == true)
+            Lib l = new Lib();
+            if (l.ScanTable(20))
             {
-                Lib.Newupdate(useCaseVariables.useCase, 0,
-                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 20,
-                Lib.getBankName("ATM", useCaseVariables.useCase),
-                false,
-                Lib.getNummer("ATM", useCaseVariables.useCase),
-                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
-                Lib.getCode("ATM", useCaseVariables.useCase),
-                Lib.getName("ATM", useCaseVariables.useCase),
-                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
-                0);
-                Lib.updateATM(Int32.Parse(s) - 20);
+                Lib.updateTransactions(DateTime.Now.ToString("yyyyMMddHHmmss")
+               , 20, DateTime.Now, Lib.getName("ATM", useCaseVariables.useCase)
+               );
+                Boolean flag = check_and_pay(20, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+                if (flag == true)
+                {
+                    Lib.Newupdate(useCaseVariables.useCase, 0,
+                    Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 20,
+                    Lib.getBankName("ATM", useCaseVariables.useCase),
+                    false,
+                    Lib.getNummer("ATM", useCaseVariables.useCase),
+                    Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                    Lib.getCode("ATM", useCaseVariables.useCase),
+                    Lib.getName("ATM", useCaseVariables.useCase),
+                    Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                    0);
+                    Lib.updateATM(Int32.Parse(s) - 20);
+                }
+            }
+            else
+            {
+                ATM1 a = new ATM1();
+                a.Show();
+                this.Close();
             }
         }
-
         private void Withdraw10_Click(object sender, EventArgs e)
         {
             //Log current operation:
             s3log.logOperation(sender);
             string s = Lib.getATMCash("AccountATM", "0001");
             Lib.NotEnoughCash(10, s);
-            Boolean flag = check_and_pay(10, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
-            if (flag == true)
+            Lib l = new Lib();
+            if (l.ScanTable(10))
             {
-                Lib.Newupdate(useCaseVariables.useCase, 0,
-                Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 10,
-                Lib.getBankName("ATM", useCaseVariables.useCase),
-                false,
-                Lib.getNummer("ATM", useCaseVariables.useCase),
-                Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
-                Lib.getCode("ATM", useCaseVariables.useCase),
-                Lib.getName("ATM", useCaseVariables.useCase),
-                Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
-                0);
-                Lib.updateATM(Int32.Parse(s) - 10);
+                Lib.updateTransactions(DateTime.Now.ToString("yyyyMMddHHmmss")
+               , 10, DateTime.Now, Lib.getName("ATM", useCaseVariables.useCase)
+               );
+                Boolean flag = check_and_pay(10, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+                if (flag == true)
+                {
+                    Lib.Newupdate(useCaseVariables.useCase, 0,
+                    Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - 10,
+                    Lib.getBankName("ATM", useCaseVariables.useCase),
+                    false,
+                    Lib.getNummer("ATM", useCaseVariables.useCase),
+                    Int32.Parse(Lib.getCheckingBalance("ATM", useCaseVariables.useCase)),
+                    Lib.getCode("ATM", useCaseVariables.useCase),
+                    Lib.getName("ATM", useCaseVariables.useCase),
+                    Lib.getSavingsBalance("ATM", useCaseVariables.useCase),
+                    0);
+                    Lib.updateATM(Int32.Parse(s) - 10);
+                }
+            }
+            else
+            {
+                ATM1 a = new ATM1();
+                a.Show();
+                this.Close();
             }
         }
 

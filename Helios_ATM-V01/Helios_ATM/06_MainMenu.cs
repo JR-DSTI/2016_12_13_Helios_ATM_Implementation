@@ -23,6 +23,7 @@ namespace Helios_ATM
 
         private void ATM6_Load(object sender, EventArgs e1)
         {
+            Lib.stfu();
             //update batterycharge and start BatteryNetworkTimer
             this.BatteryCharge.Value = battery.charge;
             this.BatteryNetworkTimer.Start();

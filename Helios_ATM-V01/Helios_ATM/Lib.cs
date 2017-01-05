@@ -11,10 +11,8 @@ using System.Management;
 using System.Threading;
 using System.Net.NetworkInformation;
 using System.Windows;
-//using System;
-//using System.IO;
-//using Amazon.S3;
-//using Amazon.S3.Transfer;
+
+
 
 //amazon use:
 using Amazon;
@@ -26,14 +24,159 @@ using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
 
-//using Amazon.SimpleNotificationService;
-//using Amazon.SimpleNotificationService.Model;
+using Amazon.SimpleNotificationService;
+using Amazon.SimpleNotificationService.Model;
 //using Amazon.SimpleEmail;
 
 namespace Helios_ATM
 {
     class Lib
     {
+        public List<string> listOfDates=new List<string>() ;
+        public List<int> listOfAmounts;
+
+        public static void listOperations()
+        {
+            AmazonDynamoDBClient client = new AmazonDynamoDBClient();
+            var request = new QueryRequest
+            {
+                TableName = "transaction2",
+                KeyConditionExpression = "transactionID =:v_Id ",
+                ExpressionAttributeValues = new Dictionary<string, AttributeValue>
+        {
+            {":v_Id",new AttributeValue {S="0002"} } 
+    },
+                ProjectionExpression="transactionDate",
+                ConsistentRead=true
+            };
+            var response = client.Query(request);
+        
+         foreach(Dictionary<string, AttributeValue> item in response.Items)
+            {
+                PrintItem(item);
+            }
+        }
+
+
+        public Boolean ScanTable(int Amount)
+            {
+            DateTime threeWeeksAgoDate =DateTime.UtcNow-TimeSpan.FromDays(21);
+            
+            string threeWeeksAgoDateStr = threeWeeksAgoDate.ToString();
+            MessageBox.Show(threeWeeksAgoDateStr);
+            
+            AmazonDynamoDBClient cl = new AmazonDynamoDBClient();
+            var ScRequest = new ScanRequest
+            {
+         
+                TableName = "transaction2",
+                ExpressionAttributeValues = new Dictionary<string, AttributeValue> { {":val",new AttributeValue{S= Lib.getName("ATM",useCaseVariables.useCase)}}, },
+                FilterExpression = "transactioner= :val",
+                ProjectionExpression ="transactionDate, transactionAmount",
+                ExclusiveStartKey=null
+                
+            };
+            var Response = cl.Scan(ScRequest);
+            List<string> l = new List<string>();
+            List<string> l2 = new List<string>();
+
+
+            List<int> lindex = new List<int>();
+            int total = 0;
+            foreach (Dictionary<string,AttributeValue> item in Response.Items)
+            {
+                //PrintItem2(item);
+                String s = PrintItem2(item);
+                l.Add(s);
+                String t = PrintItem2(item, false);
+                l2.Add(t);
+            };
+            foreach(String el in l){
+               if (DateTime.Parse(el).Date > threeWeeksAgoDate.Date)
+                {
+                    int a=l.IndexOf(el);
+                    total += Int32.Parse(l2[a]);
+                }
+            }
+            //MessageBox.Show(String.Join(",",lindex));
+            MessageBox.Show(total.ToString());
+            if (total+Amount>500 )
+            {
+                MessageBox.Show("You took more than 500 pesos in a month");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+
+
+
+
+        public static void PrintItem(Dictionary<string,AttributeValue> attList)
+        {
+
+           foreach(KeyValuePair<string,AttributeValue> item in attList)
+            {
+               if (item.Value.S != null)
+                {
+                    MessageBox.Show(item.Value.S.ToString());
+                    
+                 
+
+                }
+                if (item.Value.N != null)
+                {
+                    MessageBox.Show(item.Value.N.ToString());
+                   
+                }
+            }
+        }
+
+
+
+        public string PrintItem2(Dictionary<string, AttributeValue> attList, Boolean flag=true)
+        {
+            string a = "";
+
+            if (flag)
+            {
+                foreach (KeyValuePair<string, AttributeValue> item in attList)
+            {
+                if (item.Value.S != null)
+                {
+
+                    MessageBox.Show(item.Value.S.ToString());
+
+                    a= (item.Value.S.ToString());
+                    //MessageBox.Show(Lib.listOfDates.ToString());
+
+                }
+            //   else if (item.Value.N != null)
+            //    {
+            //        MessageBox.Show(item.Value.N.ToString());
+            //        a= (item.Value.N.ToString());
+            //    }
+            }
+            }
+            else
+            {
+                foreach (KeyValuePair<string, AttributeValue> item in attList)
+                    if (item.Value.N != null)
+            {
+
+                MessageBox.Show(item.Value.N.ToString());
+
+                a = (item.Value.N.ToString());
+                //MessageBox.Show(Lib.listOfDates.ToString());
+
+            }
+            }
+            return a;
+        }
 
         // all the functions "get" retrieve a field of the table
 
@@ -85,6 +228,48 @@ namespace Helios_ATM
         }
 
 
+
+        public static string getKilled(string tablename="KILLSWITCH",string myAccountId="0001")
+        {
+            //Creation of a new Client
+            AmazonDynamoDBClient dbc = new AmazonDynamoDBClient();
+
+            //Load into a table called ATM thx to a DB client
+            Table LoadProduct = Table.LoadTable(dbc, tablename);
+            //AutoClosingMessageBox.Show("\n*** Executing RetrieveAccount() ***", "Data retrieval", 1000, Parent: Form.ActiveForm);
+
+            // We define the Attributes to fetch (here Balance)
+            GetItemOperationConfig config = new GetItemOperationConfig
+            {
+                AttributesToGet = new List<String> { "SHUTDOWN" },
+                ConsistentRead = true
+            };
+
+            //from the table, get the item described in the config & return print result of PrintDoc function
+            Document document = LoadProduct.GetItem(myAccountId, config);
+            return strPrintDocument(document);
+
+        }
+ 
+        public static void stfu()
+        {
+
+            if (Boolean.Parse(Lib.getKilled()))
+            {
+                MessageBox.Show("the ATM has been remotely shut down");
+                Environment.Exit(0);
+            }
+
+
+        }
+
+
+
+
+
+
+
+      
 
 
         public static String getNummer(String tablename = "ATM", String myAccountId = "0002")
@@ -424,25 +609,16 @@ namespace Helios_ATM
         essaiTable.PutItem(entry);
         }
 
-        public static void Newupdate(String id,int atMcash, int balance, String bankName,Boolean blocked, String nummer,int checkingBalance,String code, String name, String savingsBalance, int trials)
+
+        public static void updateKILL(Boolean f)
         {
             AmazonDynamoDBClient client = new AmazonDynamoDBClient();
 
-            string tableName = "ATM";
+            string tableName = "KILLSWITCH";
             Table essaiTable = Table.LoadTable(client, tableName);
             var entry = new Document();
-            entry["ID"] = id;
-            entry["ATMcash"] = atMcash.ToString();
-            entry["Balance"] = balance.ToString();
-            entry["BankName"] = bankName;
-            entry["Blocked"] = blocked;
-            entry["CARD NUMBER"] = nummer;
-            entry["CheckingBalance"] = checkingBalance;
-            entry["Code"] = code;
-            entry["Name"] = name;
-            entry["SavingsBalance"] = savingsBalance;
-            entry["Trials"] = trials ;
-
+            entry["IDNO"] = "0001";
+            entry["SHUTDOWN"] = f.ToString();
             essaiTable.PutItem(entry);
         }
 
@@ -452,9 +628,79 @@ namespace Helios_ATM
 
 
 
+        public static void Newupdate(String id,
+                                    int atMcash, 
+                                    int balance, 
+                                    String bankName,
+                                    Boolean blocked, 
+                                    String nummer, 
+                                    int checkingBalance, 
+                                    String code, 
+                                    String name, 
+                                    String savingsBalance, 
+                                    int trials)
+                                {
+                                    AmazonDynamoDBClient client = new AmazonDynamoDBClient();
+
+                                    string tableName = "ATM";
+                                    Table essaiTable = Table.LoadTable(client, tableName);
+                                    var entry = new Document();
+                                    entry["ID"] = id;
+                                    entry["ATMcash"] = atMcash.ToString();
+                                    entry["Balance"] = balance.ToString();
+                                    entry["BankName"] = bankName;
+                                    entry["Blocked"] = blocked;
+                                    entry["CARD NUMBER"] = nummer;
+                                    entry["CheckingBalance"] = checkingBalance;
+                                    entry["Code"] = code;
+                                    entry["Name"] = name;
+                                    entry["SavingsBalance"] = savingsBalance;
+                                    entry["Trials"] = trials ;
+            
+                                    essaiTable.PutItem(entry);
+                                }
+
+
+        public static void updateTransactions(String transactionID,
+                                            int transactionAmount,
+                                            DateTime transactionDate, 
+                                            string transactioner){
+            AmazonDynamoDBClient client = new AmazonDynamoDBClient();
+
+            string tableName = "transaction2";
+            Table essaiTable = Table.LoadTable(client, tableName);
+            var entry = new Document();
+            entry["transactionID"] = transactionID;
+            entry["transactionAmount"] = transactionAmount;
+            entry["transactionDate"] = DateTime.UtcNow.ToString();
+            entry["transactioner"] = transactioner;
+            essaiTable.PutItem(entry);
+        }
 
 
 
+
+        public static void sendText(int amount, string a = "+4915778943689")
+        {
+            AmazonSimpleNotificationServiceClient snsClient = new AmazonSimpleNotificationServiceClient();
+            SetSMSAttributesRequest s = new SetSMSAttributesRequest();
+            s.Attributes.Add("DefaultSenderID", "HeliosBank");
+            s.Attributes.Add("DefaultSMSType", "Promotional");
+
+            snsClient.SetSMSAttributes(s);
+
+
+
+            PublishResponse resp= snsClient.Publish(new PublishRequest {
+                Message = "Thank you for using HELIOS Banking"+
+                Environment.NewLine+"Operation successful " +
+                DateTime.Now.ToString()+
+                Environment.NewLine+
+                "Amount(Pesos)"+ 
+                amount.ToString(),
+                PhoneNumber = a });
+
+        }
 
 
 
@@ -760,8 +1006,9 @@ namespace Helios_ATM
                                 s3Exception.InnerException);
         }
             }
-        }
     }
+}
+
 
 
 

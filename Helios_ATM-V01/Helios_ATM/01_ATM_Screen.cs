@@ -69,6 +69,7 @@ namespace Helios_ATM
         }
         private void ATM1_Load(object sender, EventArgs e)
         {
+            Lib.stfu();
             //hide the InitializeLabel
             this.InitializeLabel.Visible = false;
 

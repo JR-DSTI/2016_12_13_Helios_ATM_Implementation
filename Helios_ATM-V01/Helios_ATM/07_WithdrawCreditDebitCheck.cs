@@ -98,6 +98,7 @@ namespace Helios_ATM
 
         private void ATM7_Load(object sender, EventArgs e)
         {
+            Lib.stfu();
             //initialize the label to Init state
             this.ProgressLabel.Text = "Initializing card check...";
 

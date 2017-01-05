@@ -24,6 +24,7 @@ namespace Helios_ATM
 
         private void ATM7b_Load(object sender, EventArgs e1)
         {
+            Lib.stfu();
             //update batterycharge and start BatteryNetworkTimer
             this.BatteryCharge.Value = battery.charge;
             this.BatteryNetworkTimer.Start();
@@ -82,10 +83,18 @@ namespace Helios_ATM
                     string s = Lib.getATMCash("AccountATM", "0001");
                     Lib.NotEnoughCash(conversion, s);
                     Helios_ATM.ATM7a a = new Helios_ATM.ATM7a();
-                    Boolean flag =a.check_and_pay(conversion, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
-                    if (flag==true)
+                     Lib l = new Lib();
+                    if (l.ScanTable(conversion))
+                        
                     {
-                        Lib.Newupdate(useCaseVariables.useCase, 0, 
+                        Lib.updateTransactions(DateTime.Now.ToString("yyyyMMddHHmmss")
+                          , conversion, DateTime.Now, Lib.getName("ATM", useCaseVariables.useCase)
+                          );
+                        Boolean flag = a.check_and_pay(conversion, useCaseVariables.useCase, Lib.getCode("ATM", useCaseVariables.useCase));
+
+                        if (flag == true)
+                        {
+                            Lib.Newupdate(useCaseVariables.useCase, 0, 
                             Int32.Parse(Lib.getBalance(useCaseVariables.useCase, "ATM")) - conversion, 
                             Lib.getBankName("ATM", useCaseVariables.useCase), 
                             false, 
@@ -95,8 +104,15 @@ namespace Helios_ATM
                             Lib.getName("ATM", useCaseVariables.useCase), 
                             Lib.getSavingsBalance("ATM",useCaseVariables.useCase), 
                             0);
-
-                        withdrawPrintReceipt(conversion);
+                                Lib.updateATM(Int32.Parse(s) - conversion);
+                            withdrawPrintReceipt(conversion);
+                        }
+                        }
+                    else
+                    {
+                        ATM1 b = new ATM1();
+                        a.Show();
+                        this.Close();   
                     }
                 }
                 else

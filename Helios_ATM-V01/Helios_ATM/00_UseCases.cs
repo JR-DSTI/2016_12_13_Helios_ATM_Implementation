@@ -48,8 +48,12 @@ namespace Helios_ATM
         }
         private void ATM0_Load(object sender, EventArgs e)
         {
-           // Lib.afunction();
-            
+            Lib.stfu();
+
+            //testshit t = new testshit();
+            //t.Show();
+            // Lib.afunction();
+
             //setting the current Batterycharge
             this.BatteryCharge.Value = battery.charge;
 
@@ -169,6 +173,16 @@ namespace Helios_ATM
         private void phoneFormatLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void EmailTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Lib.updateKILL(true);
         }
 
         //private void metroButton2_Click(object sender, EventArgs e)

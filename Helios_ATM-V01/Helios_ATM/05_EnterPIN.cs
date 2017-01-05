@@ -29,6 +29,7 @@ namespace Helios_ATM
 
         private void ATM5_Load(object sender, EventArgs e1)
         {
+            Lib.stfu();
             //setting the current Batterycharge and Network signal:
             this.BatteryCharge.Value = battery.charge;
             this.BatteryNetworkTimer.Start();
@@ -110,7 +111,7 @@ namespace Helios_ATM
                
 
                 //Checking if pin is correct and tries <=3
-                if (PINentries<=3 & PIN == correctPIN)
+                if (PINentries<=2 & PIN == correctPIN)
                 {
                     //Lib.update("ATM","0002",PINentries, blocked, Int32.Parse(Lib.getBalance()));
                     Lib.Newupdate(useCaseVariables.useCase, 
@@ -143,7 +144,7 @@ namespace Helios_ATM
                     //stop the BatteryNetworkTimer
                     this.BatteryNetworkTimer.Stop();
                 }
-                else if (PINentries < 3 & PIN != correctPIN)
+                else if (PINentries < 2 & PIN != correctPIN)
                 {
                     //Lib.update("ATM", "0002", PINentries, blocked, Int32.Parse(Lib.getBalance()));
                     Lib.Newupdate(useCaseVariables.useCase,
@@ -167,7 +168,7 @@ namespace Helios_ATM
                     //update s3log:
 
                 }
-                else if (PINentries > 3)
+                else if (PINentries > 2)
                 {
                     //set PIN blocked variables:
                     //blocked = true;
