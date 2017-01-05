@@ -89,7 +89,6 @@
             this.metroButton1.TabIndex = 6;
             this.metroButton1.Text = "FastTrack";
             this.metroButton1.UseSelectable = true;
-            this.metroButton1.Visible = false;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // BatteryCharge

@@ -66,8 +66,10 @@ namespace Helios_ATM
             //Set default value for other account
             SavingsLabel.Text ="XX,XXX.XX";
 
+            AutoClosingMessageBox.Show(Lib.getCheckingBalance(), "Data retrieval", 10000, Parent: Form.ActiveForm);
+
             //Insert here the code to get current checkings amount
-            CheckingsLabel.Text= string.Format("{0:##,###.00}", Convert.ToDecimal(Lib.getCheckingBalance()));
+            CheckingsLabel.Text= string.Format("0:{##,###.00}", Convert.ToDecimal(Lib.getCheckingBalance()));
 
         }
 

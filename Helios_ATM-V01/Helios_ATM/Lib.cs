@@ -262,7 +262,7 @@ namespace Helios_ATM
                 s3log.logOperation(null, "KILLSWITCH utilized. ATM shutdown inaugurated.");
 
                 //Alert:
-                AutoClosingMessageBox.Show("ATM has been remotely shut down. /nYes, over the air!", "KILLSWITCH", 2000, Parent: Form.ActiveForm);
+                AutoClosingMessageBox.Show("ATM has been remotely shut down. Yes, over the air!", "KILLSWITCH", 2000, Parent: Form.ActiveForm);
 
                 //resetting the Kill for future uses
                 Lib.updateKILL(false);

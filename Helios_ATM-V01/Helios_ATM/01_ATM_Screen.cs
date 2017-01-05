@@ -81,6 +81,7 @@ namespace Helios_ATM
         //Quick jump to current Form:
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            
             //Starting next form and close/hide this one
             MetroFramework.Forms.MetroForm ATM6 = new ATM6(); // Instantiate a Form object.
             ATM6.Show(); //show the new Form
