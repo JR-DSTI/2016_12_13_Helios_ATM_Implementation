@@ -63,7 +63,7 @@ namespace Helios_ATM
             DateTime threeWeeksAgoDate =DateTime.UtcNow-TimeSpan.FromDays(21);
             
             string threeWeeksAgoDateStr = threeWeeksAgoDate.ToString();
-            MessageBox.Show(threeWeeksAgoDateStr);
+            //MessageBox.Show(threeWeeksAgoDateStr);
             
             AmazonDynamoDBClient cl = new AmazonDynamoDBClient();
             var ScRequest = new ScanRequest
@@ -99,10 +99,12 @@ namespace Helios_ATM
                 }
             }
             //MessageBox.Show(String.Join(",",lindex));
-            MessageBox.Show(total.ToString());
+            //MessageBox.Show(total.ToString());
             if (total+Amount>500 )
             {
-                MessageBox.Show("You took more than 500 pesos in a month");
+                //MessageBox.Show("You took more than 500 pesos in a month");
+                AutoClosingMessageBox.Show("You took more than 500 pesos in a month. Wait until next month to be able to withdraw agein.", "Monthly limit exceeded!", 2500, Parent: Form.ActiveForm);
+
                 return false;
             }
             else
@@ -119,21 +121,21 @@ namespace Helios_ATM
         public static void PrintItem(Dictionary<string,AttributeValue> attList)
         {
 
-           foreach(KeyValuePair<string,AttributeValue> item in attList)
-            {
-               if (item.Value.S != null)
-                {
-                    MessageBox.Show(item.Value.S.ToString());
+           //foreach(KeyValuePair<string,AttributeValue> item in attList)
+           // {
+           //    if (item.Value.S != null)
+           //     {
+           //         //MessageBox.Show(item.Value.S.ToString());
                     
                  
 
-                }
-                if (item.Value.N != null)
-                {
-                    MessageBox.Show(item.Value.N.ToString());
+           //     }
+           //     if (item.Value.N != null)
+           //     {
+           //         //MessageBox.Show(item.Value.N.ToString());
                    
-                }
-            }
+           //     }
+           // }
         }
 
 
@@ -149,7 +151,7 @@ namespace Helios_ATM
                 if (item.Value.S != null)
                 {
 
-                    MessageBox.Show(item.Value.S.ToString());
+                    //MessageBox.Show(item.Value.S.ToString());
 
                     a= (item.Value.S.ToString());
                     //MessageBox.Show(Lib.listOfDates.ToString());
@@ -157,7 +159,7 @@ namespace Helios_ATM
                 }
             //   else if (item.Value.N != null)
             //    {
-            //        MessageBox.Show(item.Value.N.ToString());
+            //        //MessageBox.Show(item.Value.N.ToString());
             //        a= (item.Value.N.ToString());
             //    }
             }
@@ -168,7 +170,7 @@ namespace Helios_ATM
                     if (item.Value.N != null)
             {
 
-                MessageBox.Show(item.Value.N.ToString());
+                //MessageBox.Show(item.Value.N.ToString());
 
                 a = (item.Value.N.ToString());
                 //MessageBox.Show(Lib.listOfDates.ToString());
@@ -256,26 +258,22 @@ namespace Helios_ATM
 
             if (Boolean.Parse(Lib.getKilled()))
             {
+                //log operation:
+                s3log.logOperation(null, "KILLSWITCH utilized. ATM shutdown inaugurated.");
+
                 //Alert:
-                AutoClosingMessageBox.Show("ATM has been remotely shut down. /nYes, over the air!", "KILLSWITCH", 1000, Parent: Form.ActiveForm);
+                AutoClosingMessageBox.Show("ATM has been remotely shut down. /nYes, over the air!", "KILLSWITCH", 2000, Parent: Form.ActiveForm);
+
+                //resetting the Kill for future uses
+                Lib.updateKILL(false);
 
                 //exit the forms:
                 Environment.Exit(0);
-
-                //resetting the Kill for future uses
-                updateKILL(false);
             }
 
 
         }
 
-
-
-
-
-
-
-      
 
 
         public static String getNummer(String tablename = "ATM", String myAccountId = "0002")
@@ -843,7 +841,7 @@ namespace Helios_ATM
 
                 //AutoClosingMessageBox.Show(attribute + " - " + stringValue, "Info", 1000, Parent: Form.ActiveForm);
                 val = (updatedDocument[attribute]).ToString();
-                //express MessageBox.Show(val.ToString());
+                //express //MessageBox.Show(val.ToString());
                 //AutoClosingMessageBox.Show(attribute + " - " + val, "Info", 1000, Parent: Form.ActiveForm);
             }
             return val;

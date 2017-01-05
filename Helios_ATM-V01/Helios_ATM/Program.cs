@@ -105,8 +105,9 @@ namespace Helios_ATM
                     //the timer ticks every second
                     if (iCountBattery % 432 ==0) //432 since the progress bar has value 100; total battery time is 43,200 seconds => 43,200 seconds/100=432
                     {
+                        //Decrease battery value:
                         BatteryCharge.Value -= decrement;
-                        //MessageBox.Show("stop and change"); 
+
                         //update new battery value
                         charge = BatteryCharge.Value;
                     }
