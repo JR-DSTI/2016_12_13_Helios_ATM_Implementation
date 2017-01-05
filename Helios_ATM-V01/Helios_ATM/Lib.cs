@@ -257,7 +257,11 @@ namespace Helios_ATM
             if (Boolean.Parse(Lib.getKilled()))
             {
                 MessageBox.Show("the ATM has been remotely shut down");
+
                 Environment.Exit(0);
+
+                //resetting the Kill for future uses
+                updateKILL(false);
             }
 
 

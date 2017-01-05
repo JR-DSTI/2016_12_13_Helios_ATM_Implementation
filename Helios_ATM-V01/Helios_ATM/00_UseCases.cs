@@ -48,7 +48,7 @@ namespace Helios_ATM
         }
         private void ATM0_Load(object sender, EventArgs e)
         {
-            Lib.stfu();
+            
 
             //testshit t = new testshit();
             //t.Show();

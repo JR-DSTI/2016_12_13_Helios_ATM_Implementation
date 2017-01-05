@@ -69,7 +69,7 @@ namespace Helios_ATM
         }
         private void ATM1_Load(object sender, EventArgs e)
         {
-            Lib.stfu();
+           
             //hide the InitializeLabel
             this.InitializeLabel.Visible = false;
 
@@ -95,6 +95,9 @@ namespace Helios_ATM
             //getting the current Batterycharge & discharge and adjust network signal:
             battery.discharge(this.BatteryCharge);
             networkConnection.networkConnectionOK(this.NetworkSignal);
+
+            //check if the KILLSWITCH was set in the database:
+            Lib.stfu();
         }
 
         private void metroButton2_Click(object sender, EventArgs e)

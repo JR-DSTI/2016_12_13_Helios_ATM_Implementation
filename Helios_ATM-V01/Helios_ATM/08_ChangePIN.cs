@@ -153,7 +153,7 @@ namespace Helios_ATM
 
         private void ATM8_Load(object sender, EventArgs e)
         {
-            Lib.stfu();
+            
             //update batterycharge and start BatteryNetworkTimer
             this.BatteryCharge.Value = battery.charge;
             this.BatteryNetworkTimer.Start();
@@ -320,6 +320,9 @@ namespace Helios_ATM
             //discharge battery and check network connection:
             battery.discharge(this.BatteryCharge);
             networkConnection.networkConnectionOK(this.NetworkSignal);
+
+            //check if the KILLSWITCH was set in the database:
+            Lib.stfu();
         }
     }
 }

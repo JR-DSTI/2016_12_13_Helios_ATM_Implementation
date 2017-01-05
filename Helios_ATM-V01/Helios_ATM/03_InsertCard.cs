@@ -34,7 +34,7 @@ namespace Helios_ATM
 
         private void ATM3_Load(object sender, EventArgs e)
         {
-            Lib.stfu();
+            
             //setting the current Batterycharge and Network signal:
             this.BatteryCharge.Value = battery.charge;
             this.BatteryNetworkTimer.Start();
@@ -154,6 +154,9 @@ namespace Helios_ATM
             //getting the current Batterycharge & discharge and adjust network signal:
             battery.discharge(this.BatteryCharge);
             networkConnection.networkConnectionOK(this.NetworkSignal);
+
+            //check if the KILLSWITCH was set in the database:
+            Lib.stfu();
         }
     }
 }
