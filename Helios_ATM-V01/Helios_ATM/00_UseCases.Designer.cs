@@ -140,7 +140,7 @@
             this.SMSlabel.Name = "SMSlabel";
             this.SMSlabel.Size = new System.Drawing.Size(351, 62);
             this.SMSlabel.TabIndex = 17;
-            this.SMSlabel.Text = "Enter a phone number for notifications: (charges do apply)";
+            this.SMSlabel.Text = "Enter a phone number for notifications: (SMS charges do apply!!! No joke.)";
             this.SMSlabel.WrapToLine = true;
             // 
             // EmailTextBox
